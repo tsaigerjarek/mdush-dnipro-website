@@ -10,6 +10,9 @@ const routes = [
   'kontakty',
   'polityka-pryvatnosti',
   'pravyla-vykorystannia',
+  'novyny/ofitsiinyi-sait',
+  'novyny/sportyvni-napriamy-2026-2027',
+  'novyny/yak-zvernutysia-shchodo-vstupu',
 ];
 
 for (const route of routes) {
