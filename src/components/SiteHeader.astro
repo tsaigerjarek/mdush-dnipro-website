@@ -22,18 +22,22 @@ const isCurrent = (href: string) =>
       <span class="brand-mark" aria-hidden="true">MD</span>
       <span>MDUSH Dnipro</span>
     </a>
-    <nav class="main-nav" aria-label="Основна навігація">
-      <ul>
-        {
-          navigation.map((item) => (
-            <li>
-              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+    <div class="nav-shell">
+      <input class="nav-toggle" id="main-nav-toggle" type="checkbox" />
+      <label class="nav-toggle-label" for="main-nav-toggle">Меню</label>
+      <nav class="main-nav" aria-label="Основна навігація">
+        <ul>
+          {
+            navigation.map((item) => (
+              <li>
+                <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
