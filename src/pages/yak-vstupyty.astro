@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
 ---
 
 <BaseLayout title="Як вступити — MDUSH Dnipro" description="Як звернутися щодо вступу до МДЮСШ Дніпро">
   <header class="page-intro"><p class="eyebrow">Для батьків і законних представників</p><h1>Як вступити</h1><p>Оберіть спортивний напрям і зверніться до адміністрації. Сайт не збирає персональні дані дитини.</p></header>
   <section class="section"><div class="grid">
-    <article class="card"><span class="card-number">01</span><h2>Оберіть напрям</h2><p>Ознайомтеся з футболом, настільним тенісом і черлідингом.</p><a href="/sportyvni-napriamy/">Переглянути напрями</a></article>
+    <article class="card"><span class="card-number">01</span><h2>Оберіть напрям</h2><p>Ознайомтеся з футболом, настільним тенісом і черлідингом.</p><a href={withBase('/sportyvni-napriamy/')}>Переглянути напрями</a></article>
     <article class="card"><span class="card-number">02</span><h2>Зв’яжіться</h2><p>Зателефонуйте за номером <a href="tel:+380931131139">+380 93 113 1139</a> або напишіть на <a href="mailto:mdussdnepr@gmail.com">mdussdnepr@gmail.com</a>.</p></article>
     <article class="card"><span class="card-number">03</span><h2>Уточніть умови</h2><p>Адміністрація повідомить про наявність місць, актуальний розклад і подальші кроки.</p></article>
   </div></section>

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
 
 const latestNews = (await getCollection('news', ({ data }) => data.status === 'published'))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
@@ -18,8 +19,8 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <h1>МДЮСШ з ігрових видів спорту</h1>
       <p>Спортивний заклад Дніпровської міської ради для систематичних занять дітей, підлітків і молоді фізичною культурою та спортом.</p>
       <div class="actions">
-        <a class="button" href="/yak-vstupyty/">Як вступити</a>
-        <a class="button button-secondary" href="/sportyvni-napriamy/">Спортивні напрями</a>
+        <a class="button" href={withBase('/yak-vstupyty/')}>Як вступити</a>
+        <a class="button button-secondary" href={withBase('/sportyvni-napriamy/')}>Спортивні напрями</a>
       </div>
     </div>
   </section>
@@ -48,16 +49,16 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <div class="news-grid">
         {latestNews.map((entry) => (
           <article class="news-card">
-            <a class="news-card-media" href={`/novyny/${entry.id}/`} aria-label={`Читати: ${entry.data.title}`}>
-              <img src={entry.data.cover} alt={entry.data.coverAlt} width="1600" height="900" loading="lazy" />
+            <a class="news-card-media" href={withBase(`/novyny/${entry.id}/`)} aria-label={`Читати: ${entry.data.title}`}>
+              <img src={withBase(entry.data.cover)} alt={entry.data.coverAlt} width="1600" height="900" loading="lazy" />
             </a>
             <div class="news-card-body">
               <time datetime={entry.data.publishedAt.toISOString()}>
                 {entry.data.publishedAt.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
               </time>
-              <h3><a href={`/novyny/${entry.id}/`}>{entry.data.title}</a></h3>
+              <h3><a href={withBase(`/novyny/${entry.id}/`)}>{entry.data.title}</a></h3>
               <p>{entry.data.summary}</p>
-              <a class="text-link" href={`/novyny/${entry.id}/`}>Читати новину →</a>
+              <a class="text-link" href={withBase(`/novyny/${entry.id}/`)}>Читати новину →</a>
             </div>
           </article>
         ))}
@@ -70,7 +71,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <p class="eyebrow">Для батьків</p>
       <h2>Зрозумілий шлях до першого звернення</h2>
       <p>Оберіть напрям і зверніться до адміністрації, щоб уточнити актуальні умови та наявність місць. Сайт не збирає персональні дані дитини.</p>
-      <a class="button" href="/yak-vstupyty/">Перейти до розділу</a>
+      <a class="button" href={withBase('/yak-vstupyty/')}>Перейти до розділу</a>
     </div>
   </section>
 </BaseLayout>

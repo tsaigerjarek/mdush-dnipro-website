@@ -1,21 +1,24 @@
 ---
+import { withBase } from '../lib/urls';
+
 const navigation = [
-  { href: '/', label: 'Головна' },
-  { href: '/pro-zaklad/', label: 'Про заклад' },
-  { href: '/sportyvni-napriamy/', label: 'Спортивні напрями' },
-  { href: '/yak-vstupyty/', label: 'Як вступити' },
-  { href: '/novyny/', label: 'Новини' },
-  { href: '/kontakty/', label: 'Контакти' },
+  { href: withBase('/'), label: 'Головна' },
+  { href: withBase('/pro-zaklad/'), label: 'Про заклад' },
+  { href: withBase('/sportyvni-napriamy/'), label: 'Спортивні напрями' },
+  { href: withBase('/yak-vstupyty/'), label: 'Як вступити' },
+  { href: withBase('/novyny/'), label: 'Новини' },
+  { href: withBase('/kontakty/'), label: 'Контакти' },
 ];
 
 const currentPath = Astro.url.pathname;
+const homePath = withBase('/');
 const isCurrent = (href: string) =>
-  href === '/' ? currentPath === href : currentPath === href || currentPath.startsWith(href);
+  href === homePath ? currentPath === href : currentPath === href || currentPath.startsWith(href);
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="MDUSH Dnipro — на головну">
+    <a class="brand" href={homePath} aria-label="MDUSH Dnipro — на головну">
       <span class="brand-mark" aria-hidden="true">MD</span>
       <span>MDUSH Dnipro</span>
     </a>
