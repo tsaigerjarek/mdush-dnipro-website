@@ -7,14 +7,27 @@ const navigation = [
   { href: '/novyny/', label: 'Новини' },
   { href: '/kontakty/', label: 'Контакти' },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
-<header>
-  <div class="container">
-    <a href="/" aria-label="MDUSH Dnipro — на головну">MDUSH Dnipro</a>
-    <nav aria-label="Основна навігація">
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="MDUSH Dnipro — на головну">
+      <span class="brand-mark" aria-hidden="true">MD</span>
+      <span>MDUSH Dnipro</span>
+    </a>
+    <nav class="main-nav" aria-label="Основна навігація">
       <ul>
-        {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        {
+          navigation.map((item) => (
+            <li>
+              <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>

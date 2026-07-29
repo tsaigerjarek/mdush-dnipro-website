@@ -2,7 +2,40 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="MDUSH Dnipro" description="Офіційний сайт МДЮСШ Дніпро">
-  <h1>MDUSH Dnipro</h1>
-  <p>Каркас головної сторінки.</p>
+<BaseLayout title="MDUSH Dnipro" description="Офіційний сайт МДЮСШ Дніпро" fullWidth>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Офіційний сайт закладу</p>
+      <h1>Розвиток через спорт</h1>
+      <p>Прототип головної сторінки: коротке представлення закладу, спортивних напрямів і зрозумілий маршрут для батьків.</p>
+      <div class="actions">
+        <a class="button" href="/yak-vstupyty/">Як вступити</a>
+        <a class="button button-secondary" href="/sportyvni-napriamy/">Спортивні напрями</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Напрями</p>
+        <h2>Три види спорту — один заклад</h2>
+        <p>На цьому етапі картки демонструють структуру й візуальний ритм. Перевірене наповнення буде додано окремим PR.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><span class="card-number">01</span><h3>Футбол</h3><p>Місце для короткого опису напряму та вікових груп.</p></article>
+        <article class="card"><span class="card-number">02</span><h3>Настільний теніс</h3><p>Місце для короткого опису напряму та умов занять.</p></article>
+        <article class="card"><span class="card-number">03</span><h3>Черлідинг</h3><p>Місце для короткого опису напряму та умов занять.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <p class="eyebrow">Для батьків</p>
+      <h2>Зрозумілий шлях до першого звернення</h2>
+      <p>Умови, порядок звернення й контакти будуть зібрані в одному розділі без складних форм.</p>
+      <a class="button" href="/yak-vstupyty/">Перейти до розділу</a>
+    </div>
+  </section>
 </BaseLayout>
