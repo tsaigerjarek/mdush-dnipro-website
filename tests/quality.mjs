@@ -2,6 +2,7 @@ import { access, readdir, readFile } from 'node:fs/promises';
 import { extname, join, relative } from 'node:path';
 
 const distRoot = 'dist';
+const basePath = '/mdush-dnipro-website';
 const htmlFiles = [];
 const javascriptFiles = [];
 
@@ -81,7 +82,7 @@ for (const file of htmlFiles) {
   for (const match of html.matchAll(/\shref="([^"]+)"/g)) {
     const href = match[1];
     if (!href.startsWith('/') || href.startsWith('//')) continue;
-    const target = href.split('#')[0];
+    const target = href.split('#')[0].replace(new RegExp(`^${basePath}`), '') || '/';
     if (target && !publicRoutes.has(target) && !target.includes('.')) {
       throw new Error(`Маршрут ${route} містить неробоче внутрішнє посилання ${href}`);
     }
