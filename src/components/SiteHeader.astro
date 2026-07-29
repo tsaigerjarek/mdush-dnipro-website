@@ -1,0 +1,21 @@
+---
+const navigation = [
+  { href: '/', label: 'Головна' },
+  { href: '/pro-zaklad/', label: 'Про заклад' },
+  { href: '/sportyvni-napriamy/', label: 'Спортивні напрями' },
+  { href: '/yak-vstupyty/', label: 'Як вступити' },
+  { href: '/novyny/', label: 'Новини' },
+  { href: '/kontakty/', label: 'Контакти' },
+];
+---
+
+<header>
+  <div class="container">
+    <a href="/" aria-label="MDUSH Dnipro — на головну">MDUSH Dnipro</a>
+    <nav aria-label="Основна навігація">
+      <ul>
+        {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+</header>
