@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
 ---
 
 <BaseLayout
@@ -17,7 +18,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="eyebrow">Вступ</p>
       <h2>Оберіть напрям і зверніться до закладу</h2>
       <p>На сайті не публікується змінний розклад і не збираються персональні дані дітей.</p>
-      <a class="button" href="/yak-vstupyty/">Як вступити</a>
+      <a class="button" href={withBase('/yak-vstupyty/')}>Як вступити</a>
     </div>
   </section>
 </BaseLayout>
