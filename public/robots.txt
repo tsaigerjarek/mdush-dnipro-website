@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://tsaigerjarek.github.io/mdush-dnipro-website/sitemap.xml
