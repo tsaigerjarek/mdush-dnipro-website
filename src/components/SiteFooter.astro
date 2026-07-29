@@ -1,7 +1,11 @@
+---
+import { withBase } from '../lib/urls';
+---
+
 <footer class="site-footer">
   <div class="container footer-inner">
     <div>
-      <a class="brand" href="/" aria-label="MDUSH Dnipro — на головну">
+      <a class="brand" href={withBase('/')} aria-label="MDUSH Dnipro — на головну">
         <span class="brand-mark" aria-hidden="true">MD</span>
         <span>MDUSH Dnipro</span>
       </a>
@@ -13,8 +17,8 @@
     </div>
     <nav class="footer-nav" aria-label="Службова навігація">
       <ul>
-        <li><a href="/polityka-pryvatnosti/">Політика приватності</a></li>
-        <li><a href="/pravyla-vykorystannia/">Правила використання</a></li>
+        <li><a href={withBase('/polityka-pryvatnosti/')}>Політика приватності</a></li>
+        <li><a href={withBase('/pravyla-vykorystannia/')}>Правила використання</a></li>
       </ul>
     </nav>
   </div>
