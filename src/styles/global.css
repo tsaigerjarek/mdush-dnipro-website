@@ -96,8 +96,9 @@ p {
 }
 
 :focus-visible {
-  outline: 3px solid #76d6ad;
+  outline: 3px solid #ffd54f;
   outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--green-950);
 }
 
 .site-header {
@@ -402,6 +403,24 @@ main {
 
 .site-footer p {
   color: #b9cfc6;
+}
+
+.site-footer address {
+  color: #b9cfc6;
+  font-style: normal;
+}
+
+.compact-section {
+  padding-top: 1rem;
+}
+
+.notice {
+  max-width: 46rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-left: 0.35rem solid var(--green-700);
+  border-radius: var(--radius);
+  background: var(--paper);
 }
 
 @media (max-width: 58rem) {
