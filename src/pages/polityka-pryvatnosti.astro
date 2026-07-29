@@ -2,7 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Політика приватності — MDUSH Dnipro" description="Політика приватності сайту MDUSH Dnipro">
-  <h1>Політика приватності</h1>
-  <p>Каркас службової сторінки.</p>
+<BaseLayout
+  title="Політика приватності — MDUSH Dnipro"
+  description="Статус підготовки політики приватності офіційного сайту МДЮСШ Дніпро."
+  robots="noindex, nofollow"
+>
+  <header class="page-intro">
+    <p class="eyebrow">Службова інформація</p>
+    <h1>Політика приватності</h1>
+    <p>Текст проходить юридичне погодження і буде доступний до публічного запуску сайту.</p>
+  </header>
+  <section class="section compact-section">
+    <div class="notice" role="status">
+      <h2>Поточний статус</h2>
+      <p>Сайт не містить форм реєстрації, кабінетів користувачів або рекламних трекерів і не збирає персональні дані дітей.</p>
+    </div>
+  </section>
 </BaseLayout>
