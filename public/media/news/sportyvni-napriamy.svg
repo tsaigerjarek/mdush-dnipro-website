@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Три спортивні напрями</title>
+  <desc id="desc">Зелена обкладинка з трьома геометричними символами спортивних напрямів</desc>
+  <rect width="1600" height="900" fill="#f4f6f2"/>
+  <rect x="70" y="70" width="1460" height="760" rx="44" fill="#0a3d2e"/>
+  <circle cx="360" cy="390" r="150" fill="#126149"/>
+  <rect x="650" y="240" width="300" height="300" rx="46" fill="#dcece5"/>
+  <path d="M1240 215l176 305h-352z" fill="#79d6ae"/>
+  <text x="100" y="700" fill="#fff" font-family="Arial, sans-serif" font-size="92" font-weight="700">ТРИ НАПРЯМИ</text>
+  <text x="105" y="770" fill="#b9cfc6" font-family="Arial, sans-serif" font-size="35" letter-spacing="5">ФУТБОЛ · НАСТІЛЬНИЙ ТЕНІС · ЧЕРЛІДИНГ</text>
+</svg>
