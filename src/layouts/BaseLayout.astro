@@ -7,17 +7,47 @@ interface Props {
   title: string;
   description: string;
   fullWidth?: boolean;
+  image?: string;
+  imageAlt?: string;
+  pageType?: 'website' | 'article';
+  publishedAt?: Date;
+  robots?: 'index, follow' | 'noindex, nofollow';
 }
 
-const { title, description, fullWidth = false } = Astro.props;
+const {
+  title,
+  description,
+  fullWidth = false,
+  image,
+  imageAlt,
+  pageType = 'website',
+  publishedAt,
+  robots = 'index, follow',
+} = Astro.props;
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const socialImageUrl = Astro.site && image ? new URL(image, Astro.site) : undefined;
 ---
 
 <!doctype html>
 <html lang="uk">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#062d22" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:site_name" content="MDUSH Dnipro" />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+    {socialImageUrl && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    {pageType === 'article' && publishedAt && (
+      <meta property="article:published_time" content={publishedAt.toISOString()} />
+    )}
     <title>{title}</title>
   </head>
   <body>

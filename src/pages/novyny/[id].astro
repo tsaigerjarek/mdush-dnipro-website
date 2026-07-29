@@ -16,7 +16,14 @@ const publishedAt = entry.data.publishedAt.toLocaleDateString('uk-UA', {
 });
 ---
 
-<BaseLayout title={`${entry.data.title} — MDUSH Dnipro`} description={entry.data.summary}>
+<BaseLayout
+  title={`${entry.data.title} — MDUSH Dnipro`}
+  description={entry.data.summary}
+  image={entry.data.cover}
+  imageAlt={entry.data.coverAlt}
+  pageType="article"
+  publishedAt={entry.data.publishedAt}
+>
   <article class="news-article">
     <a class="back-link" href="/novyny/">← Усі новини</a>
     <header class="news-header">

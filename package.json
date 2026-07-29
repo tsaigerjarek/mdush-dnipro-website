@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
-    "test": "npm run check && npm run build && node tests/routes.mjs"
+    "test": "npm run check && npm run build && node tests/routes.mjs && node tests/quality.mjs"
   },
   "dependencies": {
     "astro": "7.1.6"

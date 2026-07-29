@@ -7,7 +7,11 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
   .slice(0, 3);
 ---
 
-<BaseLayout title="MDUSH Dnipro" description="Офіційний сайт МДЮСШ Дніпро" fullWidth>
+<BaseLayout
+  title="МДЮСШ Дніпро — офіційний сайт"
+  description="Офіційна інформація про МДЮСШ Дніпро, спортивні напрями, порядок вступу, новини, контакти та години роботи."
+  fullWidth
+>
   <section class="hero">
     <div class="container">
       <p class="eyebrow">Комунальний позашкільний навчальний заклад</p>

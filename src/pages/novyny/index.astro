@@ -6,7 +6,10 @@ const news = (await getCollection('news', ({ data }) => data.status === 'publish
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 ---
 
-<BaseLayout title="Новини — MDUSH Dnipro" description="Офіційні новини МДЮСШ Дніпро">
+<BaseLayout
+  title="Новини — MDUSH Dnipro"
+  description="Офіційні новини, оголошення та перевірені повідомлення про діяльність МДЮСШ Дніпро."
+>
   <header class="page-intro"><p class="eyebrow">Офіційна інформація</p><h1>Новини</h1><p>Перевірені повідомлення про діяльність, спортивні напрями та можливості закладу.</p></header>
   <section class="section news-section">
     <div class="news-grid">
