@@ -1,12 +1,30 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const news = (await getCollection('news', ({ data }) => data.status === 'published'))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 ---
 
 <BaseLayout title="Новини — MDUSH Dnipro" description="Офіційні новини МДЮСШ Дніпро">
-  <header class="page-intro"><p class="eyebrow">Офіційна інформація</p><h1>Новини</h1><p>Майбутня стрічка оголошень, подій і результатів. Матеріали публікуватимуться лише після погодження.</p></header>
-  <section class="section"><div class="grid">
-    <article class="card"><span class="card-number">01</span><h2>Новина</h2><p>Шаблон картки майбутньої публікації.</p></article>
-    <article class="card"><span class="card-number">02</span><h2>Подія</h2><p>Шаблон картки майбутньої публікації.</p></article>
-    <article class="card"><span class="card-number">03</span><h2>Оголошення</h2><p>Шаблон картки майбутньої публікації.</p></article>
-  </div></section>
+  <header class="page-intro"><p class="eyebrow">Офіційна інформація</p><h1>Новини</h1><p>Перевірені повідомлення про діяльність, спортивні напрями та можливості закладу.</p></header>
+  <section class="section news-section">
+    <div class="news-grid">
+      {news.map((entry) => (
+        <article class="news-card">
+          <a class="news-card-media" href={`/novyny/${entry.id}/`} aria-label={`Читати: ${entry.data.title}`}>
+            <img src={entry.data.cover} alt={entry.data.coverAlt} width="1600" height="900" loading="lazy" />
+          </a>
+          <div class="news-card-body">
+            <time datetime={entry.data.publishedAt.toISOString()}>
+              {entry.data.publishedAt.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+            <h2><a href={`/novyny/${entry.id}/`}>{entry.data.title}</a></h2>
+            <p>{entry.data.summary}</p>
+            <a class="text-link" href={`/novyny/${entry.id}/`}>Читати новину →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
