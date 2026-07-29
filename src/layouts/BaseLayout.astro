@@ -6,9 +6,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  fullWidth?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, fullWidth = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +23,7 @@ const { title, description } = Astro.props;
   <body>
     <a class="skip-link" href="#main-content">Перейти до основного вмісту</a>
     <SiteHeader />
-    <main id="main-content" class="container">
+    <main id="main-content" class:list={{ container: !fullWidth }}>
       <slot />
     </main>
     <SiteFooter />
