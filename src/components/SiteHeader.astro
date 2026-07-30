@@ -19,12 +19,12 @@ const isCurrent = (href: string) =>
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href={homePath} aria-label="MDUSH Dnipro — на головну">
-      <span class="brand-mark" aria-hidden="true">MD</span>
-      <span>MDUSH Dnipro</span>
+      <span class="brand-wordmark" aria-hidden="true">МДЮСШ</span>
+      <span class="brand-name">MDUSH Dnipro</span>
     </a>
     <div class="nav-shell">
-      <input class="nav-toggle" id="main-nav-toggle" type="checkbox" />
-      <label class="nav-toggle-label" for="main-nav-toggle">Меню</label>
+      <input class="nav-toggle" id="main-nav-toggle" type="checkbox" aria-label="Відкрити або закрити меню" />
+      <label class="nav-toggle-label" for="main-nav-toggle"><span>Меню</span><span class="menu-lines" aria-hidden="true"></span></label>
       <nav class="main-nav" aria-label="Основна навігація">
         <ul>
           {
