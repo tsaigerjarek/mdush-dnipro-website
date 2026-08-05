@@ -7,6 +7,7 @@ const staticRoutes = [
   '/pro-zaklad/',
   '/sportyvni-napriamy/',
   '/yak-vstupyty/',
+  '/prozorist/',
   '/novyny/',
   '/kontakty/',
 ];

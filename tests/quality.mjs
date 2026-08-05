@@ -22,8 +22,8 @@ async function walk(directory) {
 await walk(distRoot);
 await access(join(distRoot, 'robots.txt'));
 
-if (htmlFiles.length !== 11) {
-  throw new Error(`Очікувалося 11 HTML-сторінок, отримано ${htmlFiles.length}`);
+if (htmlFiles.length !== 12) {
+  throw new Error(`Очікувалося 12 HTML-сторінок, отримано ${htmlFiles.length}`);
 }
 
 if (javascriptFiles.length > 0) {

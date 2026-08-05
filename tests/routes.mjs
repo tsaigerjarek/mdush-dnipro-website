@@ -6,6 +6,7 @@ const routes = [
   'pro-zaklad',
   'sportyvni-napriamy',
   'yak-vstupyty',
+  'prozorist',
   'novyny',
   'kontakty',
   'polityka-pryvatnosti',
