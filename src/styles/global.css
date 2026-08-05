@@ -699,6 +699,82 @@ main {
   color: var(--text-soft);
 }
 
+.about-identity-grid,
+.about-purpose-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-identity-card {
+  min-width: 0;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.about-identity-card--primary {
+  background: var(--green-950);
+  color: var(--paper);
+}
+
+.about-identity-card h3 {
+  margin: 0;
+  color: var(--green-950);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.about-identity-card p {
+  margin: 1rem 0 0;
+}
+
+.about-identity-card--primary h3 {
+  color: var(--paper);
+}
+
+.about-identity-card--primary p {
+  color: #d6eee1;
+}
+
+.about-identity-card--primary .card-number {
+  background: #d1e2da;
+  color: var(--green-950);
+}
+
+.legal-facts-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1rem 0 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.legal-facts-list div {
+  min-width: 0;
+  padding: 1.15rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-facts-list dt {
+  margin-bottom: 0.35rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.legal-facts-list dd {
+  margin: 0;
+  color: var(--green-950);
+  font-weight: 750;
+}
+
+.about-purpose-grid .information-card {
+  min-height: 15rem;
+}
+
 .facilities-section {
   padding-bottom: clamp(4.5rem, 8vw, 7rem);
 }
@@ -1233,7 +1309,10 @@ main {
   .news-grid,
   .scaffold-grid,
   .information-grid,
-  .facilities-grid {
+  .facilities-grid,
+  .about-identity-grid,
+  .about-purpose-grid,
+  .legal-facts-list {
     grid-template-columns: 1fr;
   }
 

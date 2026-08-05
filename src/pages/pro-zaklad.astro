@@ -1,21 +1,71 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
 ---
 
 <BaseLayout
-  title="Про заклад — MDUSH Dnipro"
-  description="Розділ з офіційною інформацією про МДЮСШ Дніпро, який поетапно наповнюється перевіреними даними."
+  title="Про заклад — МДЮСШ Дніпро"
+  description="Перевірена офіційна інформація про правовий статус, засновника, діяльність і мету МДЮСШ з ігрових видів спорту Дніпровської міської ради."
 >
   <header class="page-intro">
     <p class="eyebrow">Офіційна інформація</p>
     <h1>Про заклад</h1>
-    <p>Розділ поетапно наповнюється відомостями, підтвердженими офіційними документами закладу.</p>
+    <p>Комунальний позашкільний навчальний заклад спортивного профілю, що працює у сфері позашкільної освіти, фізичної культури і спорту.</p>
   </header>
-  <section class="section scaffold-section" aria-label="Майбутні матеріали розділу">
-    <div class="scaffold-grid">
-      <article class="scaffold-card"><span class="card-number">01</span><h2>Загальна інформація</h2></article>
-      <article class="scaffold-card"><span class="card-number">02</span><h2>Керівництво та структура</h2></article>
-      <article class="scaffold-card"><span class="card-number">03</span><h2>Історія та документи</h2></article>
+
+  <section class="section section--paper about-section" aria-labelledby="identity-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Правовий статус</p>
+        <h2 id="identity-title">Офіційні відомості</h2>
+        <p>Інформацію звірено з витягом з ЄДР від 6 січня 2026 року та чинним Статутом закладу.</p>
+      </div>
+
+      <div class="about-identity-grid">
+        <article class="about-identity-card about-identity-card--primary">
+          <span class="card-number">01</span>
+          <h3>Повна офіційна назва</h3>
+          <p>Комунальний позашкільний навчальний заклад «Міська дитячо-юнацька спортивна школа з ігрових видів спорту» Дніпровської міської ради</p>
+        </article>
+        <article class="about-identity-card">
+          <span class="card-number">02</span>
+          <h3>Скорочена назва</h3>
+          <p>МДЮСШ з ігрових видів спорту</p>
+        </article>
+      </div>
+
+      <dl class="legal-facts-list" aria-label="Реєстраційні відомості закладу">
+        <div><dt>Код ЄДРПОУ</dt><dd>36093765</dd></div>
+        <div><dt>Дата державної реєстрації</dt><dd>21 серпня 2008 року</dd></div>
+        <div><dt>Стан юридичної особи</dt><dd>Зареєстровано</dd></div>
+        <div><dt>Організаційно-правова форма</dt><dd>Комунальна організація (установа, заклад)</dd></div>
+        <div><dt>Засновник</dt><dd>Дніпровська міська рада</dd></div>
+        <div><dt>Орган управління</dt><dd>Департамент гуманітарної політики Дніпровської міської ради</dd></div>
+        <div><dt>Основний вид діяльності</dt><dd>85.51 — освіта у сфері спорту та відпочинку</dd></div>
+        <div><dt>Місцезнаходження</dt><dd>49000, м. Дніпро, вул. Набережна Перемоги, буд. 13</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--tint about-purpose-section" aria-labelledby="purpose-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Діяльність</p>
+        <h2 id="purpose-title">Мета і освітня функція</h2>
+      </div>
+      <div class="about-purpose-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Основна мета</h3>
+          <p>Залучення дітей, підлітків і молоді до систематичних занять фізичною культурою та спортом і підготовка спортивного резерву.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">02</span>
+          <h3>Освітня робота</h3>
+          <p>Реалізація державної політики у галузі позашкільної освіти, фізичної культури і спорту; проведення навчально-тренувальної, спортивної та організаційно-масової роботи.</p>
+        </article>
+      </div>
+      <p class="section-note">Перелік спортивних напрямів і навчально-тренувальних баз доступний у розділі <a class="contact-link" href={withBase('/sportyvni-napriamy/')}>«Спортивні відділення»</a>.</p>
     </div>
   </section>
 </BaseLayout>
