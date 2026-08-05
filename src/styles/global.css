@@ -579,6 +579,63 @@ main {
   font-size: clamp(1.25rem, 2vw, 1.65rem);
 }
 
+.admission-section,
+.admission-safety-section {
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+}
+
+.admission-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.admission-step-card {
+  display: flex;
+  min-height: 18rem;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.admission-step-card .card-number {
+  margin-bottom: 1.75rem;
+}
+
+.admission-step-card h3 {
+  margin: 0;
+  color: var(--green-950);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.admission-step-card p {
+  margin: 1rem 0 0;
+}
+
+.admission-step-card .text-link {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.admission-safety-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.admission-safety-card h2 {
+  max-width: 14ch;
+}
+
+.admission-safety-card p:last-child {
+  margin-bottom: 0;
+}
+
 .information-section {
   padding-bottom: clamp(4.5rem, 8vw, 7rem);
 }
@@ -1265,6 +1322,10 @@ main {
     align-items: start;
     gap: 1.5rem;
   }
+
+  .admission-safety-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 42rem) {
@@ -1308,6 +1369,7 @@ main {
   .grid,
   .news-grid,
   .scaffold-grid,
+  .admission-steps-grid,
   .information-grid,
   .facilities-grid,
   .about-identity-grid,
