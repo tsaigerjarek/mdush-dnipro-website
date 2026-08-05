@@ -19,8 +19,11 @@ const isCurrent = (href: string) =>
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href={homePath} aria-label="MDUSH Dnipro — на головну">
-      <span class="brand-wordmark" aria-hidden="true">МДЮСШ</span>
-      <span class="brand-name">MDUSH Dnipro</span>
+      <img class="brand-mark" src={withBase('/media/identity/mdush-mark.png')} alt="Емблема МДЮСШ" width="534" height="600" />
+      <span class="brand-copy">
+        <span class="brand-name">МДЮСШ ДНІПРО</span>
+        <span class="brand-subtitle">З ігрових видів спорту Дніпровської міської ради</span>
+      </span>
     </a>
     <div class="nav-shell">
       <input class="nav-toggle" id="main-nav-toggle" type="checkbox" aria-label="Відкрити або закрити меню" />
