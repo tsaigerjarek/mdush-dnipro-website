@@ -848,6 +848,44 @@ main {
   text-align: right;
 }
 
+.contact-guidance-section {
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+}
+
+.contact-guidance-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.contact-guidance-card h2 {
+  max-width: 13ch;
+}
+
+.contact-guidance-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.contact-guidance-list article {
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+  border: 1px solid var(--line);
+  background: var(--canvas);
+}
+
+.contact-guidance-list strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--green-950);
+}
+
+.contact-guidance-list p {
+  margin-bottom: 0;
+}
+
 .section-note {
   max-width: 52rem;
   margin: 2rem 0 0;
@@ -1451,6 +1489,10 @@ main {
   }
 
   .admission-safety-card {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-guidance-card {
     grid-template-columns: 1fr;
   }
 }
