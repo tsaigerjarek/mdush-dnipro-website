@@ -553,17 +553,21 @@ main {
   padding-top: clamp(1.5rem, 3vw, 3rem);
 }
 
-.scaffold-section {
+.scaffold-section,
+.transparency-section,
+.transparency-control-section {
   padding-bottom: clamp(4.5rem, 8vw, 7rem);
 }
 
-.scaffold-grid {
+.scaffold-grid,
+.transparency-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.scaffold-card {
+.scaffold-card,
+.transparency-card {
   display: flex;
   min-height: 10rem;
   flex-direction: column;
@@ -577,6 +581,61 @@ main {
   max-width: 16rem;
   margin: 2rem 0 0;
   font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.transparency-card {
+  min-height: 20rem;
+  align-items: flex-start;
+}
+
+.transparency-card .card-number {
+  margin-bottom: 1.75rem;
+}
+
+.transparency-card h3 {
+  margin: 0;
+  color: var(--green-950);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.transparency-card p {
+  margin: 1rem 0 0;
+}
+
+.transparency-card .text-link {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.transparency-control-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.transparency-control-grid h2 {
+  max-width: 13ch;
+}
+
+.transparency-status-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.transparency-status-list article {
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.transparency-status-list strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--green-950);
+}
+
+.transparency-status-list p {
+  margin-bottom: 0;
 }
 
 .admission-section,
@@ -1369,6 +1428,8 @@ main {
   .grid,
   .news-grid,
   .scaffold-grid,
+  .transparency-grid,
+  .transparency-control-grid,
   .admission-steps-grid,
   .information-grid,
   .facilities-grid,
