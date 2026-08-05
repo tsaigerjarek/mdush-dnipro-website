@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
 ---
 
 <BaseLayout
@@ -38,7 +39,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </dl>
         </article>
       </div>
-      <p class="section-note">Адреси навчально-тренувальних баз і карта будуть додані після окремої перевірки та погодження.</p>
+      <p class="section-note">Перелік 24 навчально-тренувальних баз із перевіреними адресами опубліковано в розділі <a class="contact-link" href={withBase('/sportyvni-napriamy/')}>«Спортивні відділення»</a>. Розклад занять на сайті не публікується.</p>
     </div>
   </section>
 </BaseLayout>
