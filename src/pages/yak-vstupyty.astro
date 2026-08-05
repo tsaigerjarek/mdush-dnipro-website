@@ -1,21 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
 ---
 
 <BaseLayout
   title="Вступ — MDUSH Dnipro"
-  description="Розділ з порядком вступу до МДЮСШ Дніпро, який поетапно наповнюється перевіреними даними."
+  description="Як звернутися щодо вступу до МДЮСШ Дніпро: спортивні напрями, офіційні контакти, безпечна передача документів і наступні кроки."
 >
   <header class="page-intro">
     <p class="eyebrow">Для батьків і законних представників</p>
     <h1>Вступ</h1>
-    <p>На цій сторінці буде опубліковано підтверджений порядок звернення, перелік документів та умови зарахування.</p>
+    <p>Перший крок — обрати спортивний напрям і звернутися до адміністрації МДЮСШ Дніпро через офіційний телефон або електронну пошту.</p>
   </header>
-  <section class="section scaffold-section" aria-label="Майбутні матеріали розділу">
-    <div class="scaffold-grid">
-      <article class="scaffold-card"><span class="card-number">01</span><h2>Порядок звернення</h2></article>
-      <article class="scaffold-card"><span class="card-number">02</span><h2>Документи для вступу</h2></article>
-      <article class="scaffold-card"><span class="card-number">03</span><h2>Правила та послуги</h2></article>
+
+  <section class="section section--paper admission-section" aria-labelledby="admission-steps-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Перший контакт</p>
+        <h2 id="admission-steps-title">Як звернутися щодо вступу</h2>
+        <p>Це початковий порядок звернення. Актуальні умови, наявність місць і перелік документів підтверджує адміністрація закладу.</p>
+      </div>
+
+      <div class="admission-steps-grid">
+        <article class="admission-step-card">
+          <span class="card-number">01</span>
+          <h3>Оберіть напрям</h3>
+          <p>На сайті опубліковано підтверджені спортивні напрями: футбол, настільний теніс і черлідинг.</p>
+          <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Переглянути напрями →</a>
+        </article>
+        <article class="admission-step-card">
+          <span class="card-number">02</span>
+          <h3>Зверніться до адміністрації</h3>
+          <p>Напишіть або зателефонуйте за офіційними контактами, щоб уточнити відповідний напрям, наявність місць і подальші дії.</p>
+          <a class="text-link" href={withBase('/kontakty/')}>Відкрити контакти →</a>
+        </article>
+        <article class="admission-step-card">
+          <span class="card-number">03</span>
+          <h3>Уточніть документи</h3>
+          <p>Перелік документів і порядок їх подання повідомляє адміністрація. Не надсилайте копії документів дитини через відкриті канали без окремої вказівки відповідальної особи.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint admission-safety-section" aria-labelledby="admission-safety-title">
+    <div class="container admission-safety-card">
+      <div>
+        <p class="eyebrow">Безпека даних</p>
+        <h2 id="admission-safety-title">Сайт не збирає персональні дані дітей</h2>
+      </div>
+      <div>
+        <p>На сайті немає онлайн-форми вступу, кабінету користувача або збору медичних документів. Персональні дані, медичні довідки та копії документів передаються лише за офіційною процедурою, яку окремо підтверджує адміністрація.</p>
+        <p class="section-note">Розклад занять і прив’язку груп до конкретних баз на сайті не публікуємо.</p>
+      </div>
     </div>
   </section>
 </BaseLayout>
