@@ -5,39 +5,30 @@ import { withBase } from '../lib/urls';
 
 <BaseLayout
   title="Документи — МДЮСШ Дніпро"
-  description="Офіційні документи, публічна інформація, правила та політики МДЮСШ Дніпро."
+  description="Відкриті установчі, організаційні, освітні, кадрові та інші офіційні документи МДЮСШ Дніпро, крім фінансових матеріалів."
 >
   <header class="page-intro">
-    <p class="eyebrow">Офіційна інформація</p>
+    <p class="eyebrow">Відкрита інформація</p>
     <h1>Документи</h1>
-    <p>Централізований каталог підтверджених документів, правил і політик закладу.</p>
+    <p>Централізований каталог відкритих документів закладу. Фінансові документи до публічного розділу не включаються.</p>
   </header>
 
   <section class="section section--paper" aria-labelledby="documents-categories-title">
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">Категорії</p>
-        <h2 id="documents-categories-title">Документи та прозорість</h2>
-        <p>Файл публікується лише після перевірки актуальності, відсутності персональних даних і погодження відповідальною особою.</p>
+        <h2 id="documents-categories-title">Що публікується на сайті</h2>
+        <p>Кожний файл проходить перевірку актуальності, відсутності персональних даних і погодження відповідальною особою.</p>
       </div>
       <div class="information-grid">
-        <article class="information-card">
-          <span class="card-number">01</span>
-          <h3>Установчі документи</h3>
-          <p>Статут, рішення засновника та підтверджені реєстраційні відомості.</p>
-        </article>
-        <article class="information-card">
-          <span class="card-number">02</span>
-          <h3>Правила і політики</h3>
-          <p>Правила використання сайту, політика приватності, захист даних дітей та внутрішні публічні правила.</p>
-        </article>
-        <article class="information-card">
-          <span class="card-number">03</span>
-          <h3>Публічна інформація</h3>
-          <p>Офіційні відомості про діяльність закладу, контакти та порядок звернення.</p>
-        </article>
+        <article class="information-card"><span class="card-number">01</span><h3>Установчі документи</h3><p>Статут, рішення засновника, реєстраційні відомості та документи про статус закладу.</p></article>
+        <article class="information-card"><span class="card-number">02</span><h3>Освітня і спортивна діяльність</h3><p>Публічні програми, правила організації роботи, спортивні напрями та документи про діяльність закладу.</p></article>
+        <article class="information-card"><span class="card-number">03</span><h3>Організаційні документи</h3><p>Публічні накази, положення, правила вступу, графіки та інші матеріали без персональних даних.</p></article>
+        <article class="information-card"><span class="card-number">04</span><h3>Правила і політики</h3><p>Політика приватності, правила використання сайту, захист персональних даних і безпека дітей.</p></article>
+        <article class="information-card"><span class="card-number">05</span><h3>Публічна інформація</h3><p>Офіційні відомості про структуру, керівництво, контакти, порядок звернення та відкриті рішення.</p></article>
+        <article class="information-card"><span class="card-number">06</span><h3>Не публікується</h3><p>Фінансові документи, персональні справи, медичні дані, контакти батьків та внутрішня інформація обмеженого доступу.</p></article>
       </div>
-      <p class="section-note">Поточні принципи перевірки та публікації описані у розділі <a class="contact-link" href={withBase('/prozorist/')}>«Прозорість»</a>.</p>
+      <p class="section-note">Принципи перевірки та межі відкритої інформації описані у розділі <a class="contact-link" href={withBase('/prozorist/')}>«Прозорість»</a>.</p>
     </div>
   </section>
 </BaseLayout>
