@@ -79,6 +79,39 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
     </div>
   </section>
 
+  <section class="section section--paper home-guide-section" aria-labelledby="home-guide-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Перевірена інформація</p>
+        <h2 id="home-guide-title">Що вже можна перевірити на сайті</h2>
+        <p>Перша версія сайту зібрана як офіційна точка входу: без онлайн-форм, без кабінетів і без збору персональних даних дітей.</p>
+      </div>
+      <div class="home-guide-grid">
+        <a class="home-guide-card" href={withBase('/pro-zaklad/')}>
+          <span class="card-number">01</span>
+          <h3>Про заклад</h3>
+          <p>Юридична назва, статус, освітня функція та роль МДЮСШ у системі позашкільної спортивної освіти.</p>
+        </a>
+        <a class="home-guide-card" href={withBase('/sportyvni-napriamy/')}>
+          <span class="card-number">02</span>
+          <h3>Спортивні відділення</h3>
+          <p>Футбол, настільний теніс, черлідинг і перелік навчально-тренувальних баз із перевіреними адресами.</p>
+        </a>
+        <a class="home-guide-card" href={withBase('/yak-vstupyty/')}>
+          <span class="card-number">03</span>
+          <h3>Вступ</h3>
+          <p>Перші кроки звернення для батьків без передачі документів дитини через відкриті канали.</p>
+        </a>
+        <a class="home-guide-card" href={withBase('/prozorist/')}>
+          <span class="card-number">04</span>
+          <h3>Прозорість</h3>
+          <p>Статус відкритої інформації, правила публікації документів і межі того, що не виноситься на сайт.</p>
+        </a>
+      </div>
+      <p class="section-note">Для уточнення умов вступу, наявності місць або організаційних питань використовуйте розділ <a class="contact-link" href={withBase('/kontakty/')}>«Контакти»</a>.</p>
+    </div>
+  </section>
+
   <section class="section band next-step-section">
     <div class="container next-step-inner">
       <div>
