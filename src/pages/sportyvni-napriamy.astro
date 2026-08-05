@@ -3,19 +3,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Відділення — MDUSH Dnipro"
-  description="Розділ зі спортивними відділеннями МДЮСШ Дніпро, який поетапно наповнюється перевіреними даними."
+  title="Спортивні відділення — МДЮСШ Дніпро"
+  description="Перевірена інформація про футбольне відділення, настільний теніс і черлідинг у МДЮСШ з ігрових видів спорту."
 >
   <header class="page-intro">
     <p class="eyebrow">Спортивне життя</p>
-    <h1>Відділення</h1>
-    <p>Тут буде зібрано перевірену інформацію про спортивні відділення, тренерський склад, бази та розклад.</p>
+    <h1>Спортивні відділення</h1>
+    <p>У закладі працюють футбольне відділення, відділення настільного тенісу та черлідингу.</p>
   </header>
-  <section class="section scaffold-section" aria-label="Майбутні матеріали розділу">
-    <div class="scaffold-grid">
-      <article class="scaffold-card"><span class="card-number">01</span><h2>Спортивні відділення</h2></article>
-      <article class="scaffold-card"><span class="card-number">02</span><h2>Тренерський склад</h2></article>
-      <article class="scaffold-card"><span class="card-number">03</span><h2>Бази та розклад</h2></article>
+  <section class="section section--paper information-section" aria-labelledby="directions-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Напрями підготовки</p>
+        <h2 id="directions-title">Три спортивні відділення</h2>
+      </div>
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Футбол</h3>
+          <p>У сезоні 2026/2027 підтверджено десять футбольних груп.</p>
+          <ul class="group-list" aria-label="Футбольні групи сезону 2026/2027">
+            <li>U12-1</li>
+            <li>U12-2</li>
+            <li>U12-3</li>
+            <li>U13-1</li>
+            <li>U13-2</li>
+            <li>U14</li>
+            <li>U15</li>
+            <li>U16</li>
+            <li>U17</li>
+            <li>U19</li>
+          </ul>
+        </article>
+        <article class="information-card">
+          <span class="card-number">02</span>
+          <h3>Настільний теніс</h3>
+          <p>Окремий спортивний напрям підготовки у закладі.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">03</span>
+          <h3>Черлідинг</h3>
+          <p>Окремий спортивний напрям підготовки у закладі.</p>
+        </article>
+      </div>
+      <p class="section-note">Інформацію про тренерський склад, розклад занять і навчально-тренувальні бази буде додано після окремої перевірки та погодження.</p>
     </div>
   </section>
 </BaseLayout>

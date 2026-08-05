@@ -573,6 +573,91 @@ main {
   font-size: clamp(1.25rem, 2vw, 1.65rem);
 }
 
+.information-section {
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.information-card {
+  min-height: 16rem;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.information-card .card-number {
+  margin-bottom: 1.75rem;
+}
+
+.information-card h3 {
+  margin: 0;
+  color: var(--green-950);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.information-card p,
+.information-card address {
+  margin: 1rem 0 0;
+}
+
+.information-card address {
+  font-style: normal;
+}
+
+.group-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group-list li {
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--line);
+  color: var(--green-950);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.contact-link {
+  color: var(--green-950);
+  font-weight: 700;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+.hours-list {
+  margin: 1.25rem 0 0;
+}
+
+.hours-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.65rem;
+  border-top: 1px solid var(--line);
+}
+
+.hours-list dd {
+  margin: 0;
+  color: var(--green-950);
+  font-weight: 700;
+  text-align: right;
+}
+
+.section-note {
+  max-width: 52rem;
+  margin: 2rem 0 0;
+  color: var(--text-soft);
+}
+
 .text-link,
 .back-link {
   color: var(--green-700);
@@ -994,7 +1079,8 @@ main {
 
   .grid,
   .news-grid,
-  .scaffold-grid {
+  .scaffold-grid,
+  .information-grid {
     grid-template-columns: 1fr;
   }
 
