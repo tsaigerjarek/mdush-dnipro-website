@@ -1257,6 +1257,34 @@ main {
   background: var(--paper);
 }
 
+.legal-page-section {
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.legal-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.legal-info-card {
+  min-height: 20rem;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.legal-info-card h2 {
+  max-width: 12ch;
+  color: var(--green-950);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+}
+
+.legal-info-card p,
+.legal-notice p {
+  margin-bottom: 0;
+}
+
 @media (max-width: 72rem) {
   .grid,
   .news-grid {
@@ -1431,6 +1459,7 @@ main {
   .transparency-grid,
   .transparency-control-grid,
   .admission-steps-grid,
+  .legal-page-grid,
   .information-grid,
   .facilities-grid,
   .about-identity-grid,
