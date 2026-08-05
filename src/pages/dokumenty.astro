@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
+---
+
+<BaseLayout
+  title="Документи — МДЮСШ Дніпро"
+  description="Офіційні документи, публічна інформація, правила та політики МДЮСШ Дніпро."
+>
+  <header class="page-intro">
+    <p class="eyebrow">Офіційна інформація</p>
+    <h1>Документи</h1>
+    <p>Централізований каталог підтверджених документів, правил і політик закладу.</p>
+  </header>
+
+  <section class="section section--paper" aria-labelledby="documents-categories-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Категорії</p>
+        <h2 id="documents-categories-title">Документи та прозорість</h2>
+        <p>Файл публікується лише після перевірки актуальності, відсутності персональних даних і погодження відповідальною особою.</p>
+      </div>
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Установчі документи</h3>
+          <p>Статут, рішення засновника та підтверджені реєстраційні відомості.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">02</span>
+          <h3>Правила і політики</h3>
+          <p>Правила використання сайту, політика приватності, захист даних дітей та внутрішні публічні правила.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">03</span>
+          <h3>Публічна інформація</h3>
+          <p>Офіційні відомості про діяльність закладу, контакти та порядок звернення.</p>
+        </article>
+      </div>
+      <p class="section-note">Поточні принципи перевірки та публікації описані у розділі <a class="contact-link" href={withBase('/prozorist/')}>«Прозорість»</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
