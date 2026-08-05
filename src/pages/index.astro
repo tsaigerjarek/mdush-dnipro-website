@@ -20,8 +20,8 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
         <h1>МДЮСШ з ігрових видів спорту</h1>
         <p>Заклад об’єднує три спортивні напрями: основний — футбол, другий — черлідинг, третій — настільний теніс.</p>
         <div class="actions">
-          <a class="button" href="#admission">Як вступити</a>
-          <a class="button button-secondary" href="#sports">Спортивні напрями</a>
+          <a class="button" href="#admission">Умови вступу</a>
+          <a class="button button-secondary" href="#sports">Напрямки спортивного виховання</a>
         </div>
         <dl class="hero-facts" aria-label="Коротко про заклад">
           <div><dt>01</dt><dd>футбол — основний напрям</dd></div>
@@ -51,55 +51,61 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
     </div>
   </section>
 
-  <section id="sports" class="section section--paper directions-section">
+  <section id="sports-education" class="section section--paper directions-section" aria-labelledby="sports-education-title">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Спортивні напрями</p>
-        <h2>Три напрями з чіткою роллю в системі закладу</h2>
-        <p>Футбол формує основну спортивну програму МДЮСШ. Черлідинг розвивається як окремий напрям і підтримує футбольні команди під час домашніх змагань. Настільний теніс є третім напрямом закладу.</p>
+        <p class="eyebrow">Напрямки спортивного виховання</p>
+        <h2 id="sports-education-title">Вступ до закладу та три спортивні напрями</h2>
+        <p>Спочатку батьки отримують зрозумілі умови вступу, після чого обирають відповідний напрям спортивного виховання.</p>
       </div>
-      <div class="sports-priority-grid">
-        <article class="card direction-card direction-card--football direction-card--primary">
-          <img class="direction-card-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
-          <span class="card-number">01</span>
-          <p class="direction-role">Основний напрям</p>
-          <h3>Футбол</h3>
-          <p>Підготовка команд різних вікових груп, участь у чемпіонатах і турнірах, розвиток гравців від базового етапу до старших груп.</p>
-          <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Команди, групи та бази →</a>
-        </article>
-        <article class="card direction-card direction-card--cheerleading">
-          <img class="direction-card-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
-          <span class="card-number">02</span>
-          <p class="direction-role">Другий напрям</p>
-          <h3>Черлідинг</h3>
-          <p>Самостійна спортивна підготовка та організована підтримка футбольних команд МДЮСШ під час домашніх змагань чемпіонату України.</p>
-          <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Про напрям →</a>
-        </article>
-        <article class="card direction-card direction-card--tennis">
-          <img class="direction-card-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
-          <span class="card-number">03</span>
-          <p class="direction-role">Третій напрям</p>
-          <h3>Настільний теніс</h3>
-          <p>Тренування, технічна підготовка та участь вихованців у профільних змаганнях.</p>
-          <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Про напрям →</a>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <section id="admission" class="section section--tint admission-overview" aria-labelledby="admission-title">
-    <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">Як вступити</p>
-        <h2 id="admission-title">Три кроки до першого звернення</h2>
-        <p>Сайт не збирає документи або персональні дані дитини. Умови вступу та наявність місць уточнюються через офіційні контакти закладу.</p>
+      <div id="admission" class="admission-overview" aria-labelledby="admission-title">
+        <div class="section-heading">
+          <p class="eyebrow">Умови вступу до закладу</p>
+          <h3 id="admission-title">Три кроки до першого звернення</h3>
+          <p>Сайт не збирає документи або персональні дані дитини. Умови вступу та наявність місць уточнюються через офіційні контакти закладу.</p>
+        </div>
+        <div class="information-grid">
+          <article class="information-card"><span class="card-number">01</span><h3>Оберіть напрям</h3><p>Футбол, черлідинг або настільний теніс.</p></article>
+          <article class="information-card"><span class="card-number">02</span><h3>Уточніть групу</h3><p>Зверніться до адміністрації щодо віку, місця тренувань і наявності місць.</p></article>
+          <article class="information-card"><span class="card-number">03</span><h3>Підготуйте документи</h3><p>Передавайте документи лише за офіційно погодженою процедурою, не через відкриті повідомлення.</p></article>
+        </div>
+        <div class="actions"><a class="button" href={withBase('/yak-vstupyty/')}>Повна інструкція</a><a class="button button-secondary button-on-light" href={withBase('/kontakty/')}>Контакти</a></div>
       </div>
-      <div class="information-grid">
-        <article class="information-card"><span class="card-number">01</span><h3>Оберіть напрям</h3><p>Футбол, черлідинг або настільний теніс.</p></article>
-        <article class="information-card"><span class="card-number">02</span><h3>Уточніть групу</h3><p>Зверніться до адміністрації щодо віку, місця тренувань і наявності місць.</p></article>
-        <article class="information-card"><span class="card-number">03</span><h3>Підготуйте документи</h3><p>Передавайте документи лише за офіційно погодженою процедурою, не через відкриті повідомлення.</p></article>
+
+      <div id="sports" class="sports-directions-block" aria-labelledby="sports-title">
+        <div class="section-heading">
+          <p class="eyebrow">Спортивне виховання</p>
+          <h3 id="sports-title">Три напрями з чіткою роллю в системі закладу</h3>
+          <p>Футбол формує основну спортивну програму МДЮСШ. Черлідинг розвивається як окремий напрям і підтримує футбольні команди під час домашніх змагань. Настільний теніс є третім напрямом закладу.</p>
+        </div>
+        <div class="sports-priority-grid">
+          <article class="card direction-card direction-card--football direction-card--primary">
+            <img class="direction-card-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
+            <span class="card-number">01</span>
+            <p class="direction-role">Основний напрям</p>
+            <h3>Футбол</h3>
+            <p>Підготовка команд різних вікових груп, участь у чемпіонатах і турнірах, розвиток гравців від базового етапу до старших груп.</p>
+            <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Команди, групи та бази →</a>
+          </article>
+          <article class="card direction-card direction-card--cheerleading">
+            <img class="direction-card-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
+            <span class="card-number">02</span>
+            <p class="direction-role">Другий напрям</p>
+            <h3>Черлідинг</h3>
+            <p>Самостійна спортивна підготовка та організована підтримка футбольних команд МДЮСШ під час домашніх змагань чемпіонату України.</p>
+            <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Про напрям →</a>
+          </article>
+          <article class="card direction-card direction-card--tennis">
+            <img class="direction-card-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
+            <span class="card-number">03</span>
+            <p class="direction-role">Третій напрям</p>
+            <h3>Настільний теніс</h3>
+            <p>Тренування, технічна підготовка та участь вихованців у профільних змаганнях.</p>
+            <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Про напрям →</a>
+          </article>
+        </div>
       </div>
-      <div class="actions"><a class="button" href={withBase('/yak-vstupyty/')}>Повна інструкція</a><a class="button button-secondary button-on-light" href={withBase('/kontakty/')}>Контакти</a></div>
     </div>
   </section>
 
@@ -144,7 +150,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
 
   <section class="section band next-step-section">
     <div class="container next-step-inner">
-      <div><p class="eyebrow">Відкритість</p><h2>Документи закладу у відкритому доступі</h2></div>
+      <div><p class="eyebrow">Документи</p><h2>Документи закладу у відкритому доступі</h2></div>
       <div class="next-step-copy">
         <p>На сайті публікуються установчі, організаційні, освітні та інші відкриті документи. Фінансові документи до публічного каталогу не включаються.</p>
         <a class="button" href={withBase('/dokumenty/')}>Відкрити документи <span aria-hidden="true">↗</span></a>
