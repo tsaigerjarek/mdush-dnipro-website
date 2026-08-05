@@ -658,6 +658,77 @@ main {
   color: var(--text-soft);
 }
 
+.facilities-section {
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+}
+
+.facilities-heading {
+  max-width: 60rem;
+}
+
+.facilities-heading > p:last-child {
+  max-width: 52rem;
+  margin: 1rem 0 0;
+  color: var(--text-soft);
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.facility-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.facility-card-heading {
+  min-height: 12rem;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+  background: var(--green-950);
+  color: var(--paper);
+}
+
+.facility-card-heading .card-number {
+  display: block;
+  color: #b2d8bd;
+}
+
+.facility-card-heading h3 {
+  margin: 1.75rem 0 0;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.facility-card-heading p {
+  margin: 0.45rem 0 0;
+  color: #d6eee1;
+  font-weight: 700;
+}
+
+.facility-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.facility-list li {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem clamp(1.1rem, 2vw, 1.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.facility-list strong {
+  color: var(--green-950);
+}
+
+.facility-list span {
+  color: var(--text-soft);
+  font-size: 0.94rem;
+}
+
 .text-link,
 .back-link {
   color: var(--green-700);
@@ -1080,7 +1151,8 @@ main {
   .grid,
   .news-grid,
   .scaffold-grid,
-  .information-grid {
+  .information-grid,
+  .facilities-grid {
     grid-template-columns: 1fr;
   }
 
