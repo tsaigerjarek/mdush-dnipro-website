@@ -3,19 +3,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Контакти — MDUSH Dnipro"
-  description="Розділ з офіційними контактами МДЮСШ Дніпро, який поетапно наповнюється перевіреними даними."
+  title="Контакти — МДЮСШ Дніпро"
+  description="Офіційні контакти та години роботи МДЮСШ з ігрових видів спорту Дніпровської міської ради."
 >
   <header class="page-intro">
     <p class="eyebrow">Зв’язок із закладом</p>
     <h1>Контакти</h1>
-    <p>Контактні дані, адреси та карта баз будуть додані після звірки з офіційними джерелами.</p>
+    <p>Звертайтеся до адміністрації, щоб уточнити актуальні умови вступу, наявність місць і організаційні питання.</p>
   </header>
-  <section class="section scaffold-section" aria-label="Майбутні матеріали розділу">
-    <div class="scaffold-grid">
-      <article class="scaffold-card"><span class="card-number">01</span><h2>Канали зв’язку</h2></article>
-      <article class="scaffold-card"><span class="card-number">02</span><h2>Адреси</h2></article>
-      <article class="scaffold-card"><span class="card-number">03</span><h2>Карта баз</h2></article>
+  <section class="section section--paper information-section" aria-labelledby="contacts-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Офіційні дані</p>
+        <h2 id="contacts-title">Як зв’язатися</h2>
+      </div>
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Телефон і електронна пошта</h3>
+          <p><a class="contact-link" href="tel:+380931131139">+380 93 113 1139</a></p>
+          <p><a class="contact-link" href="mailto:mdussdnepr@gmail.com">mdussdnepr@gmail.com</a></p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">02</span>
+          <h3>Адреса</h3>
+          <address>Україна, 49000, Дніпропетровська область, місто Дніпро, вулиця Набережна Перемоги, будинок 13</address>
+        </article>
+        <article class="information-card">
+          <span class="card-number">03</span>
+          <h3>Години роботи</h3>
+          <dl class="hours-list">
+            <div><dt>Понеділок–п’ятниця</dt><dd>09:00–17:00</dd></div>
+            <div><dt>Субота й неділя</dt><dd>Вихідні</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="section-note">Адреси навчально-тренувальних баз і карта будуть додані після окремої перевірки та погодження.</p>
     </div>
   </section>
 </BaseLayout>
