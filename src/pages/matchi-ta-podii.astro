@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Матчі та події — МДЮСШ Дніпро"
+  description="Календар матчів, результати, турніри та офіційні події МДЮСШ Дніпро."
+>
+  <header class="page-intro">
+    <p class="eyebrow">Спортивний календар</p>
+    <h1>Матчі та події</h1>
+    <p>Єдиний розділ для найближчих матчів, результатів, турнірів і заходів усіх спортивних напрямів закладу.</p>
+  </header>
+
+  <section class="section section--paper" aria-labelledby="events-format-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Формат публікації</p>
+        <h2 id="events-format-title">Актуальна інформація без перевантаження</h2>
+        <p>Публікуються тільки підтверджені дати, час, місце проведення та статус трансляції.</p>
+      </div>
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Найближчі матчі</h3>
+          <p>Команда, суперник, турнір, дата, час, локація та посилання на трансляцію після підтвердження.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">02</span>
+          <h3>Останні результати</h3>
+          <p>Короткий результат із переходом до офіційного звіту, фото або відео.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">03</span>
+          <h3>Події закладу</h3>
+          <p>Турніри з настільного тенісу, виступи з черлідингу, набори та офіційні заходи.</p>
+        </article>
+      </div>
+      <p class="section-note">Календар наповнюватиметься після затвердження єдиного джерела даних і відповідального за оновлення.</p>
+    </div>
+  </section>
+</BaseLayout>
