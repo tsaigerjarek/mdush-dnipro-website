@@ -36,7 +36,7 @@ for (const file of htmlFiles) {
 }
 
 const sitemap = await readFile(join(distRoot, 'sitemap.xml'), 'utf8');
-for (const route of ['/', '/pro-zaklad/', '/sportyvni-napriamy/', '/yak-vstupyty/', '/novyny/', '/kontakty/']) {
+for (const route of ['/', '/pro-zaklad/', '/sportyvni-napriamy/', '/yak-vstupyty/', '/prozorist/', '/novyny/', '/kontakty/']) {
   if (!sitemap.includes(`<loc>${siteOrigin}${basePath}${route}</loc>`)) {
     throw new Error(`Карта сайту не містить маршрут ${route}`);
   }

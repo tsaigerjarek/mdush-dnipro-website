@@ -547,6 +547,32 @@ main {
   padding-top: clamp(1.5rem, 3vw, 3rem);
 }
 
+.scaffold-section {
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+}
+
+.scaffold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.scaffold-card {
+  display: flex;
+  min-height: 10rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.25rem, 2.4vw, 2rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.scaffold-card h2 {
+  max-width: 16rem;
+  margin: 2rem 0 0;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
 .text-link,
 .back-link {
   color: var(--green-700);
@@ -967,7 +993,8 @@ main {
   }
 
   .grid,
-  .news-grid {
+  .news-grid,
+  .scaffold-grid {
     grid-template-columns: 1fr;
   }
 

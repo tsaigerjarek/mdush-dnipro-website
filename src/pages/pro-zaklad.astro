@@ -4,61 +4,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Про заклад — MDUSH Dnipro"
-  description="Офіційні відомості про статус, керівництво, засновника та діяльність МДЮСШ Дніпро."
+  description="Розділ з офіційною інформацією про МДЮСШ Дніпро, який поетапно наповнюється перевіреними даними."
 >
-  <header class="page-intro"><p class="eyebrow">Офіційні відомості</p><h1>Про заклад</h1><p>МДЮСШ є неприбутковим комунальним позашкільним навчальним закладом спортивного профілю та закладом фізичної культури і спорту. Заклад зареєстровано 21 серпня 2008 року.</p></header>
-  <section class="section"><div class="grid about-grid">
-    <article class="card"><span class="card-number">01</span><h2>Офіційна назва</h2><p>Комунальний позашкільний навчальний заклад «Міська дитячо-юнацька спортивна школа з ігрових видів спорту» Дніпровської міської ради.</p><p>Скорочена назва — «МДЮСШ з ігрових видів спорту».</p><p>Код ЄДРПОУ: 36093765.</p></article>
-    <article class="card"><span class="card-number">02</span><h2>Правовий статус</h2><p>МДЮСШ є юридичною особою та неприбутковим позашкільним навчальним закладом спортивного профілю, а також закладом фізичної культури і спорту.</p><p>Організаційно-правова форма — комунальна організація (установа, заклад).</p></article>
-    <article class="card"><span class="card-number">03</span><h2>Основний вид діяльності</h2><p>Основний вид економічної діяльності: КВЕД 85.51 — «Освіта у сфері спорту та відпочинку».</p></article>
-    <article class="card"><span class="card-number">04</span><h2>Мета</h2><p>Залучення дітей, підлітків і молоді до систематичних занять фізичною культурою та спортом, розвиток їхніх здібностей і підготовка спортивного резерву.</p></article>
-    <article class="card"><span class="card-number">05</span><h2>Керівництво</h2><p>Керівник закладу — Федотов Віталій Юрійович.</p></article>
-    <article class="card"><span class="card-number">06</span><h2>Засновник</h2><p>Засновник — територіальна громада міста в особі Дніпровської міської ради.</p></article>
-    <article class="card"><span class="card-number">07</span><h2>Управління закладом</h2><p>Управління діяльністю закладу здійснює Департамент гуманітарної політики Дніпровської міської ради.</p><p>Управління майном здійснює Департамент по роботі з активами Дніпровської міської ради.</p></article>
-    <article class="card"><span class="card-number">08</span><h2>Освітня та спортивна діяльність</h2><p>Заклад проводить навчально-тренувальну, спортивну та організаційно-масову роботу у сфері позашкільної освіти, фізичної культури і спорту.</p></article>
-    <article class="card"><span class="card-number">09</span><h2>Організація навчання</h2><p>Навчальний рік починається 1 вересня. Річний навчальний план розраховується на 52 тижні. Тривалість однієї навчальної години становить 45 хвилин.</p></article>
-    <article class="card final-card"><span class="card-number">10</span><h2>Рівні підготовки</h2><p>Підготовка вихованців здійснюється у групах початкової, базової, спеціалізованої підготовки та підготовки до вищої спортивної майстерності. Випускникам, які завершили навчання, видається свідоцтво про закінчення МДЮСШ.</p></article>
-  </div></section>
+  <header class="page-intro">
+    <p class="eyebrow">Офіційна інформація</p>
+    <h1>Про заклад</h1>
+    <p>Розділ поетапно наповнюється відомостями, підтвердженими офіційними документами закладу.</p>
+  </header>
+  <section class="section scaffold-section" aria-label="Майбутні матеріали розділу">
+    <div class="scaffold-grid">
+      <article class="scaffold-card"><span class="card-number">01</span><h2>Загальна інформація</h2></article>
+      <article class="scaffold-card"><span class="card-number">02</span><h2>Керівництво та структура</h2></article>
+      <article class="scaffold-card"><span class="card-number">03</span><h2>Історія та документи</h2></article>
+    </div>
+  </section>
 </BaseLayout>
-
-<style>
-  .about-grid {
-    align-items: start;
-  }
-
-  .about-grid .card {
-    min-height: 0;
-  }
-
-  .about-grid .card-number {
-    margin-bottom: 1.25rem;
-  }
-
-  .final-card {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: auto minmax(13rem, 0.6fr) minmax(0, 1.4fr);
-    align-items: start;
-    column-gap: clamp(1rem, 2vw, 1.5rem);
-  }
-
-  .final-card .card-number,
-  .final-card h2,
-  .final-card p {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 58rem) {
-    .final-card {
-      display: block;
-    }
-
-    .final-card .card-number {
-      margin-bottom: 1.25rem;
-    }
-
-    .final-card h2 {
-      margin-bottom: 1rem;
-    }
-  }
-</style>
