@@ -29,11 +29,20 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
           <div><dt>03</dt><dd>настільний теніс</dd></div>
         </dl>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <span class="hero-art-ring hero-art-ring--outer"></span>
-        <span class="hero-art-ring hero-art-ring--inner"></span>
-        <img class="hero-mark" src={withBase('/media/identity/mdush-mark.png')} alt="" width="534" height="600" />
-        <span class="hero-art-label">ДНІПРО<br />СПОРТ</span>
+      <div class="hero-visual">
+        <picture>
+  <source media="(max-width: 767px)" type="image/png" srcset={withBase('/media/hero/hero-mdush-mobile.png')} />
+  <source media="(max-width: 1199px)" type="image/png" srcset={withBase('/media/hero/hero-mdush-tablet.png')} />
+  <source type="image/png" srcset={withBase('/media/hero/hero-mdush-desktop.png')} />
+          <img
+            src={withBase('/media/hero/hero-mdush-fallback.jpg')}
+            alt="Вихованці трьох спортивних напрямів МДЮСШ Дніпро: футболу, черлідингу та настільного тенісу"
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
     </div>
   </section>
