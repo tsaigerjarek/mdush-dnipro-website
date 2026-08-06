@@ -3,6 +3,7 @@ import { extname, join, relative } from 'node:path';
 
 const distRoot = 'dist';
 const basePath = '/mdush-dnipro-website';
+const expectedHtmlPages = 15;
 const htmlFiles = [];
 const javascriptFiles = [];
 
@@ -22,8 +23,8 @@ async function walk(directory) {
 await walk(distRoot);
 await access(join(distRoot, 'robots.txt'));
 
-if (htmlFiles.length !== 12) {
-  throw new Error(`Очікувалося 12 HTML-сторінок, отримано ${htmlFiles.length}`);
+if (htmlFiles.length !== expectedHtmlPages) {
+  throw new Error(`Очікувалося ${expectedHtmlPages} HTML-сторінок, отримано ${htmlFiles.length}`);
 }
 
 if (javascriptFiles.length > 0) {

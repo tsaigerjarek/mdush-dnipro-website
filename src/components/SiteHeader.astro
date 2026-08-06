@@ -2,18 +2,21 @@
 import { withBase } from '../lib/urls';
 
 const navigation = [
-  { href: withBase('/'), label: 'Головна' },
   { href: withBase('/pro-zaklad/'), label: 'Про заклад' },
-  { href: withBase('/sportyvni-napriamy/'), label: 'Відділення' },
-  { href: withBase('/yak-vstupyty/'), label: 'Вступ' },
-  { href: withBase('/prozorist/'), label: 'Прозорість' },
+  { href: withBase('/#sports-education'), label: 'Напрямки спортивного виховання' },
+  { href: withBase('/trenerskyi-sklad/'), label: 'Тренерський склад' },
+  { href: withBase('/zmahannia/'), label: 'Змагання' },
+  { href: withBase('/novyny/'), label: 'Новини' },
+  { href: withBase('/dokumenty/'), label: 'Документи' },
   { href: withBase('/kontakty/'), label: 'Контакти' },
 ];
 
 const currentPath = Astro.url.pathname;
 const homePath = withBase('/');
-const isCurrent = (href: string) =>
-  href === homePath ? currentPath === href : currentPath === href || currentPath.startsWith(href);
+const isCurrent = (href: string) => {
+  const path = href.split('#')[0];
+  return path !== homePath && (currentPath === path || currentPath.startsWith(path));
+};
 ---
 
 <header class="site-header">

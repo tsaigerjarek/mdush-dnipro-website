@@ -1,0 +1,56 @@
+.home-about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
+  align-items: start;
+  gap: clamp(2rem, 7vw, 8rem);
+}
+
+.sports-priority-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.direction-card--primary {
+  grid-row: span 2;
+  min-height: 100%;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  background: linear-gradient(145deg, #ffffff 0%, #e7eee9 100%);
+}
+
+.direction-card--primary h3 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.direction-role {
+  margin-bottom: 0.55rem;
+  color: var(--green-700);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.direction-card--tennis .direction-role {
+  color: #b9d4c7;
+}
+
+.button-on-light {
+  border-color: var(--green-700);
+  color: var(--green-900);
+}
+
+.button-on-light:hover {
+  color: var(--paper);
+}
+
+@media (max-width: 900px) {
+  .home-about-grid,
+  .sports-priority-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .direction-card--primary {
+    grid-row: auto;
+  }
+}

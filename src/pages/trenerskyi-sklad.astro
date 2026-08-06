@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
+---
+
+<BaseLayout
+  title="Тренерський склад — МДЮСШ Дніпро"
+  description="Тренерський склад МДЮСШ Дніпро за спортивними напрямами та віковими групами."
+>
+  <header class="page-intro">
+    <p class="eyebrow">Команда фахівців</p>
+    <h1>Тренерський склад</h1>
+    <p>Офіційний перелік тренерів закладу буде публікуватися після звірки посад, спортивних напрямів і вікових груп з адміністрацією.</p>
+  </header>
+
+  <section class="section section--paper" aria-labelledby="coaches-structure-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Структура розділу</p>
+        <h2 id="coaches-structure-title">Тренери за спортивними напрямами</h2>
+        <p>Розділ готується як єдиний каталог із перевіреними професійними відомостями без публікації зайвих персональних даних.</p>
+      </div>
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Футбол</h3>
+          <p>Тренерські штаби команд за віковими групами, роль кожного фахівця та локація тренувань.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">02</span>
+          <h3>Настільний теніс</h3>
+          <p>Тренери відділення, навчальні групи та коротка інформація про спортивну підготовку.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">03</span>
+          <h3>Черлідинг</h3>
+          <p>Тренери, вікові групи, напрями підготовки та участь у спортивних заходах.</p>
+        </article>
+      </div>
+      <p class="section-note">Правила вступу та порядок звернення доступні у розділі <a class="contact-link" href={withBase('/yak-vstupyty/')}>«Як вступити»</a>.</p>
+    </div>
+  </section>
+</BaseLayout>

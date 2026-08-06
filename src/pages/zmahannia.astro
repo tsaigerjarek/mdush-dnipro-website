@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Змагання — МДЮСШ Дніпро"
+  description="Календар, результати та офіційна участь команд і вихованців МДЮСШ Дніпро у змаганнях."
+>
+  <header class="page-intro">
+    <p class="eyebrow">Спортивний календар</p>
+    <h1>Змагання</h1>
+    <p>Єдиний розділ для футбольних матчів, турнірів з настільного тенісу, виступів з черлідингу та інших підтверджених спортивних подій закладу.</p>
+  </header>
+
+  <section class="section section--paper" aria-labelledby="competitions-format-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Формат публікації</p>
+        <h2 id="competitions-format-title">Один календар для трьох напрямів</h2>
+        <p>Публікуються тільки підтверджені дати, час, місце проведення, суперник або назва турніру та статус трансляції.</p>
+      </div>
+      <div class="information-grid">
+        <article class="information-card"><span class="card-number">01</span><h3>Футбол</h3><p>Матчі команд МДЮСШ, результати, турніри та посилання на офіційні трансляції після підтвердження.</p></article>
+        <article class="information-card"><span class="card-number">02</span><h3>Черлідинг</h3><p>Участь у профільних змаганнях і підтримка футбольних команд під час домашніх матчів.</p></article>
+        <article class="information-card"><span class="card-number">03</span><h3>Настільний теніс</h3><p>Турніри, календар виступів і підтверджені результати вихованців.</p></article>
+      </div>
+      <p class="section-note">Календар наповнюється лише з погодженого джерела даних і після перевірки відповідальною особою.</p>
+    </div>
+  </section>
+</BaseLayout>
