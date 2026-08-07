@@ -44,7 +44,134 @@
   color: var(--paper);
 }
 
+.home-section-heading > p:last-child {
+  max-width: 52rem;
+  margin-bottom: 0;
+}
+
+.home-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.home-facts div {
+  min-width: 0;
+  min-height: 10rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.home-facts dt {
+  margin-bottom: 1.35rem;
+  color: var(--green-700);
+  font-size: 0.8rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.home-facts dd {
+  margin: 0;
+  color: var(--green-950);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.home-section-action {
+  margin-top: 1.5rem;
+}
+
+.home-admission-steps,
+.home-sports-grid {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-admission-steps {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.home-admission-steps li {
+  min-width: 0;
+}
+
+.home-admission-card {
+  min-height: 13rem;
+}
+
+.home-admission-card .card-number {
+  margin-bottom: auto;
+}
+
+.home-admission-card h3 {
+  margin: 1.75rem 0 0;
+  color: var(--green-950);
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+}
+
+.home-sports-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.home-sport-card {
+  min-height: 18rem;
+  border-top: 0.35rem solid var(--green-700);
+}
+
+.home-sport-card--warm {
+  border-top-color: var(--ink);
+  background: var(--warm);
+}
+
+.home-sport-card--dark {
+  border-color: var(--green-950);
+  background: var(--green-950);
+  color: var(--paper);
+}
+
+.home-sport-card h3 {
+  color: var(--green-950);
+}
+
+.home-sport-card .text-link {
+  margin-top: auto;
+}
+
+.home-sport-card--dark h3,
+.home-sport-card--dark p,
+.home-sport-card--dark .text-link {
+  color: var(--paper);
+}
+
+.home-sport-card--dark .direction-role {
+  color: #b9d4c7;
+}
+
+.home-sport-card--dark .card-number {
+  background: #d1e2da;
+  color: var(--green-950);
+}
+
 @media (max-width: 900px) {
+  .home-admission-steps,
+  .home-sports-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .home-about-grid,
   .sports-priority-grid {
     grid-template-columns: 1fr;
@@ -52,5 +179,19 @@
 
   .direction-card--primary {
     grid-row: auto;
+  }
+}
+
+@media (max-width: 42rem) {
+  .home-facts,
+  .home-admission-steps,
+  .home-sports-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-facts div,
+  .home-admission-card,
+  .home-sport-card {
+    min-height: auto;
   }
 }
