@@ -4,73 +4,90 @@ import { withBase } from '../lib/urls';
 ---
 
 <BaseLayout
-  title="Спортивні відділення — МДЮСШ Дніпро"
-  description="Перевірена інформація про футбольне відділення, настільний теніс і черлідинг у МДЮСШ з ігрових видів спорту."
+  title="Напрямки спортивного виховання — МДЮСШ Дніпро"
+  description="Спортивні напрями МДЮСШ Дніпро: футбол, черліденг, настільний теніс і підтверджені навчально-тренувальні бази."
 >
-  <header class="page-intro">
-    <p class="eyebrow">Спортивне життя</p>
-    <h1>Спортивні відділення</h1>
-    <p>У закладі працюють футбольне відділення, відділення настільного тенісу та черлідингу.</p>
+  <header class="page-intro sports-page-hero">
+    <p class="eyebrow">Спортивне виховання</p>
+    <h1>Напрямки спортивного виховання</h1>
+    <p>МДЮСШ Дніпро здійснює спортивну підготовку дітей та молоді за трьома напрямами: футболом, черліденгом і настільним тенісом.</p>
+    <nav class="sports-anchor-nav" aria-label="Перейти до спортивного напряму">
+      <a href="#football">Футбол</a>
+      <a href="#cheerleading">Черліденг</a>
+      <a href="#table-tennis">Настільний теніс</a>
+    </nav>
   </header>
-  <section class="section section--paper information-section" aria-labelledby="directions-title">
+
+  <section id="football" class="section section--paper sports-football-section" aria-labelledby="football-title">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">Напрями підготовки</p>
-        <h2 id="directions-title">Три спортивні відділення</h2>
+      <div class="sports-football-layout">
+        <div class="sports-football-heading">
+          <p class="direction-role">01 / Основний напрям</p>
+          <h2 id="football-title">Футбол</h2>
+          <p>Основний спортивний напрям МДЮСШ Дніпро, що охоплює послідовну підготовку юнацьких команд та розвиток жіночого футболу.</p>
+          <a class="button button-outline" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад</a>
+        </div>
+        <img class="sports-football-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
+        <div class="sports-football-paths">
+          <article class="sports-football-path">
+            <h3>Юнацький футбол</h3>
+            <ul>
+              <li>Підготовка команд різних вікових категорій.</li>
+              <li>Тренувальний і змагальний процес.</li>
+              <li>Перехід між віковими етапами залежно від сезону.</li>
+            </ul>
+          </article>
+          <article class="sports-football-path">
+            <h3>Жіночий футбол</h3>
+            <p>Окрема лінія футбольної підготовки дівчат у межах футбольного напряму.</p>
+          </article>
+        </div>
       </div>
-      <div class="information-grid">
-        <article class="information-card information-card--visual information-card--football">
-          <img class="information-card-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
-          <span class="card-number">01</span>
-          <h3>Футбол</h3>
-          <p>У сезоні 2026/2027 підтверджено десять футбольних груп.</p>
-          <ul class="group-list" aria-label="Футбольні групи сезону 2026/2027">
-            <li>U12-1</li>
-            <li>U12-2</li>
-            <li>U12-3</li>
-            <li>U13-1</li>
-            <li>U13-2</li>
-            <li>U14</li>
-            <li>U15</li>
-            <li>U16</li>
-            <li>U17</li>
-            <li>U19</li>
-          </ul>
-        </article>
-        <article class="information-card information-card--visual information-card--tennis">
-          <img class="information-card-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
-          <span class="card-number">02</span>
-          <h3>Настільний теніс</h3>
-          <p>Окремий спортивний напрям підготовки у закладі.</p>
-        </article>
-        <article class="information-card information-card--visual information-card--cheerleading">
-          <img class="information-card-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
-          <span class="card-number">03</span>
-          <h3>Черлідинг</h3>
-          <p>Окремий спортивний напрям підготовки у закладі.</p>
-        </article>
-      </div>
-      <p class="section-note">Інформацію про тренерський склад буде додано після окремої перевірки та погодження.</p>
     </div>
   </section>
-  <section class="section facilities-section" aria-labelledby="facilities-title">
+
+  <section class="section section--tint sports-secondary-section" aria-label="Інші спортивні напрями">
+    <div class="container sports-secondary-grid">
+      <article id="cheerleading" class="sports-secondary-card sports-secondary-card--warm" aria-labelledby="cheerleading-title">
+        <img class="sports-secondary-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
+        <p class="direction-role">02 / Другий напрям</p>
+        <h2 id="cheerleading-title">Черліденг</h2>
+        <p>Самостійний спортивний напрям МДЮСШ та організована підтримка футбольних команд під час домашніх змагань.</p>
+      </article>
+      <article id="table-tennis" class="sports-secondary-card sports-secondary-card--dark" aria-labelledby="table-tennis-title">
+        <img class="sports-secondary-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
+        <p class="direction-role">03 / Третій напрям</p>
+        <h2 id="table-tennis-title">Настільний теніс</h2>
+        <p>Спортивна підготовка, розвиток техніки, координації та змагальної практики вихованців.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--paper sports-preparation-section" aria-labelledby="preparation-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Навчально-тренувальний процес</p>
+        <h2 id="preparation-title">Як побудована спортивна підготовка</h2>
+      </div>
+      <ol class="sports-preparation-steps">
+        <li><article><span class="card-number">01</span><h3>Вибір спортивного напряму</h3></article></li>
+        <li><article><span class="card-number">02</span><h3>Визначення відповідної групи</h3></article></li>
+        <li><article><span class="card-number">03</span><h3>Систематичний тренувальний процес</h3></article></li>
+        <li><article><span class="card-number">04</span><h3>Участь у змаганнях і спортивних заходах</h3></article></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--tint sports-facilities-section" aria-labelledby="facilities-title">
     <div class="container">
       <div class="section-heading facilities-heading">
-        <p class="eyebrow">Місця проведення занять</p>
-        <h2 id="facilities-title">Навчально-тренувальні бази</h2>
-        <p>Заклад використовує 24 бази для проведення навчально-тренувальних занять: 15 — для футболу, 6 — для настільного тенісу та 3 — для черлідингу.</p>
+        <p class="eyebrow">Спортивна інфраструктура</p>
+        <h2 id="facilities-title">Тренувальні бази</h2>
+        <p>МДЮСШ використовує спортивні об’єкти та навчальні заклади міста для організації тренувального процесу.</p>
       </div>
-      <div class="facilities-mark" aria-hidden="true">
-        <img src={withBase('/media/identity/mdush-mark.png')} alt="" width="534" height="600" loading="lazy" />
-        <span>24</span>
-      </div>
-      <div class="facilities-grid">
-        <article class="facility-card">
-          <div class="facility-card-heading">
-            <span class="card-number">01</span>
-            <h3>Футбол</h3>
-            <p>15 баз</p>
-          </div>
+      <div class="sports-facilities-grid">
+        <article class="sports-facility-card">
+          <h3>Футбол</h3>
           <ul class="facility-list">
             <li><strong>Стадіон КП МТО</strong><span>вул. Набережна Заводська, 53</span></li>
             <li><strong>Стадіон «Олімпійські резерви»</strong><span>пр. Богдана Хмельницького, 29а</span></li>
@@ -89,12 +106,16 @@ import { withBase } from '../lib/urls';
             <li><strong>КЗО НВК № 106 ДМР</strong><span>вул. Метробудівська, 7</span></li>
           </ul>
         </article>
-        <article class="facility-card">
-          <div class="facility-card-heading">
-            <span class="card-number">02</span>
-            <h3>Настільний теніс</h3>
-            <p>6 баз</p>
-          </div>
+        <article class="sports-facility-card">
+          <h3>Черліденг</h3>
+          <ul class="facility-list">
+            <li><strong>КЗО «ССЗШ № 126» ДМР</strong><span>вул. Козакевича, 7</span></li>
+            <li><strong>КЗО «СЗШ № 31» ДМР</strong><span>вул. Фабрично-заводська, 22</span></li>
+            <li><strong>КЗО «СЗШ № 74» ДМР</strong><span>вул. Караваєва, 60</span></li>
+          </ul>
+        </article>
+        <article class="sports-facility-card sports-facility-card--dark">
+          <h3>Настільний теніс</h3>
           <ul class="facility-list">
             <li><strong>СК «Старт»</strong><span>пр. Олександра Поля, 50д</span></li>
             <li><strong>Спортивний зал «Велика гра»</strong><span>вул. Сімферопольська, 17</span></li>
@@ -104,20 +125,36 @@ import { withBase } from '../lib/urls';
             <li><strong>КЗО «СЗШ № 19» ДМР</strong><span>вул. Володимира Великого, 13а</span></li>
           </ul>
         </article>
-        <article class="facility-card">
-          <div class="facility-card-heading">
-            <span class="card-number">03</span>
-            <h3>Черлідинг</h3>
-            <p>3 бази</p>
-          </div>
-          <ul class="facility-list">
-            <li><strong>КЗО «ССЗШ № 126» ДМР</strong><span>вул. Козакевича, 7</span></li>
-            <li><strong>КЗО «СЗШ № 31» ДМР</strong><span>вул. Фабрично-заводська, 22</span></li>
-            <li><strong>КЗО «СЗШ № 74» ДМР</strong><span>вул. Караваєва, 60</span></li>
-          </ul>
-        </article>
       </div>
-      <p class="section-note">Перелік показує лише навчально-тренувальні бази. Розклад занять на цій сторінці не публікується.</p>
+      <p class="section-note">Перелік показує лише підтверджені навчально-тренувальні бази. Розклад занять і прив’язка груп до конкретних локацій на сайті не публікуються.</p>
+      <div class="actions sports-section-action">
+        <a class="button button-outline" href={withBase('/kontakty/')}>Контакти</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper sports-coaches-section" aria-labelledby="coaches-title">
+    <div class="container sports-coaches-card">
+      <div>
+        <p class="eyebrow">Команда фахівців</p>
+        <h2 id="coaches-title">Тренерський склад</h2>
+        <p>Підготовку за спортивними напрямами забезпечують тренери-викладачі та профільні фахівці МДЮСШ.</p>
+      </div>
+      <a class="button" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад</a>
+    </div>
+  </section>
+
+  <section class="section section--tint sports-admission-cta-section" aria-labelledby="sports-admission-title">
+    <div class="container sports-admission-cta">
+      <div>
+        <p class="eyebrow">Вступ</p>
+        <h2 id="sports-admission-title">Оберіть спортивний напрям</h2>
+        <p>Ознайомтеся з умовами вступу та зверніться до адміністрації МДЮСШ для уточнення актуального набору до груп.</p>
+      </div>
+      <div class="actions sports-admission-actions">
+        <a class="button" href={withBase('/yak-vstupyty/')}>Умови вступу</a>
+        <a class="button button-outline" href={withBase('/kontakty/')}>Контакти</a>
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -354,6 +354,291 @@
   margin-top: 0;
 }
 
+.sports-page-hero {
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.sports-anchor-nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.sports-anchor-nav a {
+  min-height: 2.75rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--canvas);
+  color: var(--green-950);
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.sports-anchor-nav a:hover {
+  border-color: var(--green-500);
+  background: var(--green-100);
+}
+
+.sports-football-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  overflow: hidden;
+  padding: clamp(1.75rem, 4vw, 3.5rem);
+  background: var(--green-950);
+  color: var(--paper);
+}
+
+.sports-football-heading {
+  position: relative;
+  z-index: 1;
+}
+
+.sports-football-heading .direction-role,
+.sports-secondary-card--dark .direction-role {
+  color: #b9d4c7;
+}
+
+.sports-football-heading h2,
+.sports-football-heading p {
+  color: var(--paper);
+}
+
+.sports-football-heading > p:not(.direction-role) {
+  max-width: 38rem;
+  color: #d6eee1;
+  font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+}
+
+.sports-football-heading .button-outline {
+  margin-top: 1rem;
+  border-color: rgb(255 255 255 / 45%);
+  color: var(--paper);
+}
+
+.sports-football-heading .button-outline:hover {
+  border-color: rgb(255 255 255 / 75%);
+  background: rgb(255 255 255 / 12%);
+  color: var(--paper);
+}
+
+.sports-football-art {
+  position: absolute;
+  z-index: 0;
+  right: clamp(-3rem, -2vw, -1rem);
+  bottom: -5.5rem;
+  width: min(42%, 29rem);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.sports-football-paths {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+}
+
+.sports-football-path {
+  padding: clamp(1.2rem, 2.5vw, 1.75rem);
+  border: 1px solid rgb(255 255 255 / 18%);
+  background: rgb(255 255 255 / 7%);
+}
+
+.sports-football-path h3,
+.sports-football-path p,
+.sports-football-path li {
+  color: var(--paper);
+}
+
+.sports-football-path p,
+.sports-football-path ul {
+  margin-bottom: 0;
+}
+
+.sports-football-path ul {
+  display: grid;
+  gap: 0.45rem;
+  padding-left: 1.2rem;
+}
+
+.sports-secondary-grid,
+.sports-facilities-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.sports-secondary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sports-secondary-card {
+  position: relative;
+  min-height: 22rem;
+  overflow: hidden;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+}
+
+.sports-secondary-card--warm {
+  background: var(--warm);
+}
+
+.sports-secondary-card--dark {
+  background: var(--green-950);
+  color: var(--paper);
+}
+
+.sports-secondary-card h2 {
+  position: relative;
+  z-index: 1;
+  color: var(--green-950);
+}
+
+.sports-secondary-card p:not(.direction-role) {
+  position: relative;
+  z-index: 1;
+  max-width: 28rem;
+  margin-bottom: 0;
+}
+
+.sports-secondary-card--dark h2,
+.sports-secondary-card--dark p:not(.direction-role) {
+  color: var(--paper);
+}
+
+.sports-secondary-art {
+  position: absolute;
+  right: -1.5rem;
+  bottom: -2rem;
+  width: min(48%, 15rem);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.sports-secondary-card--dark .sports-secondary-art {
+  opacity: 0.2;
+}
+
+.sports-preparation-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sports-preparation-steps li,
+.sports-preparation-steps article {
+  display: flex;
+  min-width: 0;
+}
+
+.sports-preparation-steps article {
+  width: 100%;
+  min-height: 13rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.sports-preparation-steps .card-number {
+  margin-bottom: 1.75rem;
+}
+
+.sports-preparation-steps h3 {
+  margin-bottom: 0;
+  color: var(--green-950);
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+}
+
+.sports-facilities-grid {
+  grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
+}
+
+.sports-facility-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.sports-facility-card h3 {
+  margin: 0;
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+  background: var(--green-950);
+  color: var(--paper);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.sports-facility-card--dark h3 {
+  background: var(--green-700);
+}
+
+.sports-section-action {
+  margin-top: 1.5rem;
+}
+
+.sports-coaches-card,
+.sports-admission-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) auto;
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.sports-coaches-card p,
+.sports-admission-cta p {
+  max-width: 46rem;
+  margin-bottom: 0;
+}
+
+.sports-admission-cta {
+  border: 0;
+  background: var(--green-950);
+  color: var(--paper);
+}
+
+.sports-admission-cta h2,
+.sports-admission-cta p:not(.eyebrow) {
+  color: var(--paper);
+}
+
+.sports-admission-cta p:not(.eyebrow) {
+  color: #d6eee1;
+}
+
+.sports-admission-cta .eyebrow {
+  color: #79d6ae;
+}
+
+.sports-admission-actions {
+  margin-top: 0;
+}
+
+.sports-admission-cta .button-outline {
+  border-color: rgb(255 255 255 / 45%);
+  color: var(--paper);
+}
+
+.sports-admission-cta .button-outline:hover {
+  border-color: rgb(255 255 255 / 75%);
+  background: rgb(255 255 255 / 12%);
+  color: var(--paper);
+}
+
 @media (max-width: 900px) {
   .home-admission-steps,
   .home-sports-grid {
@@ -367,17 +652,29 @@
   .about-status-list,
   .about-mission-grid,
   .about-directions-grid,
-  .about-information-grid {
+  .about-information-grid,
+  .sports-preparation-steps,
+  .sports-facilities-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-principles-layout,
-  .about-cta-card {
+  .about-cta-card,
+  .sports-coaches-card,
+  .sports-admission-cta {
     grid-template-columns: 1fr;
   }
 
   .about-cta-actions {
     margin-top: 0;
+  }
+
+  .sports-football-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sports-football-art {
+    width: min(52%, 24rem);
   }
 
 }
@@ -390,7 +687,10 @@
   .about-mission-grid,
   .about-directions-grid,
   .about-information-grid,
-  .about-principles-list {
+  .about-principles-list,
+  .sports-secondary-grid,
+  .sports-preparation-steps,
+  .sports-facilities-grid {
     grid-template-columns: 1fr;
   }
 
@@ -400,7 +700,19 @@
   .about-status-list div,
   .about-mission-card,
   .about-direction-card,
-  .about-information-link {
+  .about-information-link,
+  .sports-secondary-card,
+  .sports-preparation-steps article {
     min-height: auto;
+  }
+
+  .sports-anchor-nav {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .sports-anchor-nav a {
+    display: flex;
+    align-items: center;
   }
 }
