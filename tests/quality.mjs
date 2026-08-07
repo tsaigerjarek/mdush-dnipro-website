@@ -39,6 +39,14 @@ const publicRoutes = new Set(
 );
 const titles = new Set();
 
+const directionOrderChecks = [
+  ['/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черліденг</h3>']],
+  ['/pro-zaklad/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черліденг</h3>']],
+  ['/sportyvni-napriamy/', ['<h2 id="football-title">Футбол</h2>', '<h2 id="table-tennis-title">Настільний теніс</h2>', '<h2 id="cheerleading-title">Черліденг</h2>']],
+  ['/trenerskyi-sklad/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черлідинг</h3>']],
+  ['/zmahannia/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черлідинг</h3>']],
+];
+
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
   const route = `/${relative(distRoot, file).replaceAll('\\', '/').replace(/index\.html$/, '')}`;
@@ -97,6 +105,16 @@ for (const file of htmlFiles) {
   const expectedRobots = isPendingLegalPage ? 'noindex, nofollow' : 'index, follow';
   if (!html.includes(`name="robots" content="${expectedRobots}"`)) {
     throw new Error(`Маршрут ${route} має некоректну директиву robots`);
+  }
+}
+
+for (const [route, markers] of directionOrderChecks) {
+  const file = join(distRoot, route, 'index.html');
+  const html = await readFile(file, 'utf8');
+  const positions = markers.map((marker) => html.indexOf(marker));
+
+  if (positions.some((position) => position === -1) || positions.some((position, index) => index > 0 && position <= positions[index - 1])) {
+    throw new Error(`Маршрут ${route} має некоректний порядок спортивних напрямів`);
   }
 }
 

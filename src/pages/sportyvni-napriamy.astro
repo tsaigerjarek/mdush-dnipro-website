@@ -5,16 +5,16 @@ import { withBase } from '../lib/urls';
 
 <BaseLayout
   title="Напрямки спортивного виховання — МДЮСШ Дніпро"
-  description="Спортивні напрями МДЮСШ Дніпро: футбол, черліденг, настільний теніс і підтверджені навчально-тренувальні бази."
+  description="Спортивні напрями МДЮСШ Дніпро: футбол, настільний теніс, черліденг і підтверджені навчально-тренувальні бази."
 >
   <header class="page-intro sports-page-hero">
     <p class="eyebrow">Спортивне виховання</p>
     <h1>Напрямки спортивного виховання</h1>
-    <p>МДЮСШ Дніпро здійснює спортивну підготовку дітей та молоді за трьома напрямами: футболом, черліденгом і настільним тенісом.</p>
+    <p>МДЮСШ Дніпро здійснює спортивну підготовку дітей та молоді за трьома напрямами: футболом, настільним тенісом і черліденгом.</p>
     <nav class="sports-anchor-nav" aria-label="Перейти до спортивного напряму">
       <a href="#football">Футбол</a>
-      <a href="#cheerleading">Черліденг</a>
       <a href="#table-tennis">Настільний теніс</a>
+      <a href="#cheerleading">Черліденг</a>
     </nav>
   </header>
 
@@ -30,35 +30,90 @@ import { withBase } from '../lib/urls';
         <img class="sports-football-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
         <div class="sports-football-paths">
           <article class="sports-football-path">
-            <h3>Юнацький футбол</h3>
-            <ul>
-              <li>Підготовка команд різних вікових категорій.</li>
-              <li>Тренувальний і змагальний процес.</li>
-              <li>Перехід між віковими етапами залежно від сезону.</li>
-            </ul>
+            <p class="direction-role">01 / Початковий етап</p>
+            <h3>Початковий етап</h3>
+            <dl class="sports-football-stage-facts">
+              <div><dt>Підтверджені групи</dt><dd>U9 — 2018 р. н.; U10 — 2017 р. н.; U11 — 2016 р. н.</dd></div>
+            </dl>
+            <p>Початковий етап футбольного виховання охоплює молодші вікові групи та формує базові технічні навички, координацію, культуру тренувального процесу і командну взаємодію.</p>
           </article>
           <article class="sports-football-path">
-            <h3>Жіночий футбол</h3>
-            <p>Окрема лінія футбольної підготовки дівчат у межах футбольного напряму.</p>
+            <p class="direction-role">02 / Етап розвитку</p>
+            <h3>Етап розвитку</h3>
+            <dl class="sports-football-stage-facts">
+              <div><dt>Підтверджені групи</dt><dd>U12 — 2015 р. н.; U13 — 2014 р. н.; U14 — 2013 р. н.; U15 — 2012 р. н.; U16 — 2011 р. н.; U17 — 2010 р. н.</dd></div>
+            </dl>
+            <p>Основний етап послідовного розвитку футболіста — технічна, тактична, фізична та командна підготовка, регулярна змагальна практика і підготовка до старших вікових груп.</p>
+          </article>
+          <article class="sports-football-path">
+            <p class="direction-role">03 / Старший етап: U17 → U19</p>
+            <h3>Старший етап: U17 → U19</h3>
+            <div class="sports-football-senior-stages">
+              <section class="sports-football-senior-stage">
+                <h4>U17 — 2010 р. н.</h4>
+                <p>Початок старшого етапу футбольної підготовки. На цьому рівні вихованці готуються до переходу в U19, поглиблюють тактичну підготовку, фізичну готовність, ігрову дисципліну та відповідальність у командному процесі.</p>
+              </section>
+              <section class="sports-football-senior-stage sports-football-senior-stage--u19">
+                <h4>U19 — 2008–2009 р. н.</h4>
+                <p>Завершальний етап юнацької підготовки в системі МДЮСШ. Гравці готуються до переходу до дорослого футболу або до подальшого професійного розвитку у футбольній сфері.</p>
+                <div class="sports-football-routes">
+                  <div>
+                    <strong>A. Дорослий футбол</strong>
+                    <ul>
+                      <li>Професійні команди.</li>
+                      <li>Напівпрофесійні команди.</li>
+                      <li>Аматорські команди.</li>
+                      <li>Інші футбольні структури.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <strong>B. Професії навколо футболу</strong>
+                    <ul>
+                      <li>Тренерство.</li>
+                      <li>Футбольне суддівство.</li>
+                      <li>Спортивні медіа.</li>
+                      <li>Спортивна медицина.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
           </article>
         </div>
+        <article class="sports-football-path sports-football-path--women">
+          <p class="direction-role">04 / Частина футбольного напряму</p>
+          <h3>Жіночий футбол</h3>
+          <p>МДЮСШ розвиває окрему систему футбольного виховання дівчат із власними навчально-тренувальними групами та віковими етапами.</p>
+          <div class="sports-womens-groups">
+            <article class="sports-womens-group">
+              <h4>U15/U13</h4>
+              <p>Навчально-тренувальна група жіночого футболу, що поєднує групи U15 та U13.</p>
+              <a class="text-link" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад →</a>
+            </article>
+            <article class="sports-womens-group">
+              <h4>U10/U12</h4>
+              <p>Навчально-тренувальна група жіночого футболу, що поєднує групи U10 та U12.</p>
+              <a class="text-link" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад →</a>
+            </article>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="section section--tint sports-secondary-section" aria-label="Інші спортивні напрями">
     <div class="container sports-secondary-grid">
-      <article id="cheerleading" class="sports-secondary-card sports-secondary-card--warm" aria-labelledby="cheerleading-title">
-        <img class="sports-secondary-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
-        <p class="direction-role">02 / Другий напрям</p>
-        <h2 id="cheerleading-title">Черліденг</h2>
-        <p>Самостійний спортивний напрям МДЮСШ та організована підтримка футбольних команд під час домашніх змагань.</p>
-      </article>
       <article id="table-tennis" class="sports-secondary-card sports-secondary-card--dark" aria-labelledby="table-tennis-title">
         <img class="sports-secondary-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
-        <p class="direction-role">03 / Третій напрям</p>
+        <p class="direction-role">02 / Другий напрям</p>
         <h2 id="table-tennis-title">Настільний теніс</h2>
         <p>Спортивна підготовка, розвиток техніки, координації та змагальної практики вихованців.</p>
+      </article>
+      <article id="cheerleading" class="sports-secondary-card sports-secondary-card--warm" aria-labelledby="cheerleading-title">
+        <img class="sports-secondary-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
+        <p class="direction-role">03 / Третій напрям</p>
+        <h2 id="cheerleading-title">Черліденг</h2>
+        <p>Самостійний спортивний напрям МДЮСШ та організована підтримка футбольних команд під час домашніх змагань.</p>
       </article>
     </div>
   </section>
@@ -106,14 +161,6 @@ import { withBase } from '../lib/urls';
             <li><strong>КЗО НВК № 106 ДМР</strong><span>вул. Метробудівська, 7</span></li>
           </ul>
         </article>
-        <article class="sports-facility-card">
-          <h3>Черліденг</h3>
-          <ul class="facility-list">
-            <li><strong>КЗО «ССЗШ № 126» ДМР</strong><span>вул. Козакевича, 7</span></li>
-            <li><strong>КЗО «СЗШ № 31» ДМР</strong><span>вул. Фабрично-заводська, 22</span></li>
-            <li><strong>КЗО «СЗШ № 74» ДМР</strong><span>вул. Караваєва, 60</span></li>
-          </ul>
-        </article>
         <article class="sports-facility-card sports-facility-card--dark">
           <h3>Настільний теніс</h3>
           <ul class="facility-list">
@@ -123,6 +170,14 @@ import { withBase } from '../lib/urls';
             <li><strong>КЗО НВО № 28</strong><span>вул. Володі Дубініна, 12</span></li>
             <li><strong>КЗО «СЗШ № 45» ДМР</strong><span>вул. С. Ковалевської, 88а</span></li>
             <li><strong>КЗО «СЗШ № 19» ДМР</strong><span>вул. Володимира Великого, 13а</span></li>
+          </ul>
+        </article>
+        <article class="sports-facility-card">
+          <h3>Черліденг</h3>
+          <ul class="facility-list">
+            <li><strong>КЗО «ССЗШ № 126» ДМР</strong><span>вул. Козакевича, 7</span></li>
+            <li><strong>КЗО «СЗШ № 31» ДМР</strong><span>вул. Фабрично-заводська, 22</span></li>
+            <li><strong>КЗО «СЗШ № 74» ДМР</strong><span>вул. Караваєва, 60</span></li>
           </ul>
         </article>
       </div>
