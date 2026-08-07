@@ -225,12 +225,68 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
     </div>
   </section>
 
-  <section class="section band next-step-section">
-    <div class="container next-step-inner">
-      <div><p class="eyebrow">Документи</p><h2>Документи закладу у відкритому доступі</h2></div>
-      <div class="next-step-copy">
-        <p>На сайті публікуються установчі, організаційні, освітні та інші відкриті документи. Фінансові документи до публічного каталогу не включаються.</p>
-        <a class="button" href={withBase('/dokumenty/')}>Відкрити документи <span aria-hidden="true">↗</span></a>
+  <section class="section section--tint home-documents-section" aria-labelledby="documents-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Відкрита інформація</p>
+        <h2 id="documents-title">Документи закладу у відкритому доступі</h2>
+        <p>Кожний файл проходить перевірку актуальності, відсутності персональних даних і погодження відповідальною особою.</p>
+      </div>
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Установчі документи</h3>
+          <p>Статут, рішення засновника, реєстраційні відомості та документи про статус закладу.</p>
+        </article>
+        <article class="information-card information-card--cheerleading">
+          <span class="card-number">02</span>
+          <h3>Освітня і спортивна діяльність</h3>
+          <p>Публічні програми, правила організації роботи, спортивні напрями та документи про діяльність закладу.</p>
+        </article>
+        <article class="information-card information-card--tennis">
+          <span class="card-number">03</span>
+          <h3>Організаційні документи</h3>
+          <p>Публічні накази, положення, правила вступу, графіки та інші матеріали без персональних даних.</p>
+        </article>
+      </div>
+      <p class="section-note">Принципи перевірки та межі відкритої інформації описані у розділі <a class="contact-link" href={withBase('/prozorist/')}>«Прозорість»</a>.</p>
+      <div class="actions home-section-action">
+        <a class="button" href={withBase('/dokumenty/')}>Відкрити документи</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper home-locations-section" aria-labelledby="locations-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Зв’язок із закладом</p>
+        <h2 id="locations-title">Локації та контакти</h2>
+        <p>Звертайтеся до адміністрації, щоб уточнити актуальні умови вступу, наявність місць і організаційні питання.</p>
+      </div>
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Телефон і електронна пошта</h3>
+          <p><a class="contact-link" href="tel:+380931131139">+380 93 113 1139</a></p>
+          <p><a class="contact-link" href="mailto:mdussdnepr@gmail.com">mdussdnepr@gmail.com</a></p>
+        </article>
+        <article class="information-card information-card--cheerleading">
+          <span class="card-number">02</span>
+          <h3>Адреса</h3>
+          <address>Україна, 49000, Дніпропетровська область, місто Дніпро, вулиця Набережна Перемоги, будинок 13</address>
+        </article>
+        <article class="information-card information-card--tennis">
+          <span class="card-number">03</span>
+          <h3>Години роботи</h3>
+          <dl class="hours-list">
+            <div><dt>Понеділок–п’ятниця</dt><dd>09:00–17:00</dd></div>
+            <div><dt>Субота й неділя</dt><dd>Вихідні</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="section-note">Перелік 24 навчально-тренувальних баз із перевіреними адресами опубліковано в розділі <a class="contact-link" href={withBase('/sportyvni-napriamy/')}>«Спортивні відділення»</a>. Розклад занять на сайті не публікується.</p>
+      <div class="actions home-section-action">
+        <a class="button" href={withBase('/kontakty/')}>Усі контакти</a>
       </div>
     </div>
   </section>
