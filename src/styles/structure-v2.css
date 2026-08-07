@@ -458,6 +458,11 @@
   color: var(--paper);
 }
 
+.sports-football-path .direction-role {
+  margin-bottom: 0.7rem;
+  color: #b9d4c7;
+}
+
 .sports-football-path p,
 .sports-football-path ul {
   margin-bottom: 0;
@@ -467,6 +472,115 @@
   display: grid;
   gap: 0.45rem;
   padding-left: 1.2rem;
+}
+
+.sports-football-stage-facts {
+  margin: 0 0 1rem;
+}
+
+.sports-football-stage-facts dt {
+  color: #b9d4c7;
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sports-football-stage-facts dd {
+  margin: 0.25rem 0 0;
+  color: var(--paper);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.sports-football-routes {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.sports-football-senior-stages {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.sports-football-senior-stage {
+  padding-left: 1rem;
+  border-left: 2px solid rgb(185 212 199 / 45%);
+}
+
+.sports-football-senior-stage--u19 {
+  border-color: #79d6ae;
+}
+
+.sports-football-senior-stage h4 {
+  margin: 0;
+  color: var(--paper);
+  font-size: 1.05rem;
+}
+
+.sports-football-senior-stage p {
+  margin: 0.55rem 0 0;
+}
+
+.sports-football-routes strong {
+  color: var(--paper);
+}
+
+.sports-football-routes ul {
+  margin-top: 0.4rem;
+}
+
+.sports-football-path--women {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-color: rgb(185 212 199 / 45%);
+  background: rgb(255 255 255 / 12%);
+}
+
+.sports-football-path-note {
+  max-width: 52rem;
+  margin-top: 1rem !important;
+  color: #b9d4c7 !important;
+  font-size: 0.94rem;
+}
+
+.sports-womens-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.sports-womens-group {
+  min-width: 0;
+  padding: 1.2rem;
+  border: 1px solid rgb(255 255 255 / 22%);
+  background: rgb(6 45 34 / 28%);
+}
+
+.sports-womens-group h4 {
+  margin: 0;
+  color: var(--paper);
+  font-size: 1.15rem;
+}
+
+.sports-womens-group p {
+  margin: 0.6rem 0 0;
+  color: #d6eee1;
+}
+
+.sports-womens-group .text-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--paper);
+}
+
+.sports-womens-group .text-link:hover {
+  color: #b9d4c7;
 }
 
 .sports-secondary-grid,
@@ -654,7 +768,8 @@
   .about-directions-grid,
   .about-information-grid,
   .sports-preparation-steps,
-  .sports-facilities-grid {
+  .sports-facilities-grid,
+  .sports-womens-groups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -690,7 +805,8 @@
   .about-principles-list,
   .sports-secondary-grid,
   .sports-preparation-steps,
-  .sports-facilities-grid {
+  .sports-facilities-grid,
+  .sports-womens-groups {
     grid-template-columns: 1fr;
   }
 
