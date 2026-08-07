@@ -244,6 +244,12 @@ main {
   padding-block: clamp(4rem, 8vw, 7.5rem);
 }
 
+@media (min-width: 58.0625rem) {
+  .hero-inner {
+    padding-block: clamp(3.6rem, 7.2vw, 6.75rem);
+  }
+}
+
 .hero-copy {
   position: relative;
   z-index: 2;
