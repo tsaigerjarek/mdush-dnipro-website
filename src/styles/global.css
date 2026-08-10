@@ -216,7 +216,6 @@ main {
 .main-nav ul,
 .footer-nav ul {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.35rem;
   margin: 0;
   padding: 0;
@@ -225,6 +224,12 @@ main {
 
 .main-nav ul {
   align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.footer-nav ul {
+  flex-wrap: wrap;
 }
 
 .main-nav a,
@@ -1302,7 +1307,7 @@ main {
   margin-bottom: 0;
 }
 
-@media (max-width: 72rem) {
+@media (max-width: 87.5rem) {
   .grid,
   .news-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1315,6 +1320,7 @@ main {
 
   .nav-toggle-label {
     display: inline-flex;
+    min-height: 3rem;
     align-items: center;
     justify-content: space-between;
     min-width: 6.4rem;
@@ -1399,16 +1405,20 @@ main {
   }
 
   .main-nav a {
+    display: flex;
+    min-height: 3rem;
+    align-items: center;
     padding: 0.8rem;
   }
 
   .main-nav a.main-nav-cta {
+    min-height: 3rem;
     width: 100%;
     margin-top: 0.35rem;
   }
 }
 
-@media (min-width: 72.0625rem) and (max-width: 95rem) {
+@media (min-width: 87.5625rem) and (max-width: 95rem) {
   .brand-subtitle {
     display: none;
   }
