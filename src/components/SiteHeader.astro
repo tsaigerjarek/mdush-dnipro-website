@@ -13,6 +13,7 @@ const navigation = [
 
 const currentPath = Astro.url.pathname;
 const homePath = withBase('/');
+const admissionPath = withBase('/yak-vstupyty/');
 const isCurrent = (href: string) => {
   const path = href.split('#')[0];
   return path !== homePath && (currentPath === path || currentPath.startsWith(path));
@@ -42,6 +43,7 @@ const isCurrent = (href: string) => {
               </li>
             ))
           }
+          <li><a class="main-nav-cta" href={admissionPath}>Як вступити</a></li>
         </ul>
       </nav>
     </div>
