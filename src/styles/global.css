@@ -277,7 +277,9 @@ main {
 
 .hero {
   position: relative;
-  aspect-ratio: 1366 / 768;
+  min-height: clamp(32rem, 45vw, 42rem);
+  display: flex;
+  align-items: center;
   overflow: hidden;
   background: var(--green-950);
   color: var(--paper);
@@ -294,32 +296,38 @@ main {
 
 .hero-background {
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero-background::after {
-  background: linear-gradient(90deg, rgb(2 33 24 / 14%) 0%, rgb(2 33 24 / 2%) 60%, rgb(2 33 24 / 18%) 100%);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgb(6 45 34 / 85%) 0%, rgb(6 45 34 / 50%) 60%, rgb(6 45 34 / 88%) 100%);
   content: "";
 }
 
 .hero-background img {
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
+  opacity: 0.05;
+  z-index: 0;
 }
 
 .hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
-  height: 100%;
-  min-height: 0;
-  align-items: stretch;
-  padding-block: 0;
+  width: 100%;
+  align-items: center;
+  padding-block: clamp(3rem, 6vw, 6rem);
 }
 
 .hero-copy {
   position: relative;
-  width: min(100%, 42rem);
+  z-index: 2;
+  width: min(100%, 45rem);
 }
 
 .hero p {

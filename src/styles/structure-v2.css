@@ -1103,6 +1103,8 @@
 
 /* Hero overhaul & Season Badge */
 .hero-badge {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -1110,7 +1112,7 @@
   margin-bottom: 1.2rem;
   border: 1px solid rgb(121 214 174 / 35%);
   border-radius: 999px;
-  background: rgb(6 45 34 / 70%);
+  background: rgb(6 45 34 / 75%);
   color: #79d6ae;
   font-size: 0.85rem;
   font-weight: 800;
@@ -1127,10 +1129,12 @@
 }
 
 .hero-actions {
+  position: relative;
+  z-index: 2;
+  margin-top: 1.5rem;
   display: flex;
+  gap: 1rem;
   flex-wrap: wrap;
-  gap: 0.85rem;
-  margin-top: 1.75rem;
 }
 
 .button-primary {
@@ -1360,4 +1364,20 @@
 #ch-sub-media:checked ~ .subtab-panels .subpanel-media,
 #ch-sub-achieve:checked ~ .subtab-panels .subpanel-achieve {
   display: block;
+}
+
+.home-teams-section .information-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .home-teams-section .information-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .home-teams-section .information-grid {
+    grid-template-columns: 1fr;
+  }
 }
