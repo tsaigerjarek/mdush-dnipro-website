@@ -2,7 +2,7 @@
 import { withBase } from '../lib/urls';
 
 const navigation = [
-  { href: withBase('/pro-zaklad/'), label: 'Про заклад' },
+  { href: withBase('/#about'), label: 'Про заклад' },
   { href: withBase('/#sports-education'), label: 'Напрямки спортивного виховання' },
   { href: withBase('/trenerskyi-sklad/'), label: 'Тренерський склад' },
   { href: withBase('/zmahannia/'), label: 'Змагання' },
@@ -22,13 +22,13 @@ const isCurrent = (href: string) => {
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href={homePath} aria-label="MDUSH Dnipro — на головну">
-      <img class="brand-mark" src={withBase('/media/identity/mdush-mark.png')} alt="Емблема МДЮСШ" width="534" height="600" />
+    <div class="brand" aria-label="МДЮСШ Дніпро">
       <span class="brand-copy">
         <span class="brand-name">МДЮСШ ДНІПРО</span>
         <span class="brand-subtitle">З ігрових видів спорту Дніпровської міської ради</span>
       </span>
-    </a>
+      <img class="brand-mark" src={withBase('/media/identity/mdush-logo-white.png')} alt="Емблема МДЮСШ" width="360" height="360" />
+    </div>
     <div class="nav-shell">
       <input class="nav-toggle" id="main-nav-toggle" type="checkbox" aria-label="Відкрити або закрити меню" />
       <label class="nav-toggle-label" for="main-nav-toggle"><span>Меню</span><span class="menu-lines" aria-hidden="true"></span></label>

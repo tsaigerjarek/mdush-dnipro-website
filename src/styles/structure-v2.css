@@ -12,6 +12,15 @@
   margin-bottom: 0;
 }
 
+.about-specializations {
+  display: grid;
+  max-width: 52rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  gap: 0.35rem;
+  color: var(--muted);
+}
+
 .home-facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -88,13 +97,36 @@
   gap: 1rem;
 }
 
+.home-events-grid,
+.home-media-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-events-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-media-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.home-events-grid .information-card {
+  min-height: 19rem;
+}
+
+.home-media-grid .information-card {
+  min-height: 14rem;
+}
+
 .home-sport-card {
   min-height: 18rem;
   border-top: 0.35rem solid var(--green-700);
 }
 
 .home-sport-card--warm {
-  border-top-color: var(--ink);
+  border-top-color: var(--green-700);
   background: var(--warm);
 }
 
@@ -128,11 +160,150 @@
 }
 
 .about-page-hero {
-  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  min-height: clamp(34rem, 43vw, 48rem);
+  padding: 0;
+  background-color: var(--green-950);
+  background-image:
+    var(--about-hero-image),
+    repeating-linear-gradient(135deg, transparent 0 2.4rem, rgb(255 255 255 / 2.5%) 2.4rem 2.46rem),
+    linear-gradient(90deg, #04130f 0%, #04130f 38%, #3b3a35 100%);
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+  background-size: contain, cover, cover;
+  border-bottom-color: rgb(255 255 255 / 18%);
 }
 
-.about-page-hero-actions {
-  margin-top: 1.5rem;
+.about-page-hero::before {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: clamp(2rem, 7vw, 8rem);
+  width: clamp(5.5rem, 9vw, 9.5rem);
+  aspect-ratio: 1;
+  background: var(--about-logo-image) center / contain no-repeat;
+  content: "";
+  opacity: 0.08;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.about-page-hero::after {
+  z-index: 1;
+  top: 50%;
+  right: clamp(2rem, 7vw, 8rem);
+  bottom: auto;
+  width: clamp(6rem, 10vw, 10rem);
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 clamp(1.4rem, 2vw, 2.4rem) rgb(255 255 255 / 2.5%),
+    0 0 0 clamp(3rem, 4vw, 4.8rem) rgb(255 255 255 / 1.5%);
+  content: "";
+  opacity: 0.75;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 58rem) {
+  .about-page-hero {
+    min-height: 56.222vw;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .about-page-hero::before,
+  .about-page-hero::after {
+    display: none;
+  }
+}
+
+@media (max-width: 42rem) {
+  .about-page-hero {
+    min-height: 56.222vw;
+  }
+}
+
+.about-social-bar {
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  border-bottom: 1px solid rgb(255 255 255 / 14%);
+  background: #071d16;
+}
+
+.about-social-inner {
+  display: flex;
+  min-height: 4.6rem;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding-block: 0.65rem;
+}
+
+.about-social-title {
+  color: #d6eee1;
+  font-size: 0.8rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-hero-social-links {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 0.65rem;
+  list-style: none;
+}
+
+.about-hero-social-link {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 5%);
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.about-hero-social-link img {
+  display: block;
+  width: 2.15rem;
+  height: 2.15rem;
+  object-fit: contain;
+}
+
+.about-hero-social-link:hover,
+.about-hero-social-link:focus-visible {
+  border-color: #79d6ae;
+  background: rgb(121 214 174 / 13%);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 42rem) {
+  .about-social-inner {
+    min-height: 0;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding-block: 0.8rem;
+  }
+
+  .about-hero-social-links {
+    width: 100%;
+    justify-content: center;
+    gap: clamp(0.35rem, 2vw, 0.65rem);
+  }
+
+  .about-hero-social-link {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .about-hero-social-link img {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .button-outline {
@@ -753,9 +924,101 @@
   color: var(--paper);
 }
 
+.coach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.staff-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.staff-profile-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--green-950);
+  box-shadow: 0 0.6rem 2rem rgb(6 45 34 / 8%);
+}
+
+.staff-profile-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+.coach-card {
+  display: flex;
+  min-width: 0;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.coach-card-media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.coach-card-media > img,
+.coach-placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.coach-placeholder {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--green-950), var(--green-700));
+  color: #d6eee1;
+  font-size: clamp(2.25rem, 7vw, 4.5rem);
+  font-weight: 850;
+  letter-spacing: -0.08em;
+}
+
+.coach-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(1.2rem, 2.5vw, 1.75rem);
+}
+
+.coach-card h3 {
+  color: var(--green-950);
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+}
+
+.coach-role,
+.coach-teams {
+  margin-bottom: 0;
+}
+
+.coach-role {
+  color: var(--green-700);
+  font-weight: 800;
+}
+
+.coach-teams {
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--green-950);
+  font-weight: 800;
+}
+
 @media (max-width: 900px) {
   .home-admission-steps,
-  .home-sports-grid {
+  .home-sports-grid,
+  .home-media-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -769,7 +1032,9 @@
   .about-information-grid,
   .sports-preparation-steps,
   .sports-facilities-grid,
-  .sports-womens-groups {
+  .sports-womens-groups,
+  .staff-profile-grid,
+  .coach-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -798,6 +1063,8 @@
   .home-facts,
   .home-admission-steps,
   .home-sports-grid,
+  .home-events-grid,
+  .home-media-grid,
   .about-status-list,
   .about-mission-grid,
   .about-directions-grid,
@@ -806,7 +1073,8 @@
   .sports-secondary-grid,
   .sports-preparation-steps,
   .sports-facilities-grid,
-  .sports-womens-groups {
+  .sports-womens-groups,
+  .coach-grid {
     grid-template-columns: 1fr;
   }
 
@@ -831,4 +1099,265 @@
     display: flex;
     align-items: center;
   }
+}
+
+/* Hero overhaul & Season Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgb(121 214 174 / 35%);
+  border-radius: 999px;
+  background: rgb(6 45 34 / 70%);
+  color: #79d6ae;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+
+.hero-badge .badge-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #79d6ae;
+  box-shadow: 0 0 8px #79d6ae;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+
+.button-primary {
+  border-color: var(--green-700);
+  background: var(--green-700);
+  color: var(--paper);
+}
+
+.button-primary:hover {
+  border-color: var(--green-500);
+  background: var(--green-500);
+  color: var(--paper);
+}
+
+.button-ghost {
+  border: 1px solid rgb(255 255 255 / 45%);
+  background: transparent;
+  color: var(--paper);
+}
+
+.button-ghost:hover {
+  border-color: rgb(255 255 255 / 85%);
+  background: rgb(255 255 255 / 12%);
+  color: var(--paper);
+}
+
+/* Pure CSS Tabs for Football Division & Sports Sections */
+.tab-input,
+.subtab-input {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sports-tabs-wrapper {
+  margin-top: 1.5rem;
+}
+
+.sports-nav-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sports-nav-label {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--paper);
+  color: var(--green-950);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.sports-nav-label:hover {
+  border-color: var(--green-700);
+  background: var(--green-100);
+}
+
+.tab-panel-content {
+  display: none;
+}
+
+/* Active tab selection styles */
+#fb-tab-1:checked ~ .sports-nav-labels label[for="fb-tab-1"],
+#fb-tab-2:checked ~ .sports-nav-labels label[for="fb-tab-2"],
+#fb-tab-3:checked ~ .sports-nav-labels label[for="fb-tab-3"],
+#fb-tab-4:checked ~ .sports-nav-labels label[for="fb-tab-4"],
+#tt-tab-boys:checked ~ .sports-nav-labels label[for="tt-tab-boys"],
+#tt-tab-girls:checked ~ .sports-nav-labels label[for="tt-tab-girls"] {
+  border-color: var(--green-700);
+  background: var(--green-700);
+  color: var(--paper);
+}
+
+#fb-tab-1:checked ~ .tab-panels-group .panel-fb-1,
+#fb-tab-2:checked ~ .tab-panels-group .panel-fb-2,
+#fb-tab-3:checked ~ .tab-panels-group .panel-fb-3,
+#fb-tab-4:checked ~ .tab-panels-group .panel-fb-4,
+#tt-tab-boys:checked ~ .tab-panels-group .panel-tt-boys,
+#tt-tab-girls:checked ~ .tab-panels-group .panel-tt-girls {
+  display: block;
+}
+
+/* Age groups & Subtabs inside Football panels */
+.age-cards-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.age-card {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: var(--paper);
+}
+
+.age-card h4 {
+  margin: 0 0 0.4rem;
+  color: var(--green-950);
+  font-size: 1.15rem;
+}
+
+.age-card-meta {
+  margin-bottom: 0.85rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.subtabs-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--canvas);
+}
+
+.subtab-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.subtab-btn {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.subtab-btn:hover {
+  border-color: var(--green-700);
+  color: var(--green-950);
+}
+
+.subtab-panel-content {
+  display: none;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--paper);
+  color: var(--green-950);
+  font-size: 0.92rem;
+}
+
+.subtab-panel-content p {
+  margin: 0;
+  color: var(--ink);
+}
+
+/* Pure CSS selector for subtabs */
+/* Tab 1 subtabs */
+#f1-sub-players:checked ~ .subtab-labels label[for="f1-sub-players"],
+#f1-sub-tournaments:checked ~ .subtab-labels label[for="f1-sub-tournaments"],
+#f1-sub-media:checked ~ .subtab-labels label[for="f1-sub-media"],
+#f1-sub-achieve:checked ~ .subtab-labels label[for="f1-sub-achieve"],
+/* Tab 2 subtabs */
+#f2-sub-players:checked ~ .subtab-labels label[for="f2-sub-players"],
+#f2-sub-tournaments:checked ~ .subtab-labels label[for="f2-sub-tournaments"],
+#f2-sub-media:checked ~ .subtab-labels label[for="f2-sub-media"],
+#f2-sub-achieve:checked ~ .subtab-labels label[for="f2-sub-achieve"],
+/* Tab 3 subtabs */
+#f3-sub-players:checked ~ .subtab-labels label[for="f3-sub-players"],
+#f3-sub-tournaments:checked ~ .subtab-labels label[for="f3-sub-tournaments"],
+#f3-sub-media:checked ~ .subtab-labels label[for="f3-sub-media"],
+#f3-sub-achieve:checked ~ .subtab-labels label[for="f3-sub-achieve"],
+/* Tab 4 subtabs */
+#f4-sub-players:checked ~ .subtab-labels label[for="f4-sub-players"],
+#f4-sub-tournaments:checked ~ .subtab-labels label[for="f4-sub-tournaments"],
+#f4-sub-media:checked ~ .subtab-labels label[for="f4-sub-media"],
+#f4-sub-achieve:checked ~ .subtab-labels label[for="f4-sub-achieve"],
+/* Tennis subtabs */
+#tt-sub-players:checked ~ .subtab-labels label[for="tt-sub-players"],
+#tt-sub-tournaments:checked ~ .subtab-labels label[for="tt-sub-tournaments"],
+#tt-sub-media:checked ~ .subtab-labels label[for="tt-sub-media"],
+#tt-sub-achieve:checked ~ .subtab-labels label[for="tt-sub-achieve"],
+/* Cheerleading subtabs */
+#ch-sub-members:checked ~ .subtab-labels label[for="ch-sub-members"],
+#ch-sub-events:checked ~ .subtab-labels label[for="ch-sub-events"],
+#ch-sub-media:checked ~ .subtab-labels label[for="ch-sub-media"],
+#ch-sub-achieve:checked ~ .subtab-labels label[for="ch-sub-achieve"] {
+  border-color: var(--green-700);
+  background: var(--green-700);
+  color: var(--paper);
+}
+
+#f1-sub-players:checked ~ .subtab-panels .subpanel-players,
+#f1-sub-tournaments:checked ~ .subtab-panels .subpanel-tournaments,
+#f1-sub-media:checked ~ .subtab-panels .subpanel-media,
+#f1-sub-achieve:checked ~ .subtab-panels .subpanel-achieve,
+
+#f2-sub-players:checked ~ .subtab-panels .subpanel-players,
+#f2-sub-tournaments:checked ~ .subtab-panels .subpanel-tournaments,
+#f2-sub-media:checked ~ .subtab-panels .subpanel-media,
+#f2-sub-achieve:checked ~ .subtab-panels .subpanel-achieve,
+
+#f3-sub-players:checked ~ .subtab-panels .subpanel-players,
+#f3-sub-tournaments:checked ~ .subtab-panels .subpanel-tournaments,
+#f3-sub-media:checked ~ .subtab-panels .subpanel-media,
+#f3-sub-achieve:checked ~ .subtab-panels .subpanel-achieve,
+
+#f4-sub-players:checked ~ .subtab-panels .subpanel-players,
+#f4-sub-tournaments:checked ~ .subtab-panels .subpanel-tournaments,
+#f4-sub-media:checked ~ .subtab-panels .subpanel-media,
+#f4-sub-achieve:checked ~ .subtab-panels .subpanel-achieve,
+
+#tt-sub-players:checked ~ .subtab-panels .subpanel-players,
+#tt-sub-tournaments:checked ~ .subtab-panels .subpanel-tournaments,
+#tt-sub-media:checked ~ .subtab-panels .subpanel-media,
+#tt-sub-achieve:checked ~ .subtab-panels .subpanel-achieve,
+
+#ch-sub-members:checked ~ .subtab-panels .subpanel-members,
+#ch-sub-events:checked ~ .subtab-panels .subpanel-events,
+#ch-sub-media:checked ~ .subtab-panels .subpanel-media,
+#ch-sub-achieve:checked ~ .subtab-panels .subpanel-achieve {
+  display: block;
 }
