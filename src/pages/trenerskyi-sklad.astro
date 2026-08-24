@@ -1,43 +1,100 @@
 ---
+// @ts-expect-error Node built-ins are available while Astro generates this static page.
+import { existsSync } from 'node:fs';
+// @ts-expect-error Node built-ins are available while Astro generates this static page.
+import { fileURLToPath } from 'node:url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../lib/urls';
+
+const coaches = [
+  { name: 'Кушнір Анатолій Анатолійович', initials: 'КА', role: 'Тренер', teams: ['U10'], file: 'kushnir-anatolii.jpg' },
+  { name: 'Лусь Сергій Петрович', initials: 'ЛС', role: 'Тренер', teams: ['U13'], file: 'lus-serhii.jpg' },
+  { name: 'Шевченко Костянтин Вікторович', initials: 'ШК', role: 'Тренер', teams: ['U14'], file: 'shevchenko-kostiantyn.jpg' },
+  { name: 'Бобровський Андрій Сергійович', initials: 'БА', role: 'Тренер воротарів', teams: ['U16', 'U15', 'U9'], file: 'bobrovskyi-andrii.jpg' },
+  { name: 'Баркар Микита Олексійович', initials: 'БМ', role: 'Тренер воротарів', teams: ['U12', 'U11', 'U10'], file: 'barkar-mykyta.png' },
+  { name: 'Гончаров Максим Антонович', initials: 'ГМ', role: 'Тренер воротарів', teams: ['U13'], file: 'honcharov-maksym.jpg' },
+].map((coach) => {
+  const photoPath = fileURLToPath(new URL(`../../public/media/coaches/2026-2027/${coach.file}`, import.meta.url));
+
+  return {
+    ...coach,
+    photo: existsSync(photoPath) ? withBase(`/media/coaches/2026-2027/${coach.file}`) : null,
+  };
+});
+
+const administrativeStaff = [
+  { name: 'Віталій Юрійович Федотов', file: 'fedotov.png' },
+  { name: 'Євген Вячеславович Фетісов', file: 'fetisov.png' },
+  { name: 'Олег Іванович Волівач', file: 'volivach.png' },
+];
 ---
 
 <BaseLayout
   title="Тренерський склад — МДЮСШ Дніпро"
-  description="Тренерський склад МДЮСШ Дніпро за спортивними напрямами та віковими групами."
+  description="Підтверджений тренерський склад МДЮСШ Дніпро сезону 2026/2027 за футбольними групами."
 >
   <header class="page-intro">
     <p class="eyebrow">Команда фахівців</p>
     <h1>Тренерський склад</h1>
-    <p>Офіційний перелік тренерів закладу буде публікуватися після звірки посад, спортивних напрямів і вікових груп з адміністрацією.</p>
+    <p>Підтверджені тренери-викладачі футбольних груп МДЮСШ сезону 2026/2027.</p>
   </header>
 
-  <section class="section section--paper" aria-labelledby="coaches-structure-title">
+  <section class="section section--tint staff-profiles-section" aria-labelledby="administrative-staff-title">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Структура розділу</p>
-        <h2 id="coaches-structure-title">Тренери за спортивними напрямами</h2>
-        <p>Розділ готується як єдиний каталог із перевіреними професійними відомостями без публікації зайвих персональних даних.</p>
+        <p class="eyebrow">Команда закладу</p>
+        <h2 id="administrative-staff-title">Адміністративно-виховні працівники</h2>
+        <p>Інформаційні картки підготовлені з наданих матеріалів. Дані для відкритої публікації потребують остаточного погодження адміністрацією.</p>
       </div>
-      <div class="information-grid">
-        <article class="information-card">
-          <span class="card-number">01</span>
-          <h3>Футбол</h3>
-          <p>Тренерські штаби команд за віковими групами, роль кожного фахівця та локація тренувань.</p>
-        </article>
-        <article class="information-card">
-          <span class="card-number">02</span>
-          <h3>Настільний теніс</h3>
-          <p>Тренери відділення, навчальні групи та коротка інформація про спортивну підготовку.</p>
-        </article>
-        <article class="information-card">
-          <span class="card-number">03</span>
-          <h3>Черлідинг</h3>
-          <p>Тренери, вікові групи, напрями підготовки та участь у спортивних заходах.</p>
-        </article>
+      <div class="staff-profile-grid">
+        {
+          administrativeStaff.map((staffMember) => (
+            <article class="staff-profile-card">
+              <img
+                src={withBase(`/media/staff/${staffMember.file}`)}
+                alt={`Інформаційна картка: ${staffMember.name}`}
+                width="960"
+                height="540"
+                loading="lazy"
+              />
+            </article>
+          ))
+        }
       </div>
-      <p class="section-note">Правила вступу та порядок звернення доступні у розділі <a class="contact-link" href={withBase('/yak-vstupyty/')}>«Як вступити»</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section--paper coaches-section" aria-labelledby="football-coaches-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Футбол</p>
+        <h2 id="football-coaches-title">Тренери футбольних груп</h2>
+        <p>Картки показують лише підтверджені ролі та команди. Фотографія додається з локального каталогу після перевірки відповідності людини й файлу.</p>
+      </div>
+
+      <div class="coach-grid">
+        {
+          coaches.map((coach) => (
+            <article class="coach-card">
+              <div class="coach-card-media">
+                {
+                  coach.photo ? (
+                    <img src={coach.photo} alt={`Портрет: ${coach.name}`} width="800" height="1000" loading="lazy" />
+                  ) : (
+                    <div class="coach-placeholder" aria-hidden="true">{coach.initials}</div>
+                  )
+                }
+              </div>
+              <div class="coach-card-body">
+                <h3>{coach.name}</h3>
+                <p class="coach-role">{coach.role}</p>
+                <p class="coach-teams">{coach.teams.join(', ')}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="section-note">Фото не дублюються за командами: для кожної людини використовується один локальний файл. Тренери без підтвердженої ролі в сезоні 2026/2027 на цій сторінці не публікуються.</p>
     </div>
   </section>
 </BaseLayout>

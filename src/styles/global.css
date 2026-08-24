@@ -277,31 +277,49 @@ main {
 
 .hero {
   position: relative;
+  aspect-ratio: 1366 / 768;
   overflow: hidden;
-  background:
-    linear-gradient(115deg, var(--green-950) 0%, #073628 58%, #0a4433 100%);
+  background: var(--green-950);
   color: var(--paper);
+}
+
+.hero-background,
+.hero-background::after,
+.hero-background img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-background {
+  z-index: 0;
+}
+
+.hero-background::after {
+  background: linear-gradient(90deg, rgb(2 33 24 / 14%) 0%, rgb(2 33 24 / 2%) 60%, rgb(2 33 24 / 18%) 100%);
+  content: "";
+}
+
+.hero-background img {
+  display: block;
+  object-fit: contain;
+  object-position: center;
 }
 
 .hero-inner {
   position: relative;
-  display: grid;
+  z-index: 1;
+  display: flex;
+  height: 100%;
   min-height: 0;
-  grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.1fr);
-  align-items: center;
-  gap: clamp(2rem, 6vw, 7rem);
-  padding-block: clamp(4rem, 8vw, 7.5rem);
-}
-
-@media (min-width: 58.0625rem) {
-  .hero-inner {
-    padding-block: clamp(3.6rem, 7.2vw, 6.75rem);
-  }
+  align-items: stretch;
+  padding-block: 0;
 }
 
 .hero-copy {
   position: relative;
-  z-index: 2;
+  width: min(100%, 42rem);
 }
 
 .hero p {
@@ -367,7 +385,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   max-width: 40rem;
-  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
   border-top: 1px solid rgb(255 255 255 / 20%);
 }
 
@@ -391,46 +409,23 @@ main {
   font-size: 0.82rem;
 }
 
-.hero-visual {
-  position: relative;
-  width: 100%;
-  min-height: 0;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  border-radius: 1rem;
-  isolation: isolate;
-}
-
-.hero-visual::after {
+.sr-only {
   position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: linear-gradient(90deg, rgb(5 8 7 / 58%) 0%, rgb(5 8 7 / 12%) 65%, rgb(5 8 7 / 30%) 100%);
-  content: "";
-  pointer-events: none;
-}
-
-.hero-visual picture,
-.hero-visual img {
-  position: relative;
-  z-index: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-visual img {
-  object-fit: cover;
-  object-position: center center;
-}
-
-@media (max-width: 74.9375rem) {
-  .hero-visual img {
-    object-position: 60% center;
-  }
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .section {
   padding-block: var(--section-space);
+}
+
+.section[id] {
+  scroll-margin-top: 8rem;
 }
 
 .section--paper {
@@ -1247,11 +1242,19 @@ main {
   text-decoration: none;
 }
 
-.social-link svg {
+.social-link svg,
+.social-logo {
   width: 1.35rem;
   height: 1.35rem;
   flex: 0 0 auto;
+}
+
+.social-link svg {
   fill: currentColor;
+}
+
+.social-logo {
+  object-fit: contain;
 }
 
 .social-link:hover {
@@ -1316,6 +1319,14 @@ main {
   .header-inner {
     gap: 0.25rem;
     min-height: 4.25rem;
+  }
+
+  .brand {
+    order: 2;
+  }
+
+  .nav-shell {
+    order: 1;
   }
 
   .nav-toggle-label {
@@ -1386,7 +1397,7 @@ main {
   .main-nav {
     position: absolute;
     top: calc(100% + 0.75rem);
-    right: 0;
+    left: 0;
     width: min(22rem, calc(100vw - 2rem));
     padding: 0.65rem;
     border: 1px solid rgb(255 255 255 / 16%);
@@ -1436,24 +1447,8 @@ main {
 @media (max-width: 58rem) {
 
   .hero-inner {
-    min-height: 42rem;
-    grid-template-columns: 1fr;
-  }
-
-  .hero-visual {
-    position: absolute;
-    z-index: 0;
-    inset: 0;
+    height: 100%;
     min-height: 0;
-    border-radius: 0;
-  }
-
-  .hero-visual::after {
-    background: linear-gradient(90deg, rgb(5 8 7 / 78%) 0%, rgb(5 8 7 / 52%) 55%, rgb(5 8 7 / 28%) 100%);
-  }
-
-  .hero-visual img {
-    object-position: 62% 50%;
   }
 
   .hero-copy {
@@ -1475,27 +1470,6 @@ main {
   }
 }
 
-@media (max-width: 47.9375rem) {
-  .hero-visual img {
-    object-position: center top;
-  }
-}
-
-@media (max-width: 56.25rem) {
-  .hero-inner {
-    min-height: 0;
-    grid-template-columns: 1fr;
-    gap: clamp(2.25rem, 5vw, 4rem);
-  }
-
-  .hero-visual {
-    position: relative;
-    inset: auto;
-    min-height: 0;
-    aspect-ratio: 16 / 10;
-    border-radius: 1rem;
-  }
-}
 @media (max-width: 42rem) {
   h1 {
     font-size: clamp(2.35rem, 12vw, 3.7rem);
@@ -1531,16 +1505,8 @@ main {
   }
 
   .hero-inner {
+    height: 100%;
     min-height: 0;
-    padding-block: 4rem 3.5rem;
-  }
-
-  .hero-facts div {
-    flex-basis: 7rem;
-  }
-
-  .hero-facts dd {
-    max-width: 8rem;
   }
 
   .grid,

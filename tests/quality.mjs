@@ -3,7 +3,7 @@ import { extname, join, relative } from 'node:path';
 
 const distRoot = 'dist';
 const basePath = '/mdush-dnipro-website';
-const expectedHtmlPages = 15;
+const expectedHtmlPages = 14;
 const htmlFiles = [];
 const javascriptFiles = [];
 
@@ -41,9 +41,7 @@ const titles = new Set();
 
 const directionOrderChecks = [
   ['/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черліденг</h3>']],
-  ['/pro-zaklad/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черліденг</h3>']],
   ['/sportyvni-napriamy/', ['<h2 id="football-title">Футбол</h2>', '<h2 id="table-tennis-title">Настільний теніс</h2>', '<h2 id="cheerleading-title">Черліденг</h2>']],
-  ['/trenerskyi-sklad/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черлідинг</h3>']],
   ['/zmahannia/', ['<h3>Футбол</h3>', '<h3>Настільний теніс</h3>', '<h3>Черлідинг</h3>']],
 ];
 

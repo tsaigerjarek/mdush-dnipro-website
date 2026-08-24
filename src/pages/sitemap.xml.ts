@@ -4,7 +4,6 @@ import { withBase } from '../lib/urls';
 
 const staticRoutes = [
   '/',
-  '/pro-zaklad/',
   '/sportyvni-napriamy/',
   '/trenerskyi-sklad/',
   '/yak-vstupyty/',
