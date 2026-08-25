@@ -434,7 +434,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <div class="section-heading home-section-heading">
         <p class="eyebrow">Медіацентр МДЮСШ</p>
         <h2 id="mediacenter-title">Життя школи: Матчі, емоції, інтерв'ю</h2>
-        <p>Офіційні фоторепортажі, відеохайлайти та огляди матчів закладу без публікації персональних чи чутливих даних вихованців.</p>
+        <p>Наша <strong>спортивна школа Дніпро</strong> висвітлює матчі юнацьких команд, змагання з настільного тенісу та виступи з черліденгу без оприлюднення приватних чи медичних даних вихованців.</p>
       </div>
       <div class="mediacenter-grid">
         <article class="mediacenter-card">
@@ -492,7 +492,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
           <span class="tech-badge">Looker Studio Analytics</span>
           <h2 id="analytics-title">Цифрова аналітика та профілі для скаутів</h2>
           <p class="digital-passports-desc">
-            Інтерактивні дашборди Looker Studio з історією успішності вихованців, командною статистикою та спортивною динамікою закладу.
+            Як <strong>комунальний заклад</strong>, МДЮСШ Дніпро впроваджує інтерактивну аналітику Looker Studio для моніторингу спортивних досягнень вихованців, які відвідують <strong>безкоштовні секції футболу</strong>, <strong>настільний теніс для дітей</strong> та напрям <strong>черліденг</strong>.
           </p>
         </div>
 
@@ -513,7 +513,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <div class="section-heading home-section-heading">
         <p class="eyebrow">Для батьків та партнерів</p>
         <h2 id="parents-title">Батькам та партнерам (Вступ до закладу)</h2>
-        <p>Офіційний порядок вступу дитини до МДЮСШ Дніпро, підготовка документів та партнерська взаємодія з закладом.</p>
+        <p>Покроковий порядок вступу для батьків, чиї діти обирають <strong>безкоштовні секції футболу</strong>, <strong>настільний теніс для дітей</strong> або <strong>черліденг</strong> у м. Дніпро.</p>
       </div>
 
       <div class="parents-steps-grid">
@@ -746,6 +746,54 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <p class="section-note">Принципи перевірки та межі відкритої інформації описані у розділі <a class="contact-link" href={withBase('/prozorist/')}>«Прозорість»</a>.</p>
       <div class="actions home-section-action">
         <a class="button button-outline" href={withBase('/dokumenty/')}>Відкрити документи</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок 7: Офіційна інформація, Документи та Контакти -->
+  <section id="official-info" class="section section--tint home-official-info-section" aria-labelledby="official-info-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Офіційний статус та реквізити</p>
+        <h2 id="official-info-title">Офіційна інформація, Документи та Контакти</h2>
+        <p>Міська дитячо-юнацька спортивна школа з ігрових видів спорту — це <strong>комунальний заклад</strong> позашкільної освіти Дніпровської міської ради.</p>
+      </div>
+
+      <div class="official-info-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Засновник та реквізити</h3>
+          <p><strong>Засновник:</strong> Дніпровська міська рада.</p>
+          <p><strong>Статус:</strong> Комунальний позашкільний навчальний заклад.</p>
+          <p><strong>Код ЄДРПОУ:</strong> [Код ЄДРПОУ]</p>
+        </article>
+
+        <article class="information-card information-card--cheerleading">
+          <span class="card-number">02</span>
+          <h3>Навчально-тренувальні бази</h3>
+          <p><strong>Стадіон «Молодіжний парк» (КП МТО):</strong> вул. Набережна Заводська, 53</p>
+          <p><strong>Стадіон «Олімпійські резерви»:</strong> пр. Богдана Хмельницького, 29а</p>
+          <p class="section-note">Загалом підготовка здійснюється на 24 підтверджених базах м. Дніпро.</p>
+        </article>
+
+        <article class="information-card information-card--tennis">
+          <span class="card-number">03</span>
+          <h3>Документи та прозорість</h3>
+          <p>Офіційні програми, статутні документи та публічна звітність відкриті відповідно до вимог прозорості.</p>
+          <ul class="official-links-list">
+            <li><a class="contact-link" href={withBase('/dokumenty/')}>Установчі та відкриті документи →</a></li>
+            <li><a class="contact-link" href={withBase('/prozorist/')}>Принципи відкритості та прозорості →</a></li>
+            <li><a class="contact-link" href={withBase('/polityka-pryvatnosti/')}>Політика приватності →</a></li>
+          </ul>
+        </article>
+
+        <article class="information-card">
+          <span class="card-number">04</span>
+          <h3>Офіційні контакти</h3>
+          <p><strong>Телефон:</strong> <a class="contact-link" href="tel:+380931131139">+380 93 113 1139</a></p>
+          <p><strong>E-mail:</strong> <a class="contact-link" href="mailto:mdussdnepr@gmail.com">mdussdnepr@gmail.com</a></p>
+          <p><strong>Адреса:</strong> вул. Набережна Перемоги, 13, м. Дніпро, 49000</p>
+        </article>
       </div>
     </div>
   </section>

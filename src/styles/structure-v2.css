@@ -1585,16 +1585,33 @@
   font-size: 0.92rem;
 }
 
+.official-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.official-links-list {
+  margin: 0.75rem 0 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
 @media (max-width: 900px) {
   .mediacenter-grid,
-  .parents-steps-grid {
+  .parents-steps-grid,
+  .official-info-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 42rem) {
   .mediacenter-grid,
-  .parents-steps-grid {
+  .parents-steps-grid,
+  .official-info-grid {
     grid-template-columns: 1fr;
   }
 }
