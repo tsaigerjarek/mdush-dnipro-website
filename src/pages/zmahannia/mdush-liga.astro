@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { withBase } from '../../lib/urls';
+---
+
+<BaseLayout
+  title="MDUSH LIGA • Сезон 2026/2027 — МДЮСШ Дніпро"
+  description="Офіційний хаб міського дитячо-юнацького чемпіонату з футболу MDUSH LIGA 2026/2027: розклад матчів, турнірні таблиці, вікові дивізіони та локації."
+  fullWidth
+>
+  <section class="section liga-hero-section" aria-labelledby="liga-hero-title">
+    <div class="container">
+      <div class="liga-hero-content">
+        <div class="liga-hero-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>Сезон 2026/2027 • Футбольний чемпіонат</span>
+        </div>
+        <p class="eyebrow" style="color: #79d6ae; margin-bottom: 0.5rem;">Офіційний турнірний хаб</p>
+        <h1 id="liga-hero-title" class="liga-hero-heading">MDUSH LIGA • Сезон 2026/2027</h1>
+        <p class="liga-hero-lead">
+          Офіційний хаб міського дитячо-юнацького чемпіонату з футболу. Турнірні таблиці, розклад турів, статистика матчів та безпекові стандарти проведення змагань у місті Дніпро.
+        </p>
+        <nav class="liga-anchor-nav" aria-label="Швидка навігація турніром">
+          <a class="liga-anchor-btn" href="#divisions">Вікові дивізіони</a>
+          <a class="liga-anchor-btn" href="#matchcenter">Матч-центр (Локації)</a>
+          <a class="liga-anchor-btn" href="#standings">Турнірні таблиці</a>
+          <a class="liga-anchor-btn" href="#regulations">Регламент та безпека</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Вікові дивізіони -->
+  <section id="divisions" class="section section--paper" aria-labelledby="divisions-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Структура змагань</p>
+        <h2 id="divisions-title">Вікові дивізіони чемпіонату</h2>
+        <p>Змагання проводяться у 5 вікових категоріях з адаптованим форматом поля та тривалості таймів для гармонійного розвитку юних футболістів.</p>
+      </div>
+      <div class="divisions-grid">
+        <article class="division-card">
+          <div class="division-header">
+            <span class="division-tag">Дивізіон U8</span>
+            <span class="division-years">2018–2019 р.н.</span>
+          </div>
+          <h3>U8 (Початковий рівень)</h3>
+          <p>Формат 4+1 на міні-майданчиках. Акцент на відчутті м'яча, базових технічних елементах, вільному прийнятті рішень та отриманні задоволення від гри.</p>
+          <div class="division-meta">Формат: 4+1 • Тайм: 2×20 хв</div>
+        </article>
+
+        <article class="division-card">
+          <div class="division-header">
+            <span class="division-tag">Дивізіон U10</span>
+            <span class="division-years">2016–2017 р.н.</span>
+          </div>
+          <h3>U10 (Молодший рівень)</h3>
+          <p>Формат 6+1 / 7+1. Знайомство з основними ігровими лініями, взаємодія у парах і трійках, розвиток командної швидкості та захисних навичок.</p>
+          <div class="division-meta">Формат: 6+1 / 7+1 • Тайм: 2×25 хв</div>
+        </article>
+
+        <article class="division-card">
+          <div class="division-header">
+            <span class="division-tag">Дивізіон U12</span>
+            <span class="division-years">2014–2015 р.н.</span>
+          </div>
+          <h3>U12 (Перехідний етап)</h3>
+          <p>Формат 8+1 на зменшеному полі. Тактична дисципліна, перехід між фазами атаки й оборони, стандартні положення та підготовка до великого футболу.</p>
+          <div class="division-meta">Формат: 8+1 • Тайм: 2×30 хв</div>
+        </article>
+
+        <article class="division-card">
+          <div class="division-header">
+            <span class="division-tag">Дивізіон U14</span>
+            <span class="division-years">2012–2013 р.н.</span>
+          </div>
+          <h3>U14 (Юнацький рівень)</h3>
+          <p>Класичний формат 11х11 на стандартному футбольному полі. Повноцінні тактичні схеми, інтенсивна боротьба, підготовка до виступів у ДЮФЛУ.</p>
+          <div class="division-meta">Формат: 11х11 • Тайм: 2×35 хв</div>
+        </article>
+
+        <article class="division-card">
+          <div class="division-header">
+            <span class="division-tag">Дивізіон U16</span>
+            <span class="division-years">2010–2011 р.н.</span>
+          </div>
+          <h3>U16 (Старший дивізіон)</h3>
+          <p>Повнорозмірний змагальний футбол 11х11. Випускні вікові групи закладу, високі фізичні вимоги та перехід до молодіжної команди U19.</p>
+          <div class="division-meta">Формат: 11х11 • Тайм: 2×40 хв</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Матч-центр (Локації) -->
+  <section id="matchcenter" class="section section--tint" aria-labelledby="matchcenter-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Інфраструктура турніру</p>
+        <h2 id="matchcenter-title">Матч-центр та офіційні локації</h2>
+        <p>Календарні поєдинки MDUSH LIGA проходять на провідних комунальних спортивних аренах міста Дніпро, обладнаних сучасним покриттям та сертифікованими укриттями.</p>
+      </div>
+      <div class="matchcenter-grid">
+        <article class="stadium-card">
+          <h3>Стадіон «Молодіжний парк» (КП МТО)</h3>
+          <p class="stadium-address">м. Дніпро, вул. Набережна Заводська, 53</p>
+          <ul class="stadium-features">
+            <li>Повнорозмірне штучне футбольне поле останнього покоління</li>
+            <li>Криті роздягальні, суддівські кімнати та медичний кабінет</li>
+            <li>Сертифіковане захисне укриття на території комплексу</li>
+            <li>Трибуни для вболівальників та освітлення для вечірніх турів</li>
+          </ul>
+          <p class="section-note" style="margin: 0;">Основна локація для матчів дивізіонів U12, U14 та U16.</p>
+        </article>
+
+        <article class="stadium-card">
+          <h3>Стадіон «Олімпійські резерви»</h3>
+          <p class="stadium-address">м. Дніпро, пр. Богдана Хмельницького, 29а</p>
+          <ul class="stadium-features">
+            <li>Сучасна спортивна арена для календарних матчів міського масштабу</li>
+            <li>Високоякісний штучний газон та тренувальні майданчики</li>
+            <li>Швидкий доступ до облаштованого стаціонарного укриття</li>
+            <li>Електронне інформаційне табло та звуковий супровід</li>
+          </ul>
+          <p class="section-note" style="margin: 0;">Основна локація для турів дивізіонів U8, U10 та фінальних кубкових матчів.</p>
+        </article>
+      </div>
+      <p class="section-note" style="margin-top: 1.5rem;">
+        Загалом підготовка вихованців здійснюється на 24 навчально-тренувальних базах. Детальний перелік баз опубліковано у розділі <a class="contact-link" href={withBase('/sportyvni-napriamy/')}>«Спортивні напрями»</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Турнірні таблиці -->
+  <section id="standings" class="section section--paper" aria-labelledby="standings-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Турнірне становище</p>
+        <h2 id="standings-title">Турнірні таблиці чемпіонату</h2>
+        <p>Результати матчів та поточне розташування команд за підсумками проведених турів.</p>
+      </div>
+
+      <div class="standings-wrapper">
+        <div class="standings-header-bar">
+          <h3 class="standings-title">Дивізіон U12 (2014–2015 р.н.) • Тур 10</h3>
+          <p class="standings-note">Оновлено за офіційними протоколами суддівської колегії</p>
+        </div>
+        <div class="table-responsive">
+          <table class="standings-table">
+            <thead>
+              <tr>
+                <th scope="col" class="th-pos">№</th>
+                <th scope="col" class="th-team">Команда</th>
+                <th scope="col" class="th-num" title="Зіграні ігри">І</th>
+                <th scope="col" class="th-num" title="Перемоги">В</th>
+                <th scope="col" class="th-num" title="Нічиї">Н</th>
+                <th scope="col" class="th-num" title="Поразки">П</th>
+                <th scope="col" class="th-num" title="Забиті-пропущені м'ячі">М'ячі</th>
+                <th scope="col" class="th-num" title="Різниця м'ячів">Різн.</th>
+                <th scope="col" class="th-pts" title="Очки">О</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-pos"><span class="pos-badge pos-badge--1">1</span></td>
+                <td class="td-team">МДЮСШ Дніпро-1 (Центр)</td>
+                <td class="td-num">10</td>
+                <td class="td-num">8</td>
+                <td class="td-num">1</td>
+                <td class="td-num">1</td>
+                <td class="td-num">28–8</td>
+                <td class="td-num">+20</td>
+                <td class="td-pts">25</td>
+              </tr>
+              <tr>
+                <td class="td-pos"><span class="pos-badge pos-badge--2">2</span></td>
+                <td class="td-team">МДЮСШ-2 (Набережна)</td>
+                <td class="td-num">10</td>
+                <td class="td-num">7</td>
+                <td class="td-num">2</td>
+                <td class="td-num">1</td>
+                <td class="td-num">22–9</td>
+                <td class="td-num">+13</td>
+                <td class="td-pts">23</td>
+              </tr>
+              <tr>
+                <td class="td-pos"><span class="pos-badge pos-badge--3">3</span></td>
+                <td class="td-team">МДЮСШ-3 (Перемога)</td>
+                <td class="td-num">10</td>
+                <td class="td-num">6</td>
+                <td class="td-num">1</td>
+                <td class="td-num">3</td>
+                <td class="td-num">19–12</td>
+                <td class="td-num">+7</td>
+                <td class="td-pts">19</td>
+              </tr>
+              <tr>
+                <td class="td-pos">4</td>
+                <td class="td-team">МДЮСШ-4 (Лівобережний)</td>
+                <td class="td-num">10</td>
+                <td class="td-num">4</td>
+                <td class="td-num">2</td>
+                <td class="td-num">4</td>
+                <td class="td-num">15–16</td>
+                <td class="td-num">-1</td>
+                <td class="td-pts">14</td>
+              </tr>
+              <tr>
+                <td class="td-pos">5</td>
+                <td class="td-team">МДЮСШ-5 (Західний)</td>
+                <td class="td-num">10</td>
+                <td class="td-num">3</td>
+                <td class="td-num">1</td>
+                <td class="td-num">6</td>
+                <td class="td-num">12–20</td>
+                <td class="td-num">-8</td>
+                <td class="td-pts">10</td>
+              </tr>
+              <tr>
+                <td class="td-pos">6</td>
+                <td class="td-team">МДЮСШ-6 (Сокіл)</td>
+                <td class="td-num">10</td>
+                <td class="td-num">1</td>
+                <td class="td-num">1</td>
+                <td class="td-num">8</td>
+                <td class="td-num">7–26</td>
+                <td class="td-num">-19</td>
+                <td class="td-pts">4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="section-note" style="margin-top: 1rem;">
+        Турнірні таблиці решти дивізіонів оновлюються щотижня після завершення туру. Офіційні апеляції та питання щодо результатів приймаються суддівською колегією закладу.
+      </p>
+    </div>
+  </section>
+
+  <!-- Регламент та Безпека -->
+  <section id="regulations" class="section section--tint" aria-labelledby="regulations-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Правила та стандарти</p>
+        <h2 id="regulations-title">Регламент змагань та протокол безпеки</h2>
+        <p>Головні принципи проведення матчів MDUSH LIGA: дотримання принципів чесної гри, захист здоров'я вихованців та чіткий алгоритм дій під час повітряної тривоги.</p>
+      </div>
+
+      <div class="regulations-grid">
+        <article class="regulations-card">
+          <h3>Регламент проведення матчів</h3>
+          <ul class="regulations-list">
+            <li><strong>Участь гравців:</strong> До участі допускаються виключно заявлені вихованці з дійсним медичним допуском до занять спортом.</li>
+            <li><strong>Зворотні заміни:</strong> Дозволені у всіх вікових дивізіонах для забезпечення достатньої ігрової практики для кожного учасника.</li>
+            <li><strong>Суддівство:</strong> Поєдинки обслуговує кваліфікована суддівська колегія за офіційними правилами дитячо-юнацького футболу.</li>
+            <li><strong>Кодекс Fair Play:</strong> Сувора заборона неспортивної поведінки, взаємоповага між гравцями, тренерами та вболівальниками.</li>
+          </ul>
+        </article>
+
+        <article class="safety-alert-box" role="alert">
+          <div class="safety-alert-header">
+            <span class="safety-alert-icon" aria-hidden="true">🚨</span>
+            <h3>Алгоритм дій під час повітряної тривоги</h3>
+          </div>
+          <ol class="safety-steps-list">
+            <li><strong>Негайне зупинення гри:</strong> При оголошенні сигналу тривоги арбітр негайно зупиняє матч свистком.</li>
+            <li><strong>Організована евакуація:</strong> Тренери та представники команд супроводжують дітей до сертифікованого укриття стадіону.</li>
+            <li><strong>Перебування в укритті:</strong> Усі учасники та глядачі зобов'язані перебувати у сховищі до офіційного відбою тривоги.</li>
+            <li><strong>Відновлення матчу:</strong> Гра може бути продовжена не раніше ніж через 10 хвилин після сигналу «Відбій тривоги» за рішенням суддівської колегії.</li>
+          </ol>
+          <p class="security-policy-note">
+            <strong>Захист даних (SECURITY.md):</strong> На сайті публікуються виключно узагальнені спортивні результати. Публікація персональних або медичних даних дітей суворо заборонена.
+          </p>
+        </article>
+      </div>
+
+      <div class="actions home-section-action" style="margin-top: 2rem;">
+        <a class="button button-primary" href={withBase('/zmahannia/')}>
+          ← Повернутися до загального календаря змагань
+        </a>
+        <a class="button button-outline" href={withBase('/dokumenty/')}>
+          Офіційні положення та документи
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

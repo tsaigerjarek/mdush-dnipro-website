@@ -3,7 +3,7 @@ import { extname, join, relative } from 'node:path';
 
 const distRoot = 'dist';
 const basePath = '/mdush-dnipro-website';
-const expectedHtmlPages = 14;
+const expectedHtmlPages = 15;
 const htmlFiles = [];
 const javascriptFiles = [];
 

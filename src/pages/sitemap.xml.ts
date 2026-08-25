@@ -8,6 +8,7 @@ const staticRoutes = [
   '/trenerskyi-sklad/',
   '/yak-vstupyty/',
   '/zmahannia/',
+  '/zmahannia/mdush-liga/',
   '/dokumenty/',
   '/prozorist/',
   '/novyny/',
