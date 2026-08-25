@@ -412,6 +412,141 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
     </div>
   </section>
 
+  <!-- Банер-перехід MDUSH LIGA -->
+  <section class="section liga-banner-section" aria-labelledby="liga-banner-title">
+    <div class="container liga-banner-container">
+      <div class="liga-banner-content">
+        <span class="liga-badge">Турнірний хаб</span>
+        <h2 id="liga-banner-title" class="liga-banner-heading">MDUSH LIGA 2026/2027 — Офіційний хаб міського турніру</h2>
+        <p class="liga-banner-desc">Результати матчів, актуальні турнірні таблиці, розклад ігор та прямі трансляції спортивних протистоянь закладу.</p>
+      </div>
+      <div class="liga-banner-action">
+        <a class="button button-primary" href={withBase('/zmahannia/')}>
+          Перейти до турнірних таблиць та розкладу ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок 4: МЕДІАЦЕНТР -->
+  <section id="mediacenter" class="section section--paper mediacenter-section" aria-labelledby="mediacenter-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Медіацентр МДЮСШ</p>
+        <h2 id="mediacenter-title">Життя школи: Матчі, емоції, інтерв'ю</h2>
+        <p>Офіційні фоторепортажі, відеохайлайти та огляди матчів закладу без публікації персональних чи чутливих даних вихованців.</p>
+      </div>
+      <div class="mediacenter-grid">
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--video" aria-hidden="true">
+            <span class="play-icon">▶</span>
+            <span class="media-tag">Відеохайлайт</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Футбольні матчі ДЮФЛУ — Огляд туру</h3>
+            <p>Ключові моменти та забиті голи юнацьких збірних МДЮСШ Дніпро.</p>
+          </div>
+        </article>
+
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--photo" aria-hidden="true">
+            <span class="photo-icon">📷</span>
+            <span class="media-tag">Фотогалерея</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Відкриті тренування філій U6–U9</h3>
+            <p>Яскраві моменти спортивно-виховного процесу молодших вихованців.</p>
+          </div>
+        </article>
+
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--interview" aria-hidden="true">
+            <span class="mic-icon">🎙️</span>
+            <span class="media-tag">Інтерв'ю</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Коментарі тренерів за підсумками сезону</h3>
+            <p>Аналітика ігор, підготовка до старших ліг та рекомендації для батьків.</p>
+          </div>
+        </article>
+
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--cheer" aria-hidden="true">
+            <span class="star-icon">★</span>
+            <span class="media-tag">Черліденг & Теніс</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Виступи черлідерів та рейтингові матчі тенісистів</h3>
+            <p>Командна підтримка матчів МДЮСШ та фінали міських кубків.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок 5: Гордість школи та Цифрові паспорти -->
+  <section id="scout-analytics" class="section digital-passports-section" aria-labelledby="analytics-title">
+    <div class="container">
+      <div class="digital-passports-card">
+        <div class="digital-passports-header">
+          <span class="tech-badge">Looker Studio Analytics</span>
+          <h2 id="analytics-title">Цифрова аналітика та профілі для скаутів</h2>
+          <p class="digital-passports-desc">
+            Інтерактивні дашборди Looker Studio з історією успішності вихованців, командною статистикою та спортивною динамікою закладу.
+          </p>
+        </div>
+
+        <div class="security-warning-alert" role="note">
+          <span class="alert-icon">🔒</span>
+          <div>
+            <strong>Регламент безпеки даних (SECURITY.md):</strong>
+            <p>Увага: медичні та приватні дані захищені й недоступні в публічному доступі. Скаутські профілі містять лише підтверджені узагальнені спортивні показники.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок 6: Батькам та партнерам (Вступ) -->
+  <section id="parents-partners" class="section section--tint parents-partners-section" aria-labelledby="parents-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Для батьків та партнерів</p>
+        <h2 id="parents-title">Батькам та партнерам (Вступ до закладу)</h2>
+        <p>Офіційний порядок вступу дитини до МДЮСШ Дніпро, підготовка документів та партнерська взаємодія з закладом.</p>
+      </div>
+
+      <div class="parents-steps-grid">
+        <article class="card parents-step-card">
+          <span class="card-number">01</span>
+          <h3>Вибір напряму та вікової групи</h3>
+          <p>Ознайомтеся з підтвердженими спортивними відділеннями (Футбол, Настільний теніс, Черліденг) та уточніть наявність місць.</p>
+        </article>
+
+        <article class="card parents-step-card">
+          <span class="card-number">02</span>
+          <h3>Пакет необхідних документів</h3>
+          <p>Заява батьків/опікунів, медична довідка про допуск до занять спортом, копія свідоцтва про народження та 2 фотокартки 3×4.</p>
+        </article>
+
+        <article class="card parents-step-card">
+          <span class="card-number">03</span>
+          <h3>Подання онлайн-заявки</h3>
+          <p>Заповніть офіційну Google Форму вступу для первинного контакту з адміністрацією та реєстрації у системі.</p>
+        </article>
+      </div>
+
+      <div class="actions home-section-action" style="margin-top: 2rem;">
+        <a class="button button-primary" href="https://forms.gle/mdush-dnipro-2026" target="_blank" rel="noopener noreferrer">
+          Заповнити форму на вступ ↗
+        </a>
+        <a class="button button-outline" href={withBase('/yak-vstupyty/')}>
+          Докладніше про правила вступу
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="admission" class="section section--paper home-admission-section" aria-labelledby="admission-title">
     <div class="container">
       <div class="section-heading home-section-heading">

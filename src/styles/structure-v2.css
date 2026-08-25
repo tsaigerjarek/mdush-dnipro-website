@@ -1381,3 +1381,220 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Banner MDUSH LIGA */
+.liga-banner-section {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  background: var(--green-950);
+  color: var(--paper);
+  border-top: 1px solid rgb(255 255 255 / 12%);
+  border-bottom: 1px solid rgb(255 255 255 / 12%);
+}
+
+.liga-banner-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+}
+
+.liga-badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 0.65rem;
+  border-radius: 999px;
+  background: rgba(121, 214, 174, 0.18);
+  color: #79d6ae;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.liga-banner-heading {
+  margin-bottom: 0.5rem;
+  color: var(--paper);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+}
+
+.liga-banner-desc {
+  max-width: 44rem;
+  margin-bottom: 0;
+  color: #d6eee1;
+}
+
+/* Mediacenter Grid & Placeholders */
+.mediacenter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.mediacenter-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.mediacenter-placeholder {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a3d2e 0%, #126149 100%);
+  color: var(--paper);
+}
+
+.mediacenter-placeholder--photo {
+  background: linear-gradient(135deg, #1b4d3e 0%, #2b8a68 100%);
+}
+
+.mediacenter-placeholder--interview {
+  background: linear-gradient(135deg, #062d22 0%, #126149 100%);
+}
+
+.mediacenter-placeholder--cheer {
+  background: linear-gradient(135deg, #126149 0%, #3b9375 100%);
+}
+
+.mediacenter-placeholder .media-tag {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 750;
+  backdrop-filter: blur(4px);
+}
+
+.play-icon, .photo-icon, .mic-icon, .star-icon {
+  font-size: 2rem;
+}
+
+.mediacenter-card-body {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.mediacenter-card-body h3 {
+  font-size: 1.05rem;
+  color: var(--green-950);
+  margin-bottom: 0.45rem;
+}
+
+.mediacenter-card-body p {
+  font-size: 0.88rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Digital Passports Section (Looker Studio) */
+.digital-passports-section {
+  background: #041b14;
+  color: var(--paper);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.digital-passports-card {
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border: 1px solid rgba(121, 214, 174, 0.25);
+  border-radius: 1.1rem;
+  background: radial-gradient(circle at 80% 20%, rgba(18, 97, 73, 0.35) 0%, rgba(4, 27, 20, 0.95) 75%);
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  margin-bottom: 0.85rem;
+  border-radius: 0.5rem;
+  background: rgba(121, 214, 174, 0.15);
+  border: 1px solid rgba(121, 214, 174, 0.3);
+  color: #79d6ae;
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.digital-passports-header h2 {
+  color: var(--paper);
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+.digital-passports-desc {
+  max-width: 48rem;
+  color: #d6eee1;
+  font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+}
+
+.security-warning-alert {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-top: 1.75rem;
+  padding: 1.15rem 1.35rem;
+  border: 1px solid rgba(255, 213, 79, 0.4);
+  border-radius: 0.75rem;
+  background: rgba(255, 213, 79, 0.08);
+  color: #fff3c4;
+  font-size: 0.92rem;
+}
+
+.security-warning-alert .alert-icon {
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.security-warning-alert p {
+  margin: 0.25rem 0 0;
+  color: #e6dfc3;
+}
+
+/* Parents & Partners Section */
+.parents-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.parents-step-card {
+  padding: 1.5rem;
+  min-height: 12.5rem;
+}
+
+.parents-step-card h3 {
+  color: var(--green-950);
+  font-size: 1.15rem;
+  margin-top: 1rem;
+}
+
+.parents-step-card p {
+  margin: 0.45rem 0 0;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 900px) {
+  .mediacenter-grid,
+  .parents-steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .mediacenter-grid,
+  .parents-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
