@@ -1,0 +1,71 @@
+---
+import { withBase } from '../../lib/urls';
+
+interface Props {
+  youtubeId: string;
+  title: string;
+  poster?: string;
+  posterAlt?: string;
+  aspectRatio?: '16/9' | '4/3';
+}
+
+const {
+  youtubeId,
+  title,
+  poster,
+  posterAlt = title,
+  aspectRatio = '16/9',
+} = Astro.props;
+
+const fallbackThumb = poster || `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+---
+
+<div
+  class="yt-embed-facade"
+  data-youtube-id={youtubeId}
+  style={`--yt-aspect: ${aspectRatio};`}
+>
+  <button
+    type="button"
+    class="yt-play-btn"
+    aria-label={`Відтворити відео: ${title}`}
+  >
+    <img
+      class="yt-thumb"
+      src={withBase(fallbackThumb)}
+      alt={posterAlt}
+      width="640"
+      height="360"
+      loading="lazy"
+    />
+    <span class="yt-overlay" aria-hidden="true">
+      <span class="yt-play-icon">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </span>
+      <span class="yt-play-label">Дивитися відео</span>
+    </span>
+  </button>
+</div>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll('.yt-embed-facade').forEach((container) => {
+      const btn = container.querySelector('.yt-play-btn');
+      const ytId = container.getAttribute('data-youtube-id');
+      if (!btn || !ytId) return;
+
+      btn.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0`);
+        iframe.setAttribute('title', btn.getAttribute('aria-label') || 'YouTube відео');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.className = 'yt-iframe';
+        container.innerHTML = '';
+        container.appendChild(iframe);
+      });
+    });
+  })();
+</script>
