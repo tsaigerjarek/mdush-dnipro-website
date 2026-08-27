@@ -1,0 +1,153 @@
+---
+import type { WeeklyItem } from '../../data/weekly';
+import { withBase } from '../../lib/urls';
+import YouTubeEmbed from './YouTubeEmbed.astro';
+
+interface Props {
+  items: WeeklyItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="section section--paper weekly-highlights-section" aria-labelledby="weekly-highlights-title">
+  <div class="container">
+    <div class="weekly-header">
+      <div class="weekly-header-copy">
+        <p class="eyebrow">Медіа-центр МДЮСШ</p>
+        <h2 id="weekly-highlights-title">Актуально цього тижня</h2>
+        <p class="weekly-subtitle">
+          Головні спортивні події, відеоогляди матчів, табло результатів та фотозвіти тренувань.
+        </p>
+      </div>
+
+      <div class="weekly-nav-controls" aria-label="Керування каруселлю подій">
+        <button
+          type="button"
+          class="weekly-carousel-btn weekly-btn-prev"
+          id="weekly-prev-btn"
+          aria-label="Попередня подія"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="weekly-carousel-btn weekly-btn-next"
+          id="weekly-next-btn"
+          aria-label="Наступна подія"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="weekly-carousel-track"
+      id="weekly-track"
+      tabindex="0"
+      role="region"
+      aria-label="Стрічка актуальних подій тижня"
+    >
+      {
+        items.map((item) => (
+          <article class="weekly-card" data-type={item.type}>
+            <div class="weekly-card-media">
+              {item.youtubeId ? (
+                <YouTubeEmbed
+                  youtubeId={item.youtubeId}
+                  title={item.title}
+                  poster={item.image}
+                  posterAlt={item.imageAlt}
+                  aspectRatio="16/9"
+                />
+              ) : (
+                <div class="weekly-img-wrap">
+                  <img
+                    class="weekly-img"
+                    src={withBase(item.image)}
+                    alt={item.imageAlt}
+                    width="640"
+                    height="360"
+                    loading="lazy"
+                  />
+                  {item.resultScore && (
+                    <div class="weekly-score-pill">
+                      <span class="score-label">Рахунок</span>
+                      <span class="score-value">{item.resultScore}</span>
+                    </div>
+                  )}
+                </div>
+              )}
+              <span class={`weekly-type-badge weekly-type-badge--${item.type}`}>
+                {item.type === 'video' && 'Відеоогляд'}
+                {item.type === 'result' && 'Результат'}
+                {item.type === 'announcement' && 'Анонс'}
+                {item.type === 'gallery' && 'Фотозвіт'}
+                {item.type === 'match' && 'Матч'}
+              </span>
+            </div>
+
+            <div class="weekly-card-body">
+              {item.date && (
+                <div class="weekly-meta-date">
+                  <time>{item.date}</time>
+                  {item.time && <span> • {item.time}</span>}
+                </div>
+              )}
+
+              <h3 class="weekly-card-title">
+                {item.detailsUrl ? (
+                  <a class="weekly-title-link" href={withBase(item.detailsUrl)}>
+                    {item.title}
+                  </a>
+                ) : (
+                  item.title
+                )}
+              </h3>
+
+              <p class="weekly-card-summary">{item.summary}</p>
+
+              {item.detailsUrl && (
+                <a class="weekly-action-link" href={withBase(item.detailsUrl)}>
+                  <span>Детальніше</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const track = document.getElementById('weekly-track');
+    const prevBtn = document.getElementById('weekly-prev-btn');
+    const nextBtn = document.getElementById('weekly-next-btn');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    function getCardWidth() {
+      const card = track.querySelector('.weekly-card');
+      if (!card) return 320;
+      const gap = parseInt(window.getComputedStyle(track).gap || '16', 10);
+      return card.offsetWidth + gap;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    });
+  })();
+</script>

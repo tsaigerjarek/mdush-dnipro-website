@@ -1,51 +1,499 @@
 ---
 import { withBase } from '../lib/urls';
 
-const navigation = [
-  { href: withBase('/#about'), label: 'Про заклад' },
-  { href: withBase('/#sports-education'), label: 'Напрямки спортивного виховання' },
-  { href: withBase('/trenerskyi-sklad/'), label: 'Тренерський склад' },
-  { href: withBase('/zmahannia/'), label: 'Змагання' },
-  { href: withBase('/novyny/'), label: 'Новини' },
-  { href: withBase('/dokumenty/'), label: 'Документи' },
-  { href: withBase('/kontakty/'), label: 'Контакти' },
-];
-
-const currentPath = Astro.url.pathname;
 const homePath = withBase('/');
 const admissionPath = withBase('/yak-vstupyty/');
-const isCurrent = (href: string) => {
-  const path = href.split('#')[0];
-  return path !== homePath && (currentPath === path || currentPath.startsWith(path));
+const contactsPath = withBase('/kontakty/');
+
+const normalizePath = (path: string) => {
+  const cleanPath = path.split(/[?#]/)[0];
+
+  if (cleanPath === '/') {
+    return '/';
+  }
+
+  return cleanPath.endsWith('/') ? cleanPath : `${cleanPath}/`;
 };
+
+const currentPath = normalizePath(Astro.url.pathname);
+
+const isCurrentPage = (href: string) => {
+  if (href.includes('#')) {
+    return false;
+  }
+
+  return normalizePath(href) === currentPath;
+};
+
+// 1. Про заклад: погоджена структура з об'єднаним пунктом баз та локацій
+const aboutLinks = [
+  { href: withBase('/pro-zaklad/'), label: 'Про МДЮСШ' },
+  { href: withBase('/kontakty/#administration'), label: 'Адміністрація' },
+  { href: withBase('/trenerskyi-sklad/'), label: 'Тренерський склад' },
+  { href: withBase('/sportyvni-napriamy/#facilities'), label: 'Спортивна база та локації' },
+  { href: withBase('/#parents-partners'), label: 'Партнери' },
+];
+
+// 2. Спортивні напрями (Футбол) — інформаційні chips для вікових груп за роками народження (TODO: власні сторінки за роками)
+const footballYouthTeams = [
+  '2018 р.н.',
+  '2017 р.н.',
+  '2016 р.н.',
+  '2015 р.н.',
+  '2014 р.н.',
+  '2013 р.н.',
+  '2012 р.н.',
+  '2011 р.н.',
+  '2010 р.н.',
+  '2008–2009 р.н.',
+];
+const footballGirlsTeams = ['2014 р.н.', '2012 р.н.'];
+
+// 3. Змагання та події: реальні підтверджені маршрути (TODO: додати #matches та #results на сторінці змагань)
+const eventsLinks = [
+  { href: withBase('/zmahannia/'), label: 'Календар і змагання' },
+  { href: withBase('/zmahannia/mdush-liga/'), label: 'Турніри та ліги' },
+  { href: withBase('/novyny/'), label: 'Новини' },
+];
+
+// 4. Документи: реальні окремі маршрути (TODO: додати категорійні anchors у dokumenty.astro)
+const documentsLinks = [
+  { href: withBase('/dokumenty/'), label: 'Усі документи' },
+  { href: withBase('/prozorist/'), label: 'Публічна інформація' },
+];
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <div class="brand" aria-label="МДЮСШ Дніпро">
+    <a class="brand" href={homePath} aria-label="МДЮСШ Дніпро — на головну">
       <span class="brand-copy">
         <span class="brand-name">МДЮСШ ДНІПРО</span>
         <span class="brand-subtitle">З ігрових видів спорту Дніпровської міської ради</span>
       </span>
       <img class="brand-mark" src={withBase('/media/identity/mdush-logo-white.png')} alt="Емблема МДЮСШ" width="360" height="360" />
-    </div>
+    </a>
+
     <div class="nav-shell">
-      <input class="nav-toggle" id="main-nav-toggle" type="checkbox" aria-label="Відкрити або закрити меню" />
-      <label class="nav-toggle-label" for="main-nav-toggle"><span>Меню</span><span class="menu-lines" aria-hidden="true"></span></label>
-      <nav class="main-nav" aria-label="Основна навігація">
-        <ul>
-          {
-            navigation.map((item) => (
-              <li>
-                <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-          <li><a class="main-nav-cta" href={admissionPath}>Як вступити</a></li>
+      <button
+        type="button"
+        class="nav-toggle-btn"
+        id="main-nav-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav-menu"
+        aria-label="Відкрити меню навігації"
+      >
+        <span class="nav-toggle-text">Меню</span>
+        <span class="menu-lines" aria-hidden="true"></span>
+      </button>
+
+      <nav id="main-nav-menu" class="main-nav" aria-label="Основна навігація">
+        <ul class="nav-list">
+          {/* 1. Про заклад */}
+          <li class="nav-item nav-item--dropdown">
+            <button
+              type="button"
+              class="nav-trigger"
+              aria-expanded="false"
+              aria-controls="dropdown-about"
+              aria-haspopup="true"
+            >
+              <span>Про заклад</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6">
+                <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdown-about" class="dropdown-panel dropdown-panel--simple">
+              <ul class="dropdown-list">
+                {
+                  aboutLinks.map((link) => (
+                    <li>
+                      <a
+  class="dropdown-link"
+  href={link.href}
+  aria-current={isCurrentPage(link.href) ? 'page' : undefined}
+>
+  {link.label}
+</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </li>
+
+          {/* 2. Спортивні напрями (Mega-Menu) */}
+          <li class="nav-item nav-item--dropdown nav-item--mega">
+            <button
+              type="button"
+              class="nav-trigger"
+              aria-expanded="false"
+              aria-controls="dropdown-sports"
+              aria-haspopup="true"
+            >
+              <span>Спортивні напрями</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6">
+                <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdown-sports" class="dropdown-panel dropdown-panel--mega">
+              <div class="mega-grid">
+                {/* Футбол */}
+                <div class="mega-col mega-col--football">
+                  <div class="mega-col-header">
+                    <p class="mega-eyebrow">Основний напрям</p>
+                    <h3 class="mega-title">Футбол</h3>
+                  </div>
+
+                  <div class="mega-football-group">
+                    <h4 class="mega-subtitle">Юнацькі вікові групи</h4>
+                    <div class="team-chips" aria-label="Вікові групи юнацького футболу за роками народження">
+                      {footballYouthTeams.map((team) => (
+                        <span class="team-chip">{team}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="mega-football-group">
+                    <h4 class="mega-subtitle">Дівочі вікові групи</h4>
+                    <div class="team-chips" aria-label="Вікові групи дівочого футболу за роками народження">
+                      {footballGirlsTeams.map((team) => (
+                        <span class="team-chip team-chip--girls">{team}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <ul class="mega-links-list">
+                    <li><a class="dropdown-link" href={withBase('/trenerskyi-sklad/')}>Тренерський склад</a></li>
+                    <li><a class="dropdown-link" href={withBase('/zmahannia/')}>Календар і змагання</a></li>
+                    <li><a class="dropdown-link dropdown-link--cta" href={withBase('/sportyvni-napriamy/#football')}>Перейти до футболу →</a></li>
+                  </ul>
+                </div>
+
+                {/* Настільний теніс */}
+                <div class="mega-col">
+                  <div class="mega-col-header">
+                    <p class="mega-eyebrow">Другий напрям</p>
+                    <h3 class="mega-title">Настільний теніс</h3>
+                  </div>
+                  <ul class="mega-links-list">
+                    <li><a class="dropdown-link" href={withBase('/sportyvni-napriamy/#table-tennis')}>Спортивна підготовка</a></li>
+                    <li><a class="dropdown-link" href={withBase('/trenerskyi-sklad/')}>Тренери</a></li>
+                    <li><a class="dropdown-link" href={withBase('/zmahannia/')}>Змагання</a></li>
+                    <li><a class="dropdown-link dropdown-link--cta" href={withBase('/sportyvni-napriamy/#table-tennis')}>Перейти до напряму →</a></li>
+                  </ul>
+                </div>
+
+                {/* Черліденг */}
+                <div class="mega-col">
+                  <div class="mega-col-header">
+                    <p class="mega-eyebrow">Третій напрям</p>
+                    <h3 class="mega-title">Черліденг</h3>
+                  </div>
+                  <ul class="mega-links-list">
+                    <li><a class="dropdown-link" href={withBase('/sportyvni-napriamy/#cheerleading')}>Спортивна підготовка</a></li>
+                    <li><a class="dropdown-link" href={withBase('/trenerskyi-sklad/')}>Тренери</a></li>
+                    <li><a class="dropdown-link" href={withBase('/zmahannia/')}>Виступи та змагання</a></li>
+                    <li><a class="dropdown-link dropdown-link--cta" href={withBase('/sportyvni-napriamy/#cheerleading')}>Перейти до напряму →</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          {/* 3. Змагання та події */}
+          <li class="nav-item nav-item--dropdown">
+            <button
+              type="button"
+              class="nav-trigger"
+              aria-expanded="false"
+              aria-controls="dropdown-events"
+              aria-haspopup="true"
+            >
+              <span>Змагання та події</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6">
+                <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdown-events" class="dropdown-panel dropdown-panel--simple">
+              <ul class="dropdown-list">
+                {
+                  eventsLinks.map((link) => (
+                    <li>
+                      <a
+  class="dropdown-link"
+  href={link.href}
+  aria-current={isCurrentPage(link.href) ? 'page' : undefined}
+>
+  {link.label}
+</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </li>
+
+          {/* 4. Документи */}
+          <li class="nav-item nav-item--dropdown">
+            <button
+              type="button"
+              class="nav-trigger"
+              aria-expanded="false"
+              aria-controls="dropdown-docs"
+              aria-haspopup="true"
+            >
+              <span>Документи</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6">
+                <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdown-docs" class="dropdown-panel dropdown-panel--simple">
+              <ul class="dropdown-list">
+                {
+                  documentsLinks.map((link) => (
+                    <li>
+                      <a
+  class="dropdown-link"
+  href={link.href}
+  aria-current={isCurrentPage(link.href) ? 'page' : undefined}
+>
+  {link.label}
+</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </li>
+
+          {/* 5. Контакти */}
+          <li class="nav-item">
+            <a
+  class="nav-link"
+  href={contactsPath}
+  aria-current={isCurrentPage(contactsPath) ? 'page' : undefined}
+>
+  Контакти
+</a>
+          </li>
+
+          {/* 6. Як вступити (CTA) */}
+          <li class="nav-item nav-item--cta">
+            <a
+  class="main-nav-cta"
+  href={admissionPath}
+  aria-current={isCurrentPage(admissionPath) ? 'page' : undefined}
+>
+  Як вступити
+</a>
+          </li>
         </ul>
+
+        {/* Mobile Accordion Navigation View */}
+        <div class="mobile-nav-accordion" aria-label="Мобільне меню">
+          <details class="mobile-group">
+            <summary class="mobile-summary">
+              <span>Про заклад</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" /></svg>
+            </summary>
+            <ul class="mobile-sublist">
+              {aboutLinks.map((link) => (
+                <li>
+  <a
+    class="mobile-link"
+    href={link.href}
+    aria-current={isCurrentPage(link.href) ? 'page' : undefined}
+  >
+    {link.label}
+  </a>
+</li>
+              ))}
+            </ul>
+          </details>
+
+          <details class="mobile-group">
+            <summary class="mobile-summary">
+              <span>Спортивні напрями</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" /></svg>
+            </summary>
+            <div class="mobile-sports-content">
+              <div class="mobile-football-block">
+                <h4 class="mobile-sports-heading">Футбол</h4>
+                <p class="mobile-chip-label">Юнацькі вікові групи</p>
+                <div class="team-chips">
+                  {footballYouthTeams.map((team) => (<span class="team-chip">{team}</span>))}
+                </div>
+                <p class="mobile-chip-label">Дівочі вікові групи (ЖФК)</p>
+                <div class="team-chips">
+                  {footballGirlsTeams.map((team) => (<span class="team-chip team-chip--girls">{team}</span>))}
+                </div>
+                <ul class="mobile-sublist">
+                  <li><a class="mobile-link" href={withBase('/trenerskyi-sklad/')}>Тренерський склад</a></li>
+                  <li><a class="mobile-link" href={withBase('/zmahannia/')}>Календар і змагання</a></li>
+                  <li><a class="mobile-link mobile-link--accent" href={withBase('/sportyvni-napriamy/#football')}>Перейти до футболу →</a></li>
+                </ul>
+              </div>
+
+              <div class="mobile-other-block">
+                <h4 class="mobile-sports-heading">Настільний теніс</h4>
+                <ul class="mobile-sublist">
+                  <li><a class="mobile-link" href={withBase('/sportyvni-napriamy/#table-tennis')}>Спортивна підготовка</a></li>
+                  <li><a class="mobile-link" href={withBase('/trenerskyi-sklad/')}>Тренери</a></li>
+                  <li><a class="mobile-link" href={withBase('/zmahannia/')}>Змагання</a></li>
+                </ul>
+              </div>
+
+              <div class="mobile-other-block">
+                <h4 class="mobile-sports-heading">Черліденг</h4>
+                <ul class="mobile-sublist">
+                  <li><a class="mobile-link" href={withBase('/sportyvni-napriamy/#cheerleading')}>Спортивна підготовка</a></li>
+                  <li><a class="mobile-link" href={withBase('/trenerskyi-sklad/')}>Тренери</a></li>
+                  <li><a class="mobile-link" href={withBase('/zmahannia/')}>Виступи та змагання</a></li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="mobile-group">
+            <summary class="mobile-summary">
+              <span>Змагання та події</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" /></svg>
+            </summary>
+            <ul class="mobile-sublist">
+              {eventsLinks.map((link) => (
+                <li>
+  <a
+    class="mobile-link"
+    href={link.href}
+    aria-current={isCurrentPage(link.href) ? 'page' : undefined}
+  >
+    {link.label}
+  </a>
+</li>
+              ))}
+            </ul>
+          </details>
+
+          <details class="mobile-group">
+            <summary class="mobile-summary">
+              <span>Документи</span>
+              <svg class="chevron-icon" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M1 1l4 4 4-4" /></svg>
+            </summary>
+            <ul class="mobile-sublist">
+              {documentsLinks.map((link) => (
+                <li>
+  <a
+    class="mobile-link"
+    href={link.href}
+    aria-current={isCurrentPage(link.href) ? 'page' : undefined}
+  >
+    {link.label}
+  </a>
+</li>
+              ))}
+            </ul>
+          </details>
+
+          <div class="mobile-utility-links">
+            <a
+  class="mobile-link mobile-link--primary"
+  href={contactsPath}
+  aria-current={isCurrentPage(contactsPath) ? 'page' : undefined}
+>
+  Контакти
+</a>
+            <a
+  class="mobile-cta-btn"
+  href={admissionPath}
+  aria-current={isCurrentPage(admissionPath) ? 'page' : undefined}
+>
+  Як вступити
+</a>
+          </div>
+        </div>
       </nav>
     </div>
   </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const navToggle = document.getElementById('main-nav-toggle');
+    const navMenu = document.getElementById('main-nav-menu');
+    const dropdownItems = document.querySelectorAll('.nav-item--dropdown');
+
+    function closeAllDropdowns(except = null) {
+      dropdownItems.forEach((item) => {
+        if (item !== except) {
+          item.classList.remove('is-open');
+          const trigger = item.querySelector('.nav-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Toggle dropdowns on click for touch / keyboard support
+    dropdownItems.forEach((item) => {
+      const trigger = item.querySelector('.nav-trigger');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains('is-open');
+        closeAllDropdowns();
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        } else {
+          item.classList.remove('is-open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item--dropdown')) {
+        closeAllDropdowns();
+      }
+      if (navToggle && navMenu && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('is-active');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const openItem = document.querySelector('.nav-item--dropdown.is-open');
+        if (openItem) {
+          const trigger = openItem.querySelector('.nav-trigger');
+          closeAllDropdowns();
+          if (trigger) trigger.focus();
+        }
+        if (navToggle && navToggle.getAttribute('aria-expanded') === 'true') {
+          navToggle.setAttribute('aria-expanded', 'false');
+          if (navMenu) navMenu.classList.remove('is-active');
+          navToggle.focus();
+        }
+      }
+    });
+
+    // Toggle mobile menu
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isExpanded));
+        navMenu.classList.toggle('is-active', !isExpanded);
+      });
+
+      // Auto-close mobile menu when clicking internal anchor links
+      navMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navToggle.setAttribute('aria-expanded', 'false');
+          navMenu.classList.remove('is-active');
+        });
+      });
+    }
+  })();
+</script>
