@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/urls';
+---
+
+<BaseLayout
+  title="Про заклад — МДЮСШ Дніпро"
+  description="Офіційна інформація про МДЮСШ Дніпро: статус закладу, спортивні напрями, принципи роботи та корисні переходи."
+>
+  <header class="page-intro about-page-hero">
+    <p class="eyebrow">Про заклад</p>
+    <h1>МДЮСШ Дніпро</h1>
+    <p>Комунальний позашкільний навчальний заклад спортивного профілю, який здійснює підготовку дітей та молоді за напрямами футболу, настільного тенісу і черліденгу.</p>
+    <div class="actions about-page-hero-actions">
+      <a class="button" href={withBase('/dokumenty/')}>Документи</a>
+      <a class="button button-outline" href={withBase('/kontakty/')}>Контакти</a>
+    </div>
+  </header>
+
+  <section class="section section--paper about-status-section" aria-labelledby="about-status-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Статус</p>
+        <h2 id="about-status-title">Офіційний статус закладу</h2>
+      </div>
+      <dl class="about-status-list">
+        <div>
+          <dt>Форма закладу</dt>
+          <dd>Комунальний заклад</dd>
+        </div>
+        <div>
+          <dt>Сфера діяльності</dt>
+          <dd>Позашкільна освіта</dd>
+        </div>
+        <div>
+          <dt>Профіль</dt>
+          <dd>Спортивний</dd>
+        </div>
+        <div>
+          <dt>Засновник</dt>
+          <dd>Дніпровська міська рада</dd>
+        </div>
+        <div>
+          <dt>Місто</dt>
+          <dd>Дніпро</dd>
+        </div>
+      </dl>
+      <p class="section-note">Повні установчі та правові документи публікуються у розділі <a class="contact-link" href={withBase('/dokumenty/')}>«Документи»</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section--tint about-mission-section" aria-labelledby="about-mission-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Діяльність</p>
+        <h2 id="about-mission-title">Спортивне виховання та розвиток</h2>
+      </div>
+      <div class="about-mission-grid">
+        <article class="about-mission-card">
+          <span class="card-number">01</span>
+          <h3>Систематична підготовка</h3>
+          <p>Спортивна підготовка дітей та молоді в обраних напрямах.</p>
+        </article>
+        <article class="about-mission-card">
+          <span class="card-number">02</span>
+          <h3>Розвиток навичок</h3>
+          <p>Розвиток фізичних, технічних і командних навичок у навчально-тренувальному процесі.</p>
+        </article>
+        <article class="about-mission-card">
+          <span class="card-number">03</span>
+          <h3>Спортивні заходи</h3>
+          <p>Участь у спортивних заходах і змаганнях за наявності підтвердженої інформації.</p>
+        </article>
+        <article class="about-mission-card">
+          <span class="card-number">04</span>
+          <h3>Безпечне середовище</h3>
+          <p>Увага до безпечного освітнього та спортивного середовища для дітей.</p>
+        </article>
+        <article class="about-mission-card">
+          <span class="card-number">05</span>
+          <h3>Взаємодія з батьками</h3>
+          <p>Уточнення організаційних питань через офіційні канали зв’язку закладу.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper about-directions-section" aria-labelledby="about-directions-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Спортивні напрями</p>
+        <h2 id="about-directions-title">Три напрями спортивного виховання</h2>
+      </div>
+      <div class="about-directions-grid">
+        <article class="card about-direction-card">
+          <span class="card-number">01</span>
+          <p class="direction-role">Основний напрям</p>
+          <h3>Футбол</h3>
+          <p>Основний напрям спортивної підготовки закладу.</p>
+        </article>
+        <article class="card about-direction-card about-direction-card--dark">
+          <span class="card-number">02</span>
+          <p class="direction-role">Другий напрям</p>
+          <h3>Настільний теніс</h3>
+          <p>Другий напрям спортивного виховання закладу.</p>
+        </article>
+        <article class="card about-direction-card about-direction-card--warm">
+          <span class="card-number">03</span>
+          <p class="direction-role">Третій напрям</p>
+          <h3>Черліденг</h3>
+          <p>Третій напрям і підтримка футбольних команд на домашніх змаганнях.</p>
+        </article>
+      </div>
+      <div class="actions about-section-action">
+        <a class="button" href={withBase('/sportyvni-napriamy/')}>Переглянути спортивні напрями</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint about-principles-section" aria-labelledby="about-principles-title">
+    <div class="container about-principles-layout">
+      <div class="section-heading">
+        <p class="eyebrow">Підхід до роботи</p>
+        <h2 id="about-principles-title">Принципи роботи</h2>
+        <p>Це орієнтири щоденної роботи закладу, а не окремо затверджене юридичне положення.</p>
+      </div>
+      <ul class="about-principles-list">
+        <li>Безпека дітей</li>
+        <li>Послідовність підготовки</li>
+        <li>Професійна відповідальність</li>
+        <li>Повага</li>
+        <li>Командна взаємодія</li>
+        <li>Прозорість офіційної інформації</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--paper about-information-section" aria-labelledby="about-information-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Корисні переходи</p>
+        <h2 id="about-information-title">Офіційна інформація</h2>
+      </div>
+      <nav class="about-information-grid" aria-label="Офіційна інформація">
+        <a class="about-information-link" href={withBase('/dokumenty/')}>
+          <span class="card-number">01</span>
+          <span>Документи</span>
+        </a>
+        <a class="about-information-link" href={withBase('/prozorist/')}>
+          <span class="card-number">02</span>
+          <span>Прозорість</span>
+        </a>
+        <a class="about-information-link" href={withBase('/trenerskyi-sklad/')}>
+          <span class="card-number">03</span>
+          <span>Тренерський склад</span>
+        </a>
+        <a class="about-information-link" href={withBase('/kontakty/')}>
+          <span class="card-number">04</span>
+          <span>Контакти</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section section--tint about-cta-section" aria-labelledby="about-cta-title">
+    <div class="container">
+      <div class="about-cta-card">
+        <div>
+          <p class="eyebrow">Звернення</p>
+          <h2 id="about-cta-title">Потрібна додаткова інформація?</h2>
+          <p>Для уточнення питань щодо діяльності закладу, спортивних напрямів або вступу зверніться через офіційні контакти МДЮСШ Дніпро.</p>
+        </div>
+        <div class="actions about-cta-actions">
+          <a class="button" href={withBase('/kontakty/')}>Контакти</a>
+          <a class="button button-secondary" href={withBase('/yak-vstupyty/')}>Умови вступу</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

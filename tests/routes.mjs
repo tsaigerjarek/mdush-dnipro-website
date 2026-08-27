@@ -3,6 +3,7 @@ import { join } from 'node:path';
 
 const routes = [
   '',
+  'pro-zaklad',
   'sportyvni-napriamy',
   'trenerskyi-sklad',
   'yak-vstupyty',
