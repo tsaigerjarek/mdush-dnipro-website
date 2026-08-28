@@ -1146,8 +1146,8 @@ main {
 }
 
 .team-category-badge--girls {
-  background: rgb(159 18 57 / 90%);
-  color: #ffe4e6;
+  background: rgb(6 45 34 / 90%);
+  color: #e5f2eb;
 }
 
 .team-year-badge {
@@ -1184,9 +1184,9 @@ main {
   margin: 0 0 0.65rem;
   padding: 0.35rem 0.55rem;
   border-radius: 0.4rem;
-  background: rgb(255 182 193 / 20%);
-  border: 1px solid rgb(255 182 193 / 35%);
-  color: #881337;
+  background: rgb(43 138 104 / 12%);
+  border: 1px solid rgb(121 214 174 / 28%);
+  color: var(--green-700);
   font-size: 0.78rem;
   font-weight: 700;
 }

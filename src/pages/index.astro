@@ -47,7 +47,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
         <article class="information-card">
           <span class="card-number">01</span>
           <h3>Футбол</h3>
-          <p>Багатоступенева система футбольної підготовки: районні філії початкового етапу (2015–2019 р.н.), юнацькі збірні команди (2010–2014 р.н.), старша збірна (2008–2009 р.н.) та дівоче відділення ЖФК (2012–2015 р.н.).</p>
+          <p>Багатоступенева система футбольної підготовки: молодші вікові групи (2015–2018 р.н.), юнацькі збірні команди (2010–2014 р.н.), старша збірна (2008–2009 р.н.) та дівоче відділення ЖФК (2012–2015 р.н.).</p>
           <a class="text-link" href={withBase('/sportyvni-napriamy/#football')}>Докладніше про футбол →</a>
         </article>
 
@@ -101,7 +101,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
             <span class="media-tag">Фотогалерея</span>
           </div>
           <div class="mediacenter-card-body">
-            <h3>Відкриті тренування філій U6–U9</h3>
+            <h3>Відкриті тренування молодших вікових груп</h3>
             <p>Яскраві моменти спортивно-виховного процесу молодших вихованців.</p>
           </div>
         </article>
@@ -131,23 +131,23 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
     </div>
   </section>
 
-  <!-- Блок 5: Гордість школи та Цифрові паспорти -->
+  <!-- Блок 5: Пілотний напрям цифрової аналітики -->
   <section id="scout-analytics" class="section digital-passports-section" aria-labelledby="analytics-title">
     <div class="container">
       <div class="digital-passports-card">
         <div class="digital-passports-header">
-          <span class="tech-badge">Looker Studio Analytics</span>
-          <h2 id="analytics-title">Цифрова аналітика та профілі для скаутів</h2>
+          <span class="tech-badge">Пілотний напрям • Looker Studio</span>
+          <h2 id="analytics-title">Пілотний напрям цифрової аналітики</h2>
           <p class="digital-passports-desc">
-            Як <strong>комунальний заклад</strong>, МДЮСШ Дніпро впроваджує інтерактивну аналітику Looker Studio для моніторингу спортивних досягнень вихованців, які відвідують <strong>безкоштовні секції футболу</strong>, <strong>настільний теніс для дітей</strong> та напрям <strong>черліденг</strong>.
+            МДЮСШ Дніпро опрацьовує пілотний підхід до використання цифрової аналітики для внутрішнього моніторингу спортивного розвитку вихованців. Публічне представлення персональних або скаутських профілів не є частиною поточної версії сайту.
           </p>
         </div>
 
         <div class="security-warning-alert" role="note">
           <span class="alert-icon">🔒</span>
           <div>
-            <strong>Регламент безпеки даних (SECURITY.md):</strong>
-            <p>Увага: медичні та приватні дані захищені й недоступні в публічному доступі. Скаутські профілі містять лише підтверджені узагальнені спортивні показники.</p>
+            <strong>Захист персональних даних:</strong>
+            <p>У відкритому доступі не публікуються медичні та інші персональні дані вихованців. Аналітичні матеріали можуть публікуватися лише після окремої перевірки та погодження.</p>
           </div>
         </div>
       </div>
@@ -179,14 +179,11 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
         <article class="card parents-step-card">
           <span class="card-number">03</span>
           <h3>Подання онлайн-заявки</h3>
-          <p>Заповніть офіційну Google Форму вступу для первинного контакту з адміністрацією та реєстрації у системі.</p>
+          <p>Зверніться до адміністрації закладу для уточнення умов вступу, наявності місць та подальшого оформлення документів.</p>
         </article>
       </div>
 
       <div class="actions home-section-action" style="margin-top: 2rem;">
-        <a class="button button-primary" href="https://forms.gle/mdush-dnipro-2026" target="_blank" rel="noopener noreferrer">
-          Заповнити форму на вступ ↗
-        </a>
         <a class="button button-outline" href={withBase('/yak-vstupyty/')}>
           Докладніше про правила вступу
         </a>
@@ -227,7 +224,6 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
         </li>
       </ol>
       <div class="actions home-section-action">
-        <a class="button button-primary" href="https://forms.gle/mdush-dnipro-2026" target="_blank" rel="noopener noreferrer">Заповнити Google Форму заявки</a>
         <a class="button button-outline" href={withBase('/yak-vstupyty/')}>Переглянути умови вступу</a>
       </div>
     </div>
@@ -242,23 +238,23 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <div class="information-grid">
         <article class="information-card">
           <span class="card-number">01</span>
-          <h3>Філії футболу (U6–U9 / 2015–2019 р.н.)</h3>
-          <p>Початковий етап підготовки вихованців 2015–2019 р.н. у районних філіях міста Дніпро.</p>
+          <h3>Молодші вікові групи футболу</h3>
+          <p>Вікові групи 2018, 2017, 2016 та 2015 р.н. Початковий етап футбольної підготовки у філіях закладу.</p>
         </article>
         <article class="information-card">
           <span class="card-number">02</span>
-          <h3>Футбол U-10–U-17</h3>
-          <p>Юнацькі збірні команди МДЮСШ для вихованців 2010–2017 р.н. Календарі й спортивні протистояння ДЮФЛУ.</p>
+          <h3>Юнацькі збірні команди</h3>
+          <p>Команди 2014, 2013, 2012, 2011 та 2010 р.н. Системна підготовка та участь у змаганнях відповідно до вікової категорії.</p>
         </article>
         <article class="information-card information-card--cheerleading">
           <span class="card-number">03</span>
-          <h3>Дівоча команда ЖФК (WU10–WU15)</h3>
-          <p>Окремі дівочі команди 2011–2015 р.н. з власним переліком підтверджених змагань і подій.</p>
+          <h3>Дівочі команди МДЮСШ</h3>
+          <p>Дві вікові команди: 2012 р.н. та 2014 р.н. У дівочому відділенні тренуються вихованки 2012–2015 р.н.</p>
         </article>
         <article class="information-card information-card--tennis">
           <span class="card-number">04</span>
-          <h3>Футбол U-19</h3>
-          <p>Група футболістів 2008–2009 р.н. та суміжних років. Підготовка до дорослого футболу.</p>
+          <h3>Старша збірна команда</h3>
+          <p>Старша збірна команда 2008–2009 р.н. Завершальний етап підготовки та перехід до дорослого футболу.</p>
         </article>
       </div>
     </div>
@@ -412,7 +408,6 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
           <h3>Засновник та реквізити</h3>
           <p><strong>Засновник:</strong> Дніпровська міська рада.</p>
           <p><strong>Статус:</strong> Комунальний позашкільний навчальний заклад.</p>
-          <p><strong>Код ЄДРПОУ:</strong> [Код ЄДРПОУ]</p>
         </article>
 
         <article class="information-card information-card--cheerleading">
