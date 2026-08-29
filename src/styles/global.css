@@ -1469,6 +1469,13 @@ main {
   letter-spacing: -0.02em;
 }
 
+.coaching-group-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .coaching-group-badge {
   display: inline-flex;
   align-items: center;
@@ -1487,6 +1494,38 @@ main {
   font-size: 0.95rem;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.coaching-subgroups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.coaching-subgroup-section {
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--line);
+}
+
+.coaching-subgroup-section:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.coaching-subgroup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.coaching-subgroup-title {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 800;
+  color: var(--green-950);
 }
 
 .coaching-group-empty {
@@ -1510,10 +1549,11 @@ main {
   line-height: 1.5;
 }
 
-/* Coach Grid: 4 on desktop, 3 on laptop, 2 on tablet, 1 on mobile */
+/* Coach Grid: 3 on desktop, 2 on tablet, 1 on mobile */
 .coach-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 62rem;
   gap: 1.5rem;
 }
 
@@ -1697,12 +1737,6 @@ main {
 }
 
 /* Responsive grid adjustments */
-@media (max-width: 70rem) {
-  .coach-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 50rem) {
   .coach-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

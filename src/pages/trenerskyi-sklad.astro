@@ -16,19 +16,16 @@ const publicCheerCoaches = getPublicCoaches('cheerleading');
   description="Тренери та фахівці МДЮСШ Дніпро, які забезпечують навчально-тренувальний процес у спортивних напрямах і вікових групах закладу."
 >
   <header class="page-intro coach-page-hero">
-    <p class="eyebrow">Команда МДЮСШ</p>
+    <p class="eyebrow">Команда фахівців</p>
     <h1>Тренерський склад</h1>
     <p class="page-lead">
-      Тренери та фахівці МДЮСШ Дніпро, які забезпечують навчально-тренувальний процес у спортивних напрямах і вікових групах закладу.
-    </p>
-    <p class="coach-service-note">
-      Інформація та склад команд оновлюються відповідно до поточного спортивного сезону.
+      Тренери-викладачі та профільні фахівці МДЮСШ Дніпро, які забезпечують навчально-тренувальний процес за спортивними напрямами закладу.
     </p>
 
     <nav class="sports-anchor-nav coach-anchor-nav" aria-label="Навігація за спортивними напрямами">
       <a href="#football">Футбол</a>
       <a href="#table-tennis">Настільний теніс</a>
-      <a href="#cheerleading">Черлідинг</a>
+      <a href="#cheerleading">Черліденг</a>
     </nav>
   </header>
 
@@ -36,9 +33,9 @@ const publicCheerCoaches = getPublicCoaches('cheerleading');
   <section id="football" class="section section--paper coaching-section" aria-labelledby="football-staff-title">
     <div class="container">
       <div class="section-heading coach-section-heading">
-        <p class="eyebrow">Футбол</p>
-        <h2 id="football-staff-title">Тренерські штаби команд</h2>
-        <div class="coaching-direction-marker">
+        <p class="eyebrow">Спортивний напрям</p>
+        <h2 id="football-staff-title">Футбол</h2>
+        <div class="sr-only">
           <h3>Футбол</h3>
         </div>
         <p class="section-lead">
@@ -46,56 +43,54 @@ const publicCheerCoaches = getPublicCoaches('cheerleading');
         </p>
       </div>
 
-      <aside class="coach-status-banner" aria-label="Статус оновлення даних">
-        <div class="coach-status-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="16" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-          </svg>
-        </div>
-        <div class="coach-status-content">
-          <p class="coach-status-title">Каталог тренерського складу наповнюється перевіреними матеріалами</p>
-          <p class="coach-status-desc">
-            Офіційні портретні фотографії та персональні картки фахівців публікуються відповідно до погодженого розкладу поточного сезону.
-          </p>
-        </div>
-      </aside>
-
       <div class="coaching-staff-groups">
-        {footballStaffGroups.map((group) => {
-          const groupCoaches = getPublicCoaches('football', group.id);
-          return (
-            <article class="coaching-group-block" aria-labelledby={`group-${group.id}`}>
-              <header class="coaching-group-header">
-                <div>
-                  <span class="direction-role">{group.stageName}</span>
-                  <h4 id={`group-${group.id}`} class="coaching-group-title">{group.teamName}</h4>
-                </div>
+        {footballStaffGroups.map((group) => (
+          <article class="coaching-group-block" aria-labelledby={`group-${group.id}`}>
+            <header class="coaching-group-header">
+              <div>
+                <h4 id={`group-${group.id}`} class="coaching-group-title">{group.teamName}</h4>
+              </div>
+              <div class="coaching-group-badges">
                 {group.birthYear && (
                   <span class="coaching-group-badge">{group.birthYear}</span>
                 )}
-              </header>
+              </div>
+            </header>
 
-              {group.description && (
-                <p class="coaching-group-desc">{group.description}</p>
-              )}
+            {group.description && (
+              <p class="coaching-group-desc">{group.description}</p>
+            )}
 
-              {groupCoaches.length > 0 ? (
-                <div class="coach-grid">
-                  {groupCoaches.map((coach) => (
-                    <CoachCard coach={coach} />
-                  ))}
-                </div>
-              ) : (
-                <div class="coaching-group-empty">
-                  <p class="coaching-group-empty-title">Тренерський склад групи готується до публікації.</p>
-                  <p class="coaching-group-empty-desc">Персональні картки фахівців будуть оприлюднені після звірки актуального складу.</p>
-                </div>
-              )}
-            </article>
-          );
-        })}
+            {group.subgroups && group.subgroups.length > 0 ? (
+              <div class="coaching-subgroups-container">
+                {group.subgroups.map((sub) => (
+                  <div class="coaching-subgroup-section">
+                    <header class="coaching-subgroup-header">
+                      <h5 class="coaching-subgroup-title">{sub.teamName}</h5>
+                      <span class="coaching-group-badge">{sub.birthYear}</span>
+                    </header>
+                    <div class="coach-grid">
+                      {sub.coaches.map((coach) => (
+                        <CoachCard coach={coach} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : group.coaches.length > 0 ? (
+              <div class="coach-grid">
+                {group.coaches.map((coach) => (
+                  <CoachCard coach={coach} />
+                ))}
+              </div>
+            ) : (
+              <div class="coaching-group-empty">
+                <p class="coaching-group-empty-title">Тренерський склад групи готується до публікації.</p>
+                <p class="coaching-group-empty-desc">Персональні картки фахівців будуть оприлюднені після звірки актуального складу.</p>
+              </div>
+            )}
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -104,9 +99,9 @@ const publicCheerCoaches = getPublicCoaches('cheerleading');
   <section id="table-tennis" class="section section--tint coaching-section" aria-labelledby="tennis-staff-title">
     <div class="container">
       <div class="section-heading coach-section-heading">
-        <p class="eyebrow">Настільний теніс</p>
+        <p class="eyebrow">Спортивний напрям</p>
         <h2 id="tennis-staff-title">Відділення настільного тенісу</h2>
-        <div class="coaching-direction-marker">
+        <div class="sr-only">
           <h3>Настільний теніс</h3>
         </div>
       </div>
@@ -134,13 +129,13 @@ const publicCheerCoaches = getPublicCoaches('cheerleading');
     </div>
   </section>
 
-  <!-- Секція 3: Черлідинг -->
+  <!-- Секція 3: Черліденг -->
   <section id="cheerleading" class="section section--paper coaching-section" aria-labelledby="cheer-staff-title">
     <div class="container">
       <div class="section-heading coach-section-heading">
-        <p class="eyebrow">Черлідинг</p>
-        <h2 id="cheer-staff-title">Відділення черлідингу</h2>
-        <div class="coaching-direction-marker">
+        <p class="eyebrow">Спортивний напрям</p>
+        <h2 id="cheer-staff-title">Відділення черліденгу</h2>
+        <div class="sr-only">
           <h3>Черлідинг</h3>
         </div>
       </div>
@@ -156,11 +151,11 @@ const publicCheerCoaches = getPublicCoaches('cheerleading');
           <div class="coaching-pending-badge">Підготовка розділу</div>
           <h4>Інформація про тренерський склад готується до публікації</h4>
           <p>
-            Відомості про тренерський склад відділення черлідингу, вікові групи вихованок та спортивні програми підготовки будуть опубліковані після верифікації адміністрацією закладу.
+            Відомості про тренерський склад відділення черліденгу, вікові групи вихованок та спортивні програми підготовки будуть опубліковані після верифікації адміністрацією закладу.
           </p>
           <div class="actions">
             <a class="button button-outline" href={withBase('/sportyvni-napriamy/#cheerleading')}>
-              Про напрям черлідингу
+              Про напрям черліденгу
             </a>
           </div>
         </article>
