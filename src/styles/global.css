@@ -183,20 +183,20 @@ main {
 
 .brand-name {
   white-space: nowrap;
-  font-size: 0.92rem;
-  font-weight: 850;
-  letter-spacing: 0.035em;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.025em;
   line-height: 1.15;
 }
 
 .brand-subtitle {
-  max-width: 26rem;
+  max-width: 22rem;
   color: #b9cfc6;
-  font-size: 0.66rem;
-  font-weight: 750;
-  letter-spacing: 0.035em;
-  line-height: 1.25;
-  text-transform: uppercase;
+  font-size: 0.56rem;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1.3;
+  text-transform: none;
 }
 
 .nav-shell {
@@ -2641,7 +2641,7 @@ main {
 
   .brand-subtitle {
     display: none;
-  }
+}
 
   .hero-inner {
     height: 100%;
@@ -2688,8 +2688,8 @@ main {
 
 @media (max-width: 24rem) {
   .brand-name {
-    font-size: 0.8rem;
-  }
+    font-size: 0.72rem;
+}
 
   .hero-facts div {
     min-width: 6.2rem;
