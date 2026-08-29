@@ -22,37 +22,34 @@ import { withBase } from '../lib/urls';
     <div class="container">
       <div class="sports-football-layout">
         <div class="sports-football-heading">
-          <p class="direction-role">01 / Основний напрям</p>
           <h2 id="football-title">Футбол</h2>
-          <p>Основний спортивний напрям МДЮСШ Дніпро, що охоплює послідовну підготовку юнацьких команд та розвиток жіночого футболу.</p>
+          <p>Спортивний напрям МДЮСШ Дніпро, що охоплює послідовну підготовку юнацьких команд та розвиток жіночого футболу. Початковий етап підготовки вихованців 6–9 років буде представлений у розділі філій МДЮСШ.</p>
           <a class="button button-outline" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад</a>
         </div>
         <img class="sports-football-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
         <div class="sports-football-paths">
           <article class="sports-football-path">
-            <p class="direction-role">01 / Початковий етап</p>
-            <h3>Початковий етап</h3>
+            <p class="direction-role">від 10 до 13 років</p>
+            <h3>Базова підготовка</h3>
             <dl class="sports-football-stage-facts">
-              <div><dt>Підтверджені групи</dt><dd>2018 р. н.; 2017 р. н.; 2016 р. н.</dd></div>
+              <div><dt>Статус</dt><dd>U10–U13 — навчальні групи</dd></div>
+              <div><dt>Групи</dt><dd>U10 (2017 р.н.), U11 (2016 р.н.), U12 (2015 р.н.), U13 (2014 р.н.)</dd></div>
             </dl>
-            <p>Початковий етап футбольного виховання охоплює молодші вікові групи та формує базові технічні навички, координацію, культуру тренувального процесу і командну взаємодію.</p>
+            <p>Продовжується підготовка вихованців, які завершили навчання у старшій групі початкової підготовки. Також здійснюється додатковий набір до груп відповідно до встановлених контрольних нормативів. Поступово збільшуються тренувальні та змагальні навантаження, формуються футбольні команди для участі у місцевих і регіональних змаганнях та турнірах.</p>
           </article>
           <article class="sports-football-path">
-            <p class="direction-role">02 / Етап розвитку</p>
-            <h3>Етап розвитку</h3>
+            <p class="direction-role">від 14 до 17 років</p>
+            <h3>Спеціалізована підготовка</h3>
             <dl class="sports-football-stage-facts">
-              <div><dt>Підтверджені групи</dt><dd>2015 р. н.; 2014 р. н.; 2013 р. н.; 2012 р. н.; 2011 р. н.; 2010 р. н.</dd></div>
+              <div><dt>Статус</dt><dd>U14–U17 — футбольні команди / навчальні групи</dd></div>
+              <div><dt>Групи</dt><dd>U14 (2013 р.н.), U15 (2012 р.н.), U16 (2011 р.н.), U17 (2010 р.н.)</dd></div>
             </dl>
-            <p>Основний етап послідовного розвитку футболіста — технічна, тактична, фізична та командна підготовка, регулярна змагальна практика і підготовка до старших вікових груп.</p>
+            <p>Продовжується навчально-тренувальний процес вихованців, які пройшли підготовку в групах базової підготовки. Також здійснюється додатковий набір відповідно до встановлених контрольних нормативів. Збільшується обсяг тренувальних і змагальних навантажень, удосконалюються індивідуальні технічні й тактичні дії футболістів. Команди беруть участь у місцевих, регіональних та всеукраїнських змаганнях.</p>
           </article>
-          <article class="sports-football-path">
-            <p class="direction-role">03 / Старший етап</p>
-            <h3>Старший етап</h3>
+          <article class="sports-football-path sports-football-path--u19">
+            <p class="direction-role">2008–2009 р.н.</p>
+            <h3>ЗБІРНА U19</h3>
             <div class="sports-football-senior-stages">
-              <section class="sports-football-senior-stage">
-                <h4>2010 р. н.</h4>
-                <p>Початок старшого етапу футбольної підготовки. На цьому рівні вихованці готуються до переходу до старшої збірної 2008–2009 р. н., поглиблюють тактичну підготовку, фізичну готовність, ігрову дисципліну та відповідальність у командному процесі.</p>
-              </section>
               <section class="sports-football-senior-stage sports-football-senior-stage--u19">
                 <h4>2008–2009 р. н.</h4>
                 <p>Завершальний етап юнацької підготовки в системі МДЮСШ. Гравці готуються до переходу до дорослого футболу або до подальшого професійного розвитку у футбольній сфері.</p>
@@ -81,17 +78,17 @@ import { withBase } from '../lib/urls';
           </article>
         </div>
         <article class="sports-football-path sports-football-path--women">
-          <p class="direction-role">04 / Частина футбольного напряму</p>
+          <p class="direction-role">Частина футбольного напряму</p>
           <h3>Жіночий футбол</h3>
           <p>МДЮСШ розвиває окрему систему футбольного виховання дівчат із власними навчально-тренувальними групами та віковими етапами.</p>
           <div class="sports-womens-groups">
             <article class="sports-womens-group">
-              <h4>2012 р. н.</h4>
+              <h4>WFU-15 (2012 р. н.)</h4>
               <p>Навчально-тренувальна група жіночого футболу 2012 р. н.</p>
               <a class="text-link" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад →</a>
             </article>
             <article class="sports-womens-group">
-              <h4>2014 р. н.</h4>
+              <h4>WFU-12 (2014 р. н.)</h4>
               <p>Навчально-тренувальна група жіночого футболу 2014 р. н.</p>
               <a class="text-link" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад →</a>
             </article>
@@ -101,17 +98,15 @@ import { withBase } from '../lib/urls';
     </div>
   </section>
 
-  <section class="section section--tint sports-secondary-section" aria-label="Інші спортивні напрями">
+  <section class="section section--tint sports-secondary-section" aria-label="Спортивні напрями">
     <div class="container sports-secondary-grid">
       <article id="table-tennis" class="sports-secondary-card sports-secondary-card--dark" aria-labelledby="table-tennis-title">
         <img class="sports-secondary-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
-        <p class="direction-role">02 / Другий напрям</p>
         <h2 id="table-tennis-title">Настільний теніс</h2>
         <p>Спортивна підготовка, розвиток техніки, координації та змагальної практики вихованців.</p>
       </article>
       <article id="cheerleading" class="sports-secondary-card sports-secondary-card--warm" aria-labelledby="cheerleading-title">
         <img class="sports-secondary-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
-        <p class="direction-role">03 / Третій напрям</p>
         <h2 id="cheerleading-title">Черліденг</h2>
         <p>Самостійний спортивний напрям МДЮСШ та організована підтримка футбольних команд під час домашніх змагань.</p>
       </article>
@@ -125,10 +120,10 @@ import { withBase } from '../lib/urls';
         <h2 id="preparation-title">Як побудована спортивна підготовка</h2>
       </div>
       <ol class="sports-preparation-steps">
-        <li><article><span class="card-number">01</span><h3>Вибір спортивного напряму</h3></article></li>
-        <li><article><span class="card-number">02</span><h3>Визначення відповідної групи</h3></article></li>
-        <li><article><span class="card-number">03</span><h3>Систематичний тренувальний процес</h3></article></li>
-        <li><article><span class="card-number">04</span><h3>Участь у змаганнях і спортивних заходах</h3></article></li>
+        <li><article><h3>Вибір спортивного напряму</h3></article></li>
+        <li><article><h3>Визначення відповідної групи</h3></article></li>
+        <li><article><h3>Систематичний тренувальний процес</h3></article></li>
+        <li><article><h3>Участь у змаганнях і спортивних заходах</h3></article></li>
       </ol>
     </div>
   </section>

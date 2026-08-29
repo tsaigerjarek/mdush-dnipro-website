@@ -22,7 +22,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
 >
   <h1 class="sr-only">МДЮСШ Дніпро — офіційний сайт</h1>
 
-  {/* 1. WeeklyHighlights: Події та анонси МДЮСШ (Головний слайдер) */}
+  {/* 1. WeeklyHighlights: Новини закладу (Головний слайдер) */}
   <WeeklyHighlights items={highlightItems} />
 
   {/* 2. RepresentativeTeams: Збірні команди МДЮСШ за роками народження */}
@@ -37,26 +37,23 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <div class="section-heading home-section-heading">
         <p class="eyebrow">Спортивне виховання • Сезон 2026/2027</p>
         <h2 id="sports-title">Спортивні відділення закладу</h2>
-        <p>Міська дитячо-юнацька спортивна школа з ігрових видів спорту Дніпровської міської ради здійснює підготовку за 3 основними напрямами.</p>
+        <p>Міська дитячо-юнацька спортивна школа з ігрових видів спорту Дніпровської міської ради здійснює підготовку за 3 спортивними напрямами.</p>
       </div>
 
       <div class="information-grid">
         <article class="information-card">
-          <span class="card-number">01</span>
           <h3>Футбол</h3>
-          <p>Багатоступенева система футбольної підготовки: молодші вікові групи (2015–2018 р.н.), юнацькі збірні команди (2010–2014 р.н.), старша збірна (2008–2009 р.н.) та дівоче відділення ЖФК (2012–2015 р.н.).</p>
+          <p>Багатоступенева система футбольної підготовки: базова підготовка (U10–U13, 2014–2017 р.н.), спеціалізована підготовка (U14–U17, 2010–2013 р.н.), ЗБІРНА U19 (2008–2009 р.н.) та відділення дівочого футболу (2012–2015 р.н.). Початковий етап підготовки вихованців 6–9 років буде представлений у розділі філій МДЮСШ.</p>
           <a class="text-link" href={withBase('/sportyvni-napriamy/#football')}>Докладніше про футбол →</a>
         </article>
 
         <article class="information-card information-card--tennis">
-          <span class="card-number">02</span>
           <h3>Настільний теніс</h3>
           <p>Спортивна підготовка юнаків та дівчат різного віку. Розвиток координації, тактичного мислення та підготовка до виступів у рейтингових чемпіонатах.</p>
           <a class="text-link" href={withBase('/sportyvni-napriamy/#table-tennis')}>Докладніше про настільний теніс →</a>
         </article>
 
         <article class="information-card information-card--cheerleading">
-          <span class="card-number">03</span>
           <h3>Черліденг</h3>
           <p>Акробатика, грація, хореографія та командна синхронність. Підготовка спортсменок у 4 вікових категоріях: Minis, Kids, Juniors, Adults.</p>
           <a class="text-link" href={withBase('/sportyvni-napriamy/#cheerleading')}>Докладніше про черліденг →</a>
@@ -162,19 +159,16 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
 
       <div class="parents-steps-grid">
         <article class="card parents-step-card">
-          <span class="card-number">01</span>
           <h3>Вибір напряму та вікової групи</h3>
           <p>Ознайомтеся з підтвердженими спортивними відділеннями (Футбол, Настільний теніс, Черліденг) та уточніть наявність місць.</p>
         </article>
 
         <article class="card parents-step-card">
-          <span class="card-number">02</span>
           <h3>Пакет необхідних документів</h3>
           <p>Заява батьків/опікунів, медична довідка про допуск до занять спортом, копія свідоцтва про народження та 2 фотокартки 3×4.</p>
         </article>
 
         <article class="card parents-step-card">
-          <span class="card-number">03</span>
           <h3>Звернення до адміністрації</h3>
           <p>Зверніться до адміністрації закладу для уточнення умов вступу, наявності місць та подальшого оформлення документів.</p>
         </article>
@@ -197,25 +191,21 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <ol class="home-admission-steps">
         <li>
           <article class="card home-admission-card">
-            <span class="card-number">01</span>
             <h3>Обрати спортивний напрям</h3>
           </article>
         </li>
         <li>
           <article class="card home-admission-card">
-            <span class="card-number">02</span>
             <h3>Перевірити вікову групу та умови набору</h3>
           </article>
         </li>
         <li>
           <article class="card home-admission-card">
-            <span class="card-number">03</span>
             <h3>Підготувати необхідні документи</h3>
           </article>
         </li>
         <li>
           <article class="card home-admission-card">
-            <span class="card-number">04</span>
             <h3>Контакт з адміністрацією</h3>
           </article>
         </li>
@@ -234,24 +224,20 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <div class="information-grid">
         <article class="information-card">
-          <span class="card-number">01</span>
-          <h3>Молодші вікові групи футболу</h3>
-          <p>Вікові групи 2018, 2017, 2016 та 2015 р.н. Початковий етап футбольної підготовки у філіях закладу.</p>
+          <h3>Базова підготовка (U10–U13)</h3>
+          <p>Навчальні групи 2017, 2016, 2015 та 2014 р.н. Поступове збільшення навантажень та формування команд для участі у змаганнях.</p>
         </article>
         <article class="information-card">
-          <span class="card-number">02</span>
-          <h3>Юнацькі збірні команди</h3>
-          <p>Команди 2014, 2013, 2012, 2011 та 2010 р.н. Системна підготовка та участь у змаганнях відповідно до вікової категорії.</p>
+          <h3>Спеціалізована підготовка (U14–U17)</h3>
+          <p>Футбольні команди та навчальні групи 2013, 2012, 2011 та 2010 р.н. Удосконалення тактико-технічних дій та змагальний досвід.</p>
         </article>
         <article class="information-card information-card--cheerleading">
-          <span class="card-number">03</span>
-          <h3>Дівочі команди МДЮСШ</h3>
-          <p>Дві вікові команди: 2012 р.н. та 2014 р.н. У дівочому відділенні тренуються вихованки 2012–2015 р.н.</p>
+          <h3>Дівочий футбол (WFU-15 / WFU-12)</h3>
+          <p>Дівочі команди WFU-15 (2012 р.н.) та WFU-12 (2014 р.н.). Системний тренувальний процес та змагальна практика.</p>
         </article>
         <article class="information-card information-card--tennis">
-          <span class="card-number">04</span>
-          <h3>Старша збірна команда</h3>
-          <p>Старша збірна команда 2008–2009 р.н. Завершальний етап підготовки та перехід до дорослого футболу.</p>
+          <h3>ЗБІРНА U19</h3>
+          <p>Збірна U19 2008–2009 р.н. Завершальний етап підготовки та перехід до дорослого футболу.</p>
         </article>
       </div>
     </div>
@@ -265,12 +251,10 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <div class="home-events-grid">
         <article class="information-card">
-          <span class="card-number">01</span>
           <h3>Спортивно-виховна підготовка</h3>
           <p>Календар із датою, часом, локацією та призначенням навчально-тренувальної і виховної роботи. Матеріали додаються лише після підтвердження відповідальним працівником.</p>
         </article>
         <article class="information-card information-card--tennis">
-          <span class="card-number">02</span>
           <h3>Змагання</h3>
           <p>Перелік змагань, у яких беруть участь команди закладу (Футбол, Настільний теніс, Черліденг).</p>
           <a class="text-link" href={withBase('/zmahannia/')}>Перейти до змагань →</a>
@@ -288,17 +272,14 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <div class="information-grid">
         <article class="information-card">
-          <span class="card-number">01</span>
           <h3>Футбол</h3>
           <p>Тренерський склад (Фетісов, Сосна, Кравченко, Федотов, Іванющенко, Даренко, Шевченко П., Шевченко К., Димарчук, Лусь, Волівач, Нікітенков, Коряковцев, Шарко, Кушнір; воротарі: Кулько, Бобровський, Гончаров, Баркар).</p>
         </article>
         <article class="information-card information-card--tennis">
-          <span class="card-number">02</span>
           <h3>Настільний теніс</h3>
           <p>Тренери відділення: <strong>Кудзієв Р. Г., Кудзієва О. Ю.</strong></p>
         </article>
         <article class="information-card information-card--cheerleading">
-          <span class="card-number">03</span>
           <h3>Черліденг</h3>
           <p>Тренери вікових груп Minis, Kids, Juniors, Adults.</p>
         </article>
@@ -317,22 +298,18 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <div class="home-media-grid" aria-label="Формати медіа">
         <article class="information-card">
-          <span class="card-number">01</span>
           <h3>Фото</h3>
           <p>Фоторепортажі з матчів, тренувань та спортивних подій.</p>
         </article>
         <article class="information-card information-card--tennis">
-          <span class="card-number">02</span>
           <h3>Відео</h3>
           <p>Хайлайти, огляди ключових моментів і голів матчів.</p>
         </article>
         <article class="information-card information-card--cheerleading">
-          <span class="card-number">03</span>
           <h3>Аналітика матчів</h3>
           <p>Огляди ігрових подій та підтверджені підсумки змагань.</p>
         </article>
         <article class="information-card">
-          <span class="card-number">04</span>
           <h3>Анонси матчів</h3>
           <p>Підтверджені дати, місце проведення, суперник і статус трансляції.</p>
         </article>
@@ -368,17 +345,14 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <div class="information-grid">
         <article class="information-card">
-          <span class="card-number">01</span>
           <h3>Установчі документи</h3>
           <p>Статут, рішення засновника, реєстраційні відомості та документи про статус закладу.</p>
         </article>
         <article class="information-card information-card--cheerleading">
-          <span class="card-number">02</span>
           <h3>Освітня і спортивна діяльність</h3>
           <p>Публічні програми, правила організації роботи, спортивні напрями та документи про діяльність закладу.</p>
         </article>
         <article class="information-card information-card--tennis">
-          <span class="card-number">03</span>
           <h3>Організаційні документи</h3>
           <p>Публічні накази, положення, правила вступу, графіки та інші матеріали без персональних даних.</p>
         </article>
@@ -401,14 +375,12 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
 
       <div class="official-info-grid">
         <article class="information-card">
-          <span class="card-number">01</span>
           <h3>Засновник та реквізити</h3>
           <p><strong>Засновник:</strong> Дніпровська міська рада.</p>
           <p><strong>Статус:</strong> Комунальний позашкільний навчальний заклад.</p>
         </article>
 
         <article class="information-card information-card--cheerleading">
-          <span class="card-number">02</span>
           <h3>Навчально-тренувальні бази</h3>
           <p><strong>Стадіон «Молодіжний парк» (КП МТО):</strong> вул. Набережна Заводська, 53</p>
           <p><strong>Стадіон «Олімпійські резерви»:</strong> пр. Богдана Хмельницького, 29а</p>
@@ -416,7 +388,6 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
         </article>
 
         <article class="information-card information-card--tennis">
-          <span class="card-number">03</span>
           <h3>Документи та прозорість</h3>
           <p>Офіційні програми, статутні документи та публічна звітність відкриті відповідно до вимог прозорості.</p>
           <ul class="official-links-list">
@@ -427,7 +398,6 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
         </article>
 
         <article class="information-card">
-          <span class="card-number">04</span>
           <h3>Офіційні контакти</h3>
           <p><strong>Телефон:</strong> <a class="contact-link" href="tel:+380931131139">+380 93 113 1139</a></p>
           <p><strong>E-mail:</strong> <a class="contact-link" href="mailto:mdussdnepr@gmail.com">mdussdnepr@gmail.com</a></p>
@@ -446,18 +416,15 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <div class="information-grid">
         <article class="information-card">
-          <span class="card-number">01</span>
           <h3>Телефон і електронна пошта</h3>
           <p><a class="contact-link" href="tel:+380931131139">+380 93 113 1139</a></p>
           <p><a class="contact-link" href="mailto:mdussdnepr@gmail.com">mdussdnepr@gmail.com</a></p>
         </article>
         <article class="information-card information-card--cheerleading">
-          <span class="card-number">02</span>
           <h3>Адреса</h3>
           <address>Україна, 49000, Дніпропетровська область, місто Дніпро, вулиця Набережна Перемоги, будинок 13</address>
         </article>
         <article class="information-card information-card--tennis">
-          <span class="card-number">03</span>
           <h3>Години роботи</h3>
           <dl class="hours-list">
             <div><dt>Понеділок–п’ятниця</dt><dd>09:00–17:00</dd></div>

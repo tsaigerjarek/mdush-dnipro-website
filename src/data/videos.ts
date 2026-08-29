@@ -5,7 +5,7 @@ export interface VideoItem {
   description?: string;
   publishedDate: string;
   duration?: string;
-  teamTag: string; // "Старша збірна 2008–2009 р.н." | "Випускна збірна 2010 р.н." | "Дівоча команда ЖФК"
+  teamTag: string; // "Збірна U19 (2008–2009 р.н.)" | "Випускна збірна 2010 р.н." | "Дівоча команда ЖФК"
   customThumbnail?: string;
 }
 

@@ -3,44 +3,25 @@ import { withBase } from '../../lib/urls';
 
 const pathwaySteps = [
   {
-    step: '01',
-    title: 'Філії МДЮСШ',
-    subtitle: 'Початковий етап',
-    description: 'Початковий етап спортивної підготовки у районах міста Дніпро. Загальний фізичний розвиток, базова техніка володіння м’ячем та прищеплення любові до спорту.',
-    actionLabel: 'Умови вступу',
-    actionHref: '/yak-vstupyty/',
-  },
-  {
-    step: '02',
-    title: 'Ігрова практика',
-    subtitle: 'Формати 4+1, 6+1, 8+1',
-    description: 'Поетапний перехід від малих ігрових майданчиків до стандартного поля. Навчання командній взаємодії, футбольним правилам та ігровому мисленню.',
+    title: 'Базова підготовка',
+    subtitle: 'U10–U13 (від 10 до 13 років)',
+    description: 'U10–U13 — навчальні групи (2014–2017 р.н.). Поступове збільшення навантажень, формування команд для участі у місцевих і регіональних турнірах.',
     actionLabel: 'Спортивні напрями',
     actionHref: '/sportyvni-napriamy/#football',
   },
   {
-    step: '03',
-    title: 'Розвиток і відбір',
-    subtitle: 'Селекційний процес',
-    description: 'Системний моніторинг спортивного прогресу вихованців тренерським складом. Формування юнацьких та дівочих збірних складів закладу.',
-    actionLabel: 'Тренерський склад',
-    actionHref: '/trenerskyi-sklad/',
-  },
-  {
-    step: '04',
-    title: 'Збірні команди',
-    subtitle: 'Збірні МДЮСШ Дніпро',
-    description: 'Участь в офіційних міських, обласних та всеукраїнських турнірах. Поглиблена тактична підготовка та змагальний досвід.',
-    actionLabel: 'Календар і змагання',
+    title: 'Спеціалізована підготовка',
+    subtitle: 'U14–U17 (від 14 до 17 років)',
+    description: 'U14–U17 — футбольні команди / навчальні групи (2010–2013 р.н.). Удосконалення техніко-тактичних дій та участь у всеукраїнських змаганнях.',
+    actionLabel: 'Змагання',
     actionHref: '/zmahannia/',
   },
   {
-    step: '05',
-    title: 'Старший етап',
-    subtitle: 'Випускні склади',
-    description: 'Фінішний етап підготовки у спортивній школі. Тактична зрілість, спортивна дисципліна та перехід у дорослий футбол.',
-    actionLabel: 'Про заклад',
-    actionHref: '/pro-zaklad/',
+    title: 'ЗБІРНА U19',
+    subtitle: '2008–2009 р.н.',
+    description: 'Завершальний етап юнацької підготовки в системі МДЮСШ та перехід вихованців у дорослий аматорський або професійний футбол.',
+    actionLabel: 'Тренерський склад',
+    actionHref: '/trenerskyi-sklad/',
   },
 ];
 ---
@@ -60,12 +41,11 @@ const pathwaySteps = [
         pathwaySteps.map((item, index) => (
           <article class="pathway-card">
             <div class="pathway-card-header">
-              <span class="pathway-step-num">{item.step}</span>
+              <h3 class="pathway-card-title">{item.title}</h3>
               {index < pathwaySteps.length - 1 && (
                 <span class="pathway-connector-arrow" aria-hidden="true">→</span>
               )}
             </div>
-            <h3 class="pathway-card-title">{item.title}</h3>
             <p class="pathway-card-subtitle">{item.subtitle}</p>
             <p class="pathway-card-desc">{item.description}</p>
             <a class="pathway-action-link" href={withBase(item.actionHref)}>
