@@ -78,7 +78,7 @@ export const weeklyItems: WeeklyItem[] = [
     featured: false,
     title: 'Дівоче відділення футболу (2012–2015 р.н.): Тренувальний процес',
     summary: 'Підготовка дівочих команд закладу (2012 р.н. та 2014 р.н.) до участі у профільних дівочих змаганнях.',
-    image: '/media/hero/hero-mdush-home-bg.png',
+    image: '/media/hero/hero-mdush-fallback.jpg',
     imageAlt: 'Дівоче відділення футболу МДЮСШ Дніпро',
     detailsUrl: '/sportyvni-napriamy/#football',
     teamId: 'team-girls-2012',

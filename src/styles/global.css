@@ -163,9 +163,10 @@ main {
 }
 
 .brand-mark {
+  order: -1;
   flex: 0 0 auto;
-  width: 3.25rem;
-  height: 3.65rem;
+  width: 4rem;
+  height: 4rem;
   object-fit: contain;
 }
 
@@ -630,7 +631,7 @@ main {
 
 .home-hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 56rem);
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
@@ -684,6 +685,7 @@ main {
   font-weight: 900;
   line-height: 1.18;
   letter-spacing: -0.025em;
+  max-width: 22ch;
 }
 
 .home-hero-summary {
@@ -729,14 +731,15 @@ main {
   font-size: 0.98rem;
 }
 
-.home-hero-btn--secondary {
+.home-hero .button.home-hero-btn--secondary {
   min-height: 3.1rem;
   padding-inline: 1.3rem;
   border-color: rgb(255 255 255 / 35%);
+  background: transparent;
   color: var(--paper);
 }
 
-.home-hero-btn--secondary:hover {
+.home-hero .button.home-hero-btn--secondary:hover {
   background: rgb(255 255 255 / 12%);
   border-color: var(--paper);
 }

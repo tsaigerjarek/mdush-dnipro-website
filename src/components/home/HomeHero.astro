@@ -1,7 +1,6 @@
 ---
 import type { WeeklyItem } from '../../data/weekly';
 import { withBase } from '../../lib/urls';
-import YouTubeEmbed from './YouTubeEmbed.astro';
 
 interface Props {
   event: WeeklyItem;
@@ -69,31 +68,5 @@ const { event } = Astro.props;
       </div>
     </div>
 
-    <div class="home-hero-media-slot">
-      <div class="home-hero-poster-wrapper">
-        {event.youtubeId ? (
-          <YouTubeEmbed
-            youtubeId={event.youtubeId}
-            title={event.title}
-            poster={event.image}
-            posterAlt={event.imageAlt}
-            aspectRatio="16/9"
-          />
-        ) : (
-          <img
-            class="home-hero-poster"
-            src={withBase(event.image)}
-            alt={event.imageAlt}
-            width="1280"
-            height="720"
-            fetchpriority="high"
-          />
-        )}
-        <div class="home-hero-poster-caption">
-          <span class="poster-tag">Спортивний центр</span>
-          <span class="poster-sub">Офіційні матеріали спортивної школи</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
