@@ -21,61 +21,33 @@ const typeLabels: Record<WeeklyItem['type'], string> = {
   <div class="container">
     <div class="event-slider-header">
       <div class="event-slider-heading-wrap">
-        <p class="eyebrow">Події та анонси МДЮСШ</p>
+        <p class="eyebrow">Події та анонси закладу</p>
         <h2 id="event-slider-heading">Головне цього тижня</h2>
         <p class="event-slider-subtitle">
           Анонси матчів, події закладу, тренування та важливі матеріали МДЮСШ.
         </p>
       </div>
-
-      <div class="event-slider-top-nav">
-        <div class="event-slider-counter" aria-live="polite" aria-atomic="true">
-          <span class="event-slider-current" id="event-slider-current">01</span>
-          <span class="event-slider-separator">/</span>
-          <span class="event-slider-total">{String(items.length).padStart(2, '0')}</span>
-        </div>
-        <div class="event-slider-nav-buttons">
-          <button
-            type="button"
-            class="event-slider-btn event-slider-btn--prev"
-            id="event-slider-prev"
-            aria-label="Попередня подія"
-            disabled
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <button
-            type="button"
-            class="event-slider-btn event-slider-btn--next"
-            id="event-slider-next"
-            aria-label="Наступна подія"
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
     </div>
+  </div>
 
-    <div class="event-slider">
+  <div class="event-slider-viewport-wrap">
+    <div class="event-slider" id="event-slider">
       <div
-        class="event-slider-track"
-        id="event-slider-track"
+        class="event-slider-stage"
+        id="event-slider-stage"
         tabindex="0"
         role="region"
-        aria-label="Слайдер подій та анонсів МДЮСШ"
+        aria-label="Слайдер подій та анонсів закладу"
       >
         {
           items.map((item, index) => (
             <article
-              class="event-slider-slide"
+              class={`event-slider-slide ${index === 0 ? 'is-active' : index === items.length - 1 ? 'is-prev' : index === 1 ? 'is-next' : 'is-hidden'}`}
               data-index={index}
               data-type={item.type}
               aria-roledescription="slide"
               aria-label={`${index + 1} з ${items.length}`}
+              aria-current={index === 0 ? 'true' : undefined}
             >
               <div class="event-slider-media">
                 <img
@@ -131,8 +103,20 @@ const typeLabels: Record<WeeklyItem['type'], string> = {
         }
       </div>
 
-      <div class="event-slider-bottom-bar">
-        <div class="event-slider-indicators" role="tablist" aria-label="Вибір слайда">
+      <nav class="event-slider-nav-bar" aria-label="Керування слайдером подій">
+        <button
+          type="button"
+          class="event-slider-nav-btn event-slider-nav-btn--prev"
+          id="event-slider-prev"
+          aria-label="Попередня подія"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+
+        <div class="event-slider-indicators" role="tablist" aria-label="Вибір події">
           {
             items.map((_, index) => (
               <button
@@ -145,40 +129,59 @@ const typeLabels: Record<WeeklyItem['type'], string> = {
             ))
           }
         </div>
-      </div>
+
+        <button
+          type="button"
+          class="event-slider-nav-btn event-slider-nav-btn--next"
+          id="event-slider-next"
+          aria-label="Наступна подія"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </nav>
     </div>
   </div>
 </section>
 
 <script is:inline>
   (() => {
-    const track = document.getElementById('event-slider-track');
+    const slider = document.getElementById('event-slider');
+    if (!slider) return;
+
+    const stage = document.getElementById('event-slider-stage');
     const prevBtn = document.getElementById('event-slider-prev');
     const nextBtn = document.getElementById('event-slider-next');
-    const currentCounter = document.getElementById('event-slider-current');
-    const dots = Array.from(document.querySelectorAll('.event-slider-dot'));
-
-    if (!track || !prevBtn || !nextBtn) return;
-
-    const slides = Array.from(track.querySelectorAll('.event-slider-slide'));
+    const dots = Array.from(slider.querySelectorAll('.event-slider-dot'));
+    const slides = Array.from(stage.querySelectorAll('.event-slider-slide'));
     const total = slides.length;
-    if (total === 0) return;
+
+    if (!stage || !prevBtn || !nextBtn || total === 0) return;
 
     let currentIndex = 0;
 
-    function isReducedMotion() {
-      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    }
+    function renderSlots(index) {
+      currentIndex = (index + total) % total;
+      const prevIndex = (currentIndex - 1 + total) % total;
+      const nextIndex = (currentIndex + 1) % total;
 
-    function updateUi(index) {
-      currentIndex = Math.max(0, Math.min(index, total - 1));
+      slides.forEach((slide, i) => {
+        slide.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
+        slide.removeAttribute('aria-current');
 
-      if (currentCounter) {
-        currentCounter.textContent = String(currentIndex + 1).padStart(2, '0');
-      }
-
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex === total - 1;
+        if (i === currentIndex) {
+          slide.classList.add('is-active');
+          slide.setAttribute('aria-current', 'true');
+        } else if (i === prevIndex) {
+          slide.classList.add('is-prev');
+        } else if (i === nextIndex) {
+          slide.classList.add('is-next');
+        } else {
+          slide.classList.add('is-hidden');
+        }
+      });
 
       dots.forEach((dot, i) => {
         if (i === currentIndex) {
@@ -191,63 +194,77 @@ const typeLabels: Record<WeeklyItem['type'], string> = {
       });
     }
 
-    function scrollToSlide(index) {
-      const targetIndex = Math.max(0, Math.min(index, total - 1));
-      const targetSlide = slides[targetIndex];
-      if (!targetSlide) return;
-
-      const behavior = isReducedMotion() ? 'auto' : 'smooth';
-      track.scrollTo({
-        left: targetSlide.offsetLeft,
-        behavior,
-      });
-
-      updateUi(targetIndex);
+    function goTo(index) {
+      renderSlots(index);
     }
 
     prevBtn.addEventListener('click', () => {
-      scrollToSlide(currentIndex - 1);
+      goTo(currentIndex - 1);
     });
 
     nextBtn.addEventListener('click', () => {
-      scrollToSlide(currentIndex + 1);
+      goTo(currentIndex + 1);
     });
 
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        scrollToSlide(index);
+        goTo(index);
       });
     });
 
-    // Keyboard navigation
-    track.addEventListener('keydown', (e) => {
+    slides.forEach((slide) => {
+      slide.addEventListener('click', (e) => {
+        if (slide.classList.contains('is-prev')) {
+          e.preventDefault();
+          goTo(currentIndex - 1);
+        } else if (slide.classList.contains('is-next')) {
+          e.preventDefault();
+          goTo(currentIndex + 1);
+        }
+      });
+    });
+
+    stage.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        scrollToSlide(currentIndex - 1);
+        goTo(currentIndex - 1);
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
-        scrollToSlide(currentIndex + 1);
+        goTo(currentIndex + 1);
       }
     });
 
-    // Sync state on user touch / scroll
-    let scrollTimeout;
-    track.addEventListener(
-      'scroll',
-      () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          const scrollLeft = track.scrollLeft;
-          const trackWidth = track.clientWidth || 1;
-          const calculatedIndex = Math.round(scrollLeft / trackWidth);
-          if (calculatedIndex !== currentIndex && calculatedIndex >= 0 && calculatedIndex < total) {
-            updateUi(calculatedIndex);
-          }
-        }, 60);
+    let touchStartX = 0;
+    let touchStartY = 0;
+    stage.addEventListener(
+      'touchstart',
+      (e) => {
+        if (e.touches && e.touches[0]) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
       },
       { passive: true },
     );
 
-    updateUi(0);
+    stage.addEventListener(
+      'touchend',
+      (e) => {
+        if (e.changedTouches && e.changedTouches[0]) {
+          const deltaX = e.changedTouches[0].clientX - touchStartX;
+          const deltaY = e.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (deltaX < 0) {
+              goTo(currentIndex + 1);
+            } else {
+              goTo(currentIndex - 1);
+            }
+          }
+        }
+      },
+      { passive: true },
+    );
+
+    renderSlots(0);
   })();
 </script>

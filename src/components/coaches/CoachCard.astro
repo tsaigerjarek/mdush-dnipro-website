@@ -1,0 +1,66 @@
+---
+import type { Coach } from '../../data/coaches';
+import { withBase } from '../../lib/urls';
+
+interface Props {
+  coach: Coach;
+}
+
+const { coach } = Astro.props;
+
+const name = coach.name;
+const role = coach.role;
+const group = coach.group;
+const photo = coach.photo;
+const photoAlt = coach.photoAlt || `Фото тренера: ${coach.name}`;
+const detailsUrl = coach.detailsUrl;
+---
+
+<article class="coach-card">
+  <div class="coach-card-media">
+    {
+      photo ? (
+        <img
+          class="coach-card-photo"
+          src={withBase(photo)}
+          alt={photoAlt}
+          width="400"
+          height="500"
+          loading="lazy"
+        />
+      ) : (
+        <div class="coach-card-placeholder" aria-hidden="true">
+          <svg
+            class="coach-placeholder-icon"
+            viewBox="0 0 24 24"
+            width="48"
+            height="48"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          <span class="coach-placeholder-text">Фото готується</span>
+        </div>
+      )
+    }
+  </div>
+
+  <div class="coach-card-body">
+    <h4 class="coach-card-name">{name}</h4>
+    <p class="coach-card-role">{role}</p>
+    {group && <p class="coach-card-group">{group}</p>}
+
+    {
+      detailsUrl && (
+        <a class="text-link coach-card-details" href={withBase(detailsUrl)}>
+          Детальніше →
+        </a>
+      )
+    }
+  </div>
+</article>
