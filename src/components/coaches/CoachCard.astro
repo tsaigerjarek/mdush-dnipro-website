@@ -10,10 +10,9 @@ const { coach } = Astro.props;
 
 const name = coach.name;
 const role = coach.role;
-const group = coach.group;
+const team = coach.team;
 const photo = coach.photo;
-const photoAlt = coach.photoAlt || `Фото тренера: ${coach.name}`;
-const detailsUrl = coach.detailsUrl;
+const photoAlt = coach.name ? `Фото тренера: ${coach.name}` : 'Фото тренера';
 ---
 
 <article class="coach-card">
@@ -53,14 +52,6 @@ const detailsUrl = coach.detailsUrl;
   <div class="coach-card-body">
     <h4 class="coach-card-name">{name}</h4>
     <p class="coach-card-role">{role}</p>
-    {group && <p class="coach-card-group">{group}</p>}
-
-    {
-      detailsUrl && (
-        <a class="text-link coach-card-details" href={withBase(detailsUrl)}>
-          Детальніше →
-        </a>
-      )
-    }
+    {team && <p class="coach-card-group">{team}</p>}
   </div>
 </article>
