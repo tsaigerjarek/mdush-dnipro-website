@@ -1,153 +1,253 @@
 ---
 import type { WeeklyItem } from '../../data/weekly';
 import { withBase } from '../../lib/urls';
-import YouTubeEmbed from './YouTubeEmbed.astro';
 
 interface Props {
   items: WeeklyItem[];
 }
 
 const { items } = Astro.props;
+
+const typeLabels: Record<WeeklyItem['type'], string> = {
+  match: 'МАТЧ',
+  announcement: 'АНОНС',
+  result: 'РЕЗУЛЬТАТ',
+  gallery: 'ПОДІЯ',
+  video: 'ВІДЕО',
+};
 ---
 
-<section class="section section--paper weekly-highlights-section" aria-labelledby="weekly-highlights-title">
+<section class="section section--paper weekly-highlights-section event-slider-section" aria-labelledby="event-slider-heading">
   <div class="container">
-    <div class="weekly-header">
-      <div class="weekly-header-copy">
-        <p class="eyebrow">Медіа-центр МДЮСШ</p>
-        <h2 id="weekly-highlights-title">Актуально цього тижня</h2>
-        <p class="weekly-subtitle">
-          Головні спортивні події, відеоогляди матчів, табло результатів та фотозвіти тренувань.
+    <div class="event-slider-header">
+      <div class="event-slider-heading-wrap">
+        <p class="eyebrow">Події та анонси МДЮСШ</p>
+        <h2 id="event-slider-heading">Головне цього тижня</h2>
+        <p class="event-slider-subtitle">
+          Анонси матчів, події закладу, тренування та важливі матеріали МДЮСШ.
         </p>
       </div>
 
-      <div class="weekly-nav-controls" aria-label="Керування каруселлю подій">
-        <button
-          type="button"
-          class="weekly-carousel-btn weekly-btn-prev"
-          id="weekly-prev-btn"
-          aria-label="Попередня подія"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-        <button
-          type="button"
-          class="weekly-carousel-btn weekly-btn-next"
-          id="weekly-next-btn"
-          aria-label="Наступна подія"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
+      <div class="event-slider-top-nav">
+        <div class="event-slider-counter" aria-live="polite" aria-atomic="true">
+          <span class="event-slider-current" id="event-slider-current">01</span>
+          <span class="event-slider-separator">/</span>
+          <span class="event-slider-total">{String(items.length).padStart(2, '0')}</span>
+        </div>
+        <div class="event-slider-nav-buttons">
+          <button
+            type="button"
+            class="event-slider-btn event-slider-btn--prev"
+            id="event-slider-prev"
+            aria-label="Попередня подія"
+            disabled
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="event-slider-btn event-slider-btn--next"
+            id="event-slider-next"
+            aria-label="Наступна подія"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
-    <div
-      class="weekly-carousel-track"
-      id="weekly-track"
-      tabindex="0"
-      role="region"
-      aria-label="Стрічка актуальних подій тижня"
-    >
-      {
-        items.map((item) => (
-          <article class="weekly-card" data-type={item.type}>
-            <div class="weekly-card-media">
-              {item.youtubeId ? (
-                <YouTubeEmbed
-                  youtubeId={item.youtubeId}
-                  title={item.title}
-                  poster={item.image}
-                  posterAlt={item.imageAlt}
-                  aspectRatio="16/9"
+    <div class="event-slider">
+      <div
+        class="event-slider-track"
+        id="event-slider-track"
+        tabindex="0"
+        role="region"
+        aria-label="Слайдер подій та анонсів МДЮСШ"
+      >
+        {
+          items.map((item, index) => (
+            <article
+              class="event-slider-slide"
+              data-index={index}
+              data-type={item.type}
+              aria-roledescription="slide"
+              aria-label={`${index + 1} з ${items.length}`}
+            >
+              <div class="event-slider-media">
+                <img
+                  class="event-slider-img"
+                  src={withBase(item.image)}
+                  alt={item.imageAlt}
+                  width="1600"
+                  height="900"
+                  loading={index === 0 ? 'eager' : 'lazy'}
                 />
-              ) : (
-                <div class="weekly-img-wrap">
-                  <img
-                    class="weekly-img"
-                    src={withBase(item.image)}
-                    alt={item.imageAlt}
-                    width="640"
-                    height="360"
-                    loading="lazy"
-                  />
-                  {item.resultScore && (
-                    <div class="weekly-score-pill">
-                      <span class="score-label">Рахунок</span>
-                      <span class="score-value">{item.resultScore}</span>
+                <div class="event-slider-overlay" aria-hidden="true" />
+              </div>
+
+              <div class="event-slider-content">
+                <div class="event-slider-meta">
+                  <span class={`event-slider-badge event-slider-badge--${item.type}`}>
+                    {typeLabels[item.type] || 'ПОДІЯ'}
+                  </span>
+                  {(item.date || item.time) && (
+                    <div class="event-slider-datetime">
+                      {item.date && <time class="event-slider-date">{item.date}</time>}
+                      {item.date && item.time && <span class="event-slider-dot-separator">•</span>}
+                      {item.time && <span class="event-slider-time">{item.time}</span>}
                     </div>
                   )}
                 </div>
-              )}
-              <span class={`weekly-type-badge weekly-type-badge--${item.type}`}>
-                {item.type === 'video' && 'Відеоогляд'}
-                {item.type === 'result' && 'Результат'}
-                {item.type === 'announcement' && 'Анонс'}
-                {item.type === 'gallery' && 'Фотозвіт'}
-                {item.type === 'match' && 'Матч'}
-              </span>
-            </div>
 
-            <div class="weekly-card-body">
-              {item.date && (
-                <div class="weekly-meta-date">
-                  <time>{item.date}</time>
-                  {item.time && <span> • {item.time}</span>}
-                </div>
-              )}
+                <h3 class="event-slider-title">
+                  {item.detailsUrl ? (
+                    <a class="event-slider-title-link" href={withBase(item.detailsUrl)}>
+                      {item.title}
+                    </a>
+                  ) : (
+                    item.title
+                  )}
+                </h3>
 
-              <h3 class="weekly-card-title">
-                {item.detailsUrl ? (
-                  <a class="weekly-title-link" href={withBase(item.detailsUrl)}>
-                    {item.title}
-                  </a>
-                ) : (
-                  item.title
+                <p class="event-slider-summary">{item.summary}</p>
+
+                {item.detailsUrl && (
+                  <div class="event-slider-actions">
+                    <a class="button button-primary event-slider-cta" href={withBase(item.detailsUrl)}>
+                      <span>Детальніше</span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </a>
+                  </div>
                 )}
-              </h3>
+              </div>
+            </article>
+          ))
+        }
+      </div>
 
-              <p class="weekly-card-summary">{item.summary}</p>
-
-              {item.detailsUrl && (
-                <a class="weekly-action-link" href={withBase(item.detailsUrl)}>
-                  <span>Детальніше</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </a>
-              )}
-            </div>
-          </article>
-        ))
-      }
+      <div class="event-slider-bottom-bar">
+        <div class="event-slider-indicators" role="tablist" aria-label="Вибір слайда">
+          {
+            items.map((_, index) => (
+              <button
+                type="button"
+                class={`event-slider-dot ${index === 0 ? 'is-active' : ''}`}
+                data-slide-to={index}
+                aria-label={`Перейти до події ${index + 1}`}
+                aria-current={index === 0 ? 'true' : undefined}
+              />
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <script is:inline>
   (() => {
-    const track = document.getElementById('weekly-track');
-    const prevBtn = document.getElementById('weekly-prev-btn');
-    const nextBtn = document.getElementById('weekly-next-btn');
+    const track = document.getElementById('event-slider-track');
+    const prevBtn = document.getElementById('event-slider-prev');
+    const nextBtn = document.getElementById('event-slider-next');
+    const currentCounter = document.getElementById('event-slider-current');
+    const dots = Array.from(document.querySelectorAll('.event-slider-dot'));
 
     if (!track || !prevBtn || !nextBtn) return;
 
-    function getCardWidth() {
-      const card = track.querySelector('.weekly-card');
-      if (!card) return 320;
-      const gap = parseInt(window.getComputedStyle(track).gap || '16', 10);
-      return card.offsetWidth + gap;
+    const slides = Array.from(track.querySelectorAll('.event-slider-slide'));
+    const total = slides.length;
+    if (total === 0) return;
+
+    let currentIndex = 0;
+
+    function isReducedMotion() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function updateUi(index) {
+      currentIndex = Math.max(0, Math.min(index, total - 1));
+
+      if (currentCounter) {
+        currentCounter.textContent = String(currentIndex + 1).padStart(2, '0');
+      }
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === total - 1;
+
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.add('is-active');
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.classList.remove('is-active');
+          dot.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function scrollToSlide(index) {
+      const targetIndex = Math.max(0, Math.min(index, total - 1));
+      const targetSlide = slides[targetIndex];
+      if (!targetSlide) return;
+
+      const behavior = isReducedMotion() ? 'auto' : 'smooth';
+      track.scrollTo({
+        left: targetSlide.offsetLeft,
+        behavior,
+      });
+
+      updateUi(targetIndex);
     }
 
     prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+      scrollToSlide(currentIndex - 1);
     });
 
     nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+      scrollToSlide(currentIndex + 1);
     });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        scrollToSlide(index);
+      });
+    });
+
+    // Keyboard navigation
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        scrollToSlide(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        scrollToSlide(currentIndex + 1);
+      }
+    });
+
+    // Sync state on user touch / scroll
+    let scrollTimeout;
+    track.addEventListener(
+      'scroll',
+      () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          const scrollLeft = track.scrollLeft;
+          const trackWidth = track.clientWidth || 1;
+          const calculatedIndex = Math.round(scrollLeft / trackWidth);
+          if (calculatedIndex !== currentIndex && calculatedIndex >= 0 && calculatedIndex < total) {
+            updateUi(calculatedIndex);
+          }
+        }, 60);
+      },
+      { passive: true },
+    );
+
+    updateUi(0);
   })();
 </script>
