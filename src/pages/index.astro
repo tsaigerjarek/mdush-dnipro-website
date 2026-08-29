@@ -4,12 +4,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../lib/urls';
 import { weeklyItems } from '../data/weekly';
 import { representativeTeams } from '../data/teams';
-import HomeHero from '../components/home/HomeHero.astro';
 import WeeklyHighlights from '../components/home/WeeklyHighlights.astro';
 import RepresentativeTeams from '../components/home/RepresentativeTeams.astro';
 import FootballPathway from '../components/home/FootballPathway.astro';
 
-const featuredEvent = weeklyItems.find((item) => item.featured) ?? weeklyItems[0];
 const highlightItems = weeklyItems.filter((item) => !item.featured);
 
 const latestNews = (await getCollection('news', ({ data }) => data.status === 'published'))
@@ -22,13 +20,12 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
   description="Офіційний сайт МДЮСШ Дніпро: футбол, настільний теніс і черліденг, набір 2026/2027, вступ, змагання, новини, документи та контакти."
   fullWidth
 >
-  {/* 1. HomeHero: Головна актуальна подія тижня */}
-  <HomeHero event={featuredEvent} />
+  <h1 class="sr-only">МДЮСШ Дніпро — офіційний сайт</h1>
 
-  {/* 2. WeeklyHighlights: Актуально цього тижня (Медіа-центр) */}
+  {/* 1. WeeklyHighlights: Події та анонси МДЮСШ (Головний слайдер) */}
   <WeeklyHighlights items={highlightItems} />
 
-  {/* 3. RepresentativeTeams: Збірні команди МДЮСШ за роками народження */}
+  {/* 2. RepresentativeTeams: Збірні команди МДЮСШ за роками народження */}
   <RepresentativeTeams teams={representativeTeams} />
 
   {/* 4. FootballPathway: Спортивна вертикаль підготовки */}
