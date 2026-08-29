@@ -1,0 +1,87 @@
+---
+import type { RepresentativeTeamCard } from '../../data/teams';
+import { withBase } from '../../lib/urls';
+
+interface Props {
+  teams: RepresentativeTeamCard[];
+}
+
+const { teams } = Astro.props;
+---
+
+<section class="section section--tint representative-teams-section" aria-labelledby="rep-teams-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Елітний етап підготовки</p>
+      <h2 id="rep-teams-title">Збірні команди МДЮСШ Дніпро</h2>
+      <p class="section-lead">
+        Команди формуються шляхом системного відбору та регулярного тренувального процесу. Розподіл здійснюється суворо за роком народження.
+      </p>
+    </div>
+
+    <div class="teams-grid">
+      {
+        teams.map((team) => (
+          <article class="team-card" data-category={team.category}>
+            <div class="team-card-media">
+              <img
+                class="team-card-img"
+                src={withBase(team.photo)}
+                alt={team.photoAlt}
+                width="400"
+                height="500"
+                loading="lazy"
+              />
+              <div class="team-card-badge-layer">
+                <span class={`team-category-badge team-category-badge--${team.category}`}>
+                  {team.category === 'girls' ? 'Дівочий футбол' : 'Юнацький футбол'}
+                </span>
+                <span class="team-year-badge">{team.birthYear}</span>
+              </div>
+            </div>
+
+            <div class="team-card-body">
+              <h3 class="team-card-title">{team.statusTitle}</h3>
+              <p class="team-card-year-sub">{team.birthYear}</p>
+
+              {team.ageNote && (
+                <p class="team-card-age-note">{team.ageNote}</p>
+              )}
+
+              <p class="team-card-desc">{team.description}</p>
+
+              {(team.nextMatch || team.lastResult) && (
+                <div class="team-card-info-box">
+                  {team.nextMatch && (
+                    <div class="team-info-row">
+                      <span class="info-label">Наступна гра:</span>
+                      <span class="info-val"><strong>{team.nextMatch.date}</strong> ({team.nextMatch.opponent})</span>
+                    </div>
+                  )}
+
+                  {team.lastResult && (
+                    <div class="team-info-row">
+                      <span class="info-label">Останній підсумок:</span>
+                      <span class={`info-outcome-badge info-outcome--${team.lastResult.outcome}`}>
+                        {team.lastResult.score} {team.lastResult.outcome === 'win' ? 'Перемога' : team.lastResult.outcome === 'draw' ? 'Нічия' : 'Поразка'}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {team.teamPageUrl && (
+                <a class="team-card-link" href={withBase(team.teamPageUrl)}>
+                  <span>Перейти до команди</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

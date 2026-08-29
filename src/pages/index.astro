@@ -2,6 +2,15 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../lib/urls';
+import { weeklyItems } from '../data/weekly';
+import { representativeTeams } from '../data/teams';
+import HomeHero from '../components/home/HomeHero.astro';
+import WeeklyHighlights from '../components/home/WeeklyHighlights.astro';
+import RepresentativeTeams from '../components/home/RepresentativeTeams.astro';
+import FootballPathway from '../components/home/FootballPathway.astro';
+
+const featuredEvent = weeklyItems.find((item) => item.featured) ?? weeklyItems[0];
+const highlightItems = weeklyItems.filter((item) => !item.featured);
 
 const latestNews = (await getCollection('news', ({ data }) => data.status === 'published'))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
@@ -10,57 +19,174 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
 
 <BaseLayout
   title="МДЮСШ Дніпро — офіційний сайт"
-  description="Офіційний сайт МДЮСШ Дніпро: футбол, настільний теніс і черліденг, вступ, змагання, новини, документи та контакти."
+  description="Офіційний сайт МДЮСШ Дніпро: футбол, настільний теніс і черліденг, набір 2026/2027, вступ, змагання, новини, документи та контакти."
   fullWidth
 >
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">Комунальний позашкільний навчальний заклад</p>
-        <h1>МДЮСШ з ігрових видів спорту</h1>
-        <p>Заклад об’єднує три спортивні напрями: основний — футбол, другий — настільний теніс, третій — черліденг.</p>
-        <div class="actions">
-          <a class="button" href="#admission">Умови вступу</a>
-          <a class="button button-secondary" href="#sports">Напрямки спортивного виховання</a>
-        </div>
-        <dl class="hero-facts" aria-label="Коротко про заклад">
-          <div><dt>01</dt><dd>футбол — основний напрям</dd></div>
-          <div><dt>02</dt><dd>настільний теніс</dd></div>
-          <div><dt>03</dt><dd>черлідинг — підтримка команд</dd></div>
-        </dl>
+  {/* 1. HomeHero: Головна актуальна подія тижня */}
+  <HomeHero event={featuredEvent} />
+
+  {/* 2. WeeklyHighlights: Актуально цього тижня (Медіа-центр) */}
+  <WeeklyHighlights items={highlightItems} />
+
+  {/* 3. RepresentativeTeams: Збірні команди МДЮСШ за роками народження */}
+  <RepresentativeTeams teams={representativeTeams} />
+
+  {/* 4. FootballPathway: Спортивна вертикаль підготовки */}
+  <FootballPathway />
+
+  {/* 5. Спортивні відділення */}
+  <section id="sports-education" class="section section--paper home-sports-section" aria-labelledby="sports-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Спортивне виховання • Сезон 2026/2027</p>
+        <h2 id="sports-title">Спортивні відділення закладу</h2>
+        <p>Міська дитячо-юнацька спортивна школа з ігрових видів спорту Дніпровської міської ради здійснює підготовку за 3 основними напрямами.</p>
       </div>
-      <div class="hero-visual">
-        <picture>
-  <source media="(max-width: 767px)" type="image/png" srcset={withBase('/media/hero/hero-mdush-mobile.png')} />
-  <source media="(max-width: 1199px)" type="image/png" srcset={withBase('/media/hero/hero-mdush-tablet.png')} />
-  <source type="image/png" srcset={withBase('/media/hero/hero-mdush-desktop.png')} />
-          <img
-            src={withBase('/media/hero/hero-mdush-fallback.jpg')}
-            alt="Вихованці трьох спортивних напрямів МДЮСШ Дніпро: футболу, черлідингу та настільного тенісу"
-            width="1920"
-            height="1080"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
+
+      <div class="information-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Футбол</h3>
+          <p>Багатоступенева система футбольної підготовки: молодші вікові групи (2015–2018 р.н.), юнацькі збірні команди (2010–2014 р.н.), старша збірна (2008–2009 р.н.) та дівоче відділення ЖФК (2012–2015 р.н.).</p>
+          <a class="text-link" href={withBase('/sportyvni-napriamy/#football')}>Докладніше про футбол →</a>
+        </article>
+
+        <article class="information-card information-card--tennis">
+          <span class="card-number">02</span>
+          <h3>Настільний теніс</h3>
+          <p>Спортивна підготовка юнаків та дівчат різного віку. Розвиток координації, тактичного мислення та підготовка до виступів у рейтингових чемпіонатах.</p>
+          <a class="text-link" href={withBase('/sportyvni-napriamy/#table-tennis')}>Докладніше про настільний теніс →</a>
+        </article>
+
+        <article class="information-card information-card--cheerleading">
+          <span class="card-number">03</span>
+          <h3>Черліденг</h3>
+          <p>Акробатика, грація, хореографія та командна синхронність. Підготовка спортсменок у 4 вікових категоріях: Minis, Kids, Juniors, Adults.</p>
+          <a class="text-link" href={withBase('/sportyvni-napriamy/#cheerleading')}>Докладніше про черліденг →</a>
+        </article>
+      </div>
+
+      <div class="actions home-section-action" style="margin-top: 2.5rem;">
+        <a class="button button-primary" href={withBase('/sportyvni-napriamy/')}>
+          Детальніше про всі спортивні відділення
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="about" class="section section--tint home-official-section" aria-labelledby="about-title">
+
+  <!-- Блок 4: МЕДІАЦЕНТР -->
+  <section id="mediacenter" class="section section--paper mediacenter-section" aria-labelledby="mediacenter-title">
     <div class="container">
       <div class="section-heading home-section-heading">
-        <p class="eyebrow">Про заклад</p>
-        <h2 id="about-title">Офіційний заклад позашкільної освіти у сфері спорту</h2>
-        <p>Міський дитячо-юнацький спортивний заклад Дніпра забезпечує спортивну підготовку дітей та молоді за напрямами футболу, настільного тенісу і черліденгу.</p>
+        <p class="eyebrow">Медіацентр МДЮСШ</p>
+        <h2 id="mediacenter-title">Життя школи: Матчі, емоції, інтерв'ю</h2>
+        <p>Наша <strong>спортивна школа Дніпро</strong> висвітлює матчі юнацьких команд, змагання з настільного тенісу та виступи з черліденгу без оприлюднення приватних чи медичних даних вихованців.</p>
       </div>
-      <dl class="home-facts" aria-label="Ключова інформація про заклад">
-        <div><dt>01</dt><dd>Комунальний заклад міста Дніпра</dd></div>
-        <div><dt>02</dt><dd>Підготовка дітей та молоді</dd></div>
-        <div><dt>03</dt><dd>Три спортивні напрями</dd></div>
-      </dl>
-      <div class="actions home-section-action">
-        <a class="button" href={withBase('/pro-zaklad/')}>Про заклад</a>
+      <div class="mediacenter-grid">
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--video" aria-hidden="true">
+            <span class="play-icon">▶</span>
+            <span class="media-tag">Відеохайлайт</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Футбольні матчі ДЮФЛУ — Огляд туру</h3>
+            <p>Ключові моменти та забиті голи юнацьких збірних МДЮСШ Дніпро.</p>
+          </div>
+        </article>
+
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--photo" aria-hidden="true">
+            <span class="photo-icon">📷</span>
+            <span class="media-tag">Фотогалерея</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Відкриті тренування молодших вікових груп</h3>
+            <p>Яскраві моменти спортивно-виховного процесу молодших вихованців.</p>
+          </div>
+        </article>
+
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--interview" aria-hidden="true">
+            <span class="mic-icon">🎙️</span>
+            <span class="media-tag">Інтерв'ю</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Коментарі тренерів за підсумками сезону</h3>
+            <p>Аналітика ігор, підготовка до старших ліг та рекомендації для батьків.</p>
+          </div>
+        </article>
+
+        <article class="mediacenter-card">
+          <div class="mediacenter-placeholder mediacenter-placeholder--cheer" aria-hidden="true">
+            <span class="star-icon">★</span>
+            <span class="media-tag">Черліденг & Теніс</span>
+          </div>
+          <div class="mediacenter-card-body">
+            <h3>Виступи черлідерів та рейтингові матчі тенісистів</h3>
+            <p>Командна підтримка матчів МДЮСШ та фінали міських кубків.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок 5: Пілотний напрям цифрової аналітики -->
+  <section id="scout-analytics" class="section digital-passports-section" aria-labelledby="analytics-title">
+    <div class="container">
+      <div class="digital-passports-card">
+        <div class="digital-passports-header">
+          <span class="tech-badge">Пілотний напрям • Looker Studio</span>
+          <h2 id="analytics-title">Пілотний напрям цифрової аналітики</h2>
+          <p class="digital-passports-desc">
+            МДЮСШ Дніпро опрацьовує пілотний підхід до використання цифрової аналітики для внутрішнього моніторингу спортивного розвитку вихованців. Публічне представлення персональних або скаутських профілів не є частиною поточної версії сайту.
+          </p>
+        </div>
+
+        <div class="security-warning-alert" role="note">
+          <span class="alert-icon">🔒</span>
+          <div>
+            <strong>Захист персональних даних:</strong>
+            <p>У відкритому доступі не публікуються медичні та інші персональні дані вихованців. Аналітичні матеріали можуть публікуватися лише після окремої перевірки та погодження.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок 6: Батькам та партнерам (Вступ) -->
+  <section id="parents-partners" class="section section--tint parents-partners-section" aria-labelledby="parents-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Для батьків та партнерів</p>
+        <h2 id="parents-title">Батькам та партнерам (Вступ до закладу)</h2>
+        <p>Покроковий порядок вступу для батьків, чиї діти обирають <strong>безкоштовні секції футболу</strong>, <strong>настільний теніс для дітей</strong> або <strong>черліденг</strong> у м. Дніпро.</p>
+      </div>
+
+      <div class="parents-steps-grid">
+        <article class="card parents-step-card">
+          <span class="card-number">01</span>
+          <h3>Вибір напряму та вікової групи</h3>
+          <p>Ознайомтеся з підтвердженими спортивними відділеннями (Футбол, Настільний теніс, Черліденг) та уточніть наявність місць.</p>
+        </article>
+
+        <article class="card parents-step-card">
+          <span class="card-number">02</span>
+          <h3>Пакет необхідних документів</h3>
+          <p>Заява батьків/опікунів, медична довідка про допуск до занять спортом, копія свідоцтва про народження та 2 фотокартки 3×4.</p>
+        </article>
+
+        <article class="card parents-step-card">
+          <span class="card-number">03</span>
+          <h3>Звернення до адміністрації</h3>
+          <p>Зверніться до адміністрації закладу для уточнення умов вступу, наявності місць та подальшого оформлення документів.</p>
+        </article>
+      </div>
+
+      <div class="actions home-section-action" style="margin-top: 2rem;">
+        <a class="button button-outline" href={withBase('/yak-vstupyty/')}>
+          Докладніше про правила вступу
+        </a>
       </div>
     </div>
   </section>
@@ -68,8 +194,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
   <section id="admission" class="section section--paper home-admission-section" aria-labelledby="admission-title">
     <div class="container">
       <div class="section-heading home-section-heading">
-        <p class="eyebrow">Вступ</p>
-        <h2 id="admission-title">Як вступити до МДЮСШ</h2>
+        <h2 id="admission-title">Вступ та зарахування до закладу</h2>
         <p>Вступ починається з вибору спортивного напряму, ознайомлення з умовами набору та звернення до адміністрації закладу.</p>
       </div>
       <ol class="home-admission-steps">
@@ -94,43 +219,42 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
         <li>
           <article class="card home-admission-card">
             <span class="card-number">04</span>
-            <h3>Зв’язатися з адміністрацією закладу</h3>
+            <h3>Контакт з адміністрацією</h3>
           </article>
         </li>
       </ol>
       <div class="actions home-section-action">
-        <a class="button" href={withBase('/yak-vstupyty/')}>Переглянути умови вступу</a>
+        <a class="button button-outline" href={withBase('/yak-vstupyty/')}>Переглянути умови вступу</a>
       </div>
     </div>
   </section>
 
-  <section id="sports-education" class="section section--tint home-sports-section" aria-labelledby="sports-title">
+  <section id="teams" class="section section--tint home-teams-section" aria-labelledby="teams-title">
     <div class="container">
       <div class="section-heading home-section-heading">
-        <p class="eyebrow">Спортивне виховання</p>
-        <h2 id="sports-title">Напрямки спортивного виховання</h2>
+        <h2 id="teams-title">Команди та вікові групи</h2>
+        <p>У відкритому доступі публікуються лише групові відомості про команди та вікові категорії. Персональні картки вихованців, фото й інші дані можуть бути додані лише після перевірки законної підстави та погодження відповідальної особи.</p>
       </div>
-      <div id="sports" class="home-sports-grid">
-        <article class="card home-sport-card">
+      <div class="information-grid">
+        <article class="information-card">
           <span class="card-number">01</span>
-          <p class="direction-role">Основний напрям</p>
-          <h3>Футбол</h3>
-          <p>Основний напрям спортивної підготовки закладу.</p>
-          <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Переглянути напрям →</a>
+          <h3>Молодші вікові групи футболу</h3>
+          <p>Вікові групи 2018, 2017, 2016 та 2015 р.н. Початковий етап футбольної підготовки у філіях закладу.</p>
         </article>
-        <article class="card home-sport-card home-sport-card--dark">
+        <article class="information-card">
           <span class="card-number">02</span>
-          <p class="direction-role">Другий напрям</p>
-          <h3>Настільний теніс</h3>
-          <p>Другий напрям спортивного виховання закладу.</p>
-          <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Переглянути напрям →</a>
+          <h3>Юнацькі збірні команди</h3>
+          <p>Команди 2014, 2013, 2012, 2011 та 2010 р.н. Системна підготовка та участь у змаганнях відповідно до вікової категорії.</p>
         </article>
-        <article class="card home-sport-card home-sport-card--warm">
+        <article class="information-card information-card--cheerleading">
           <span class="card-number">03</span>
-          <p class="direction-role">Третій напрям</p>
-          <h3>Черліденг</h3>
-          <p>Третій напрям і підтримка футбольних команд на домашніх змаганнях.</p>
-          <a class="text-link" href={withBase('/sportyvni-napriamy/')}>Переглянути напрям →</a>
+          <h3>Дівочі команди МДЮСШ</h3>
+          <p>Дві вікові команди: 2012 р.н. та 2014 р.н. У дівочому відділенні тренуються вихованки 2012–2015 р.н.</p>
+        </article>
+        <article class="information-card information-card--tennis">
+          <span class="card-number">04</span>
+          <h3>Старша збірна команда</h3>
+          <p>Старша збірна команда 2008–2009 р.н. Завершальний етап підготовки та перехід до дорослого футболу.</p>
         </article>
       </div>
     </div>
@@ -139,29 +263,21 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
   <section class="section section--paper competitions-preview" aria-labelledby="competitions-title">
     <div class="container">
       <div class="section-heading home-section-heading">
-        <p class="eyebrow">Змагання</p>
-        <h2 id="competitions-title">Один календар для трьох напрямів</h2>
-        <p>Публікуються тільки підтверджені дати, час, місце проведення, суперник або назва турніру та статус трансляції.</p>
+        <h2 id="competitions-title">Спортивні змагання та події</h2>
+        <p>Календар тренувань та спортивні протистояння. Публікуються тільки підтверджені дата, час, місце проведення, суперник, назва турніру та статус трансляції.</p>
       </div>
-      <div class="information-grid">
+      <div class="home-events-grid">
         <article class="information-card">
           <span class="card-number">01</span>
-          <h3>Футбол</h3>
-          <p>Матчі команд МДЮСШ, результати, турніри та посилання на офіційні трансляції після підтвердження.</p>
+          <h3>Спортивно-виховна підготовка</h3>
+          <p>Календар із датою, часом, локацією та призначенням навчально-тренувальної і виховної роботи. Матеріали додаються лише після підтвердження відповідальним працівником.</p>
         </article>
         <article class="information-card information-card--tennis">
           <span class="card-number">02</span>
-          <h3>Настільний теніс</h3>
-          <p>Турніри, календар виступів і підтверджені результати вихованців.</p>
+          <h3>Змагання</h3>
+          <p>Перелік змагань, у яких беруть участь команди закладу (Футбол, Настільний теніс, Черліденг).</p>
+          <a class="text-link" href={withBase('/zmahannia/')}>Перейти до змагань →</a>
         </article>
-        <article class="information-card information-card--cheerleading">
-          <span class="card-number">03</span>
-          <h3>Черліденг</h3>
-          <p>Участь у профільних змаганнях і підтримка футбольних команд під час домашніх матчів.</p>
-        </article>
-      </div>
-      <div class="actions home-section-action">
-        <a class="button" href={withBase('/zmahannia/')}>Перейти до змагань</a>
       </div>
     </div>
   </section>
@@ -171,27 +287,27 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       <div class="section-heading home-section-heading">
         <p class="eyebrow">Команда фахівців</p>
         <h2 id="coaches-title">Тренери за спортивними напрямами</h2>
-        <p>Офіційний перелік тренерів закладу буде публікуватися після звірки посад, спортивних напрямів і вікових груп з адміністрацією.</p>
+        <p>Офіційний перелік тренерів закладу за спортивними напрямами та віковими групами.</p>
       </div>
       <div class="information-grid">
         <article class="information-card">
           <span class="card-number">01</span>
           <h3>Футбол</h3>
-          <p>Тренерські штаби команд за віковими групами, роль кожного фахівця та локація тренувань.</p>
+          <p>Тренерський склад (Фетісов, Сосна, Кравченко, Федотов, Іванющенко, Даренко, Шевченко П., Шевченко К., Димарчук, Лусь, Волівач, Нікітенков, Коряковцев, Шарко, Кушнір; воротарі: Кулько, Бобровський, Гончаров, Баркар).</p>
         </article>
         <article class="information-card information-card--tennis">
           <span class="card-number">02</span>
           <h3>Настільний теніс</h3>
-          <p>Тренери відділення, навчальні групи та коротка інформація про спортивну підготовку.</p>
+          <p>Тренери відділення: <strong>Кудзієв Р. Г., Кудзієва О. Ю.</strong></p>
         </article>
         <article class="information-card information-card--cheerleading">
           <span class="card-number">03</span>
-          <h3>Черлідинг</h3>
-          <p>Тренери, вікові групи, напрями підготовки та участь у спортивних заходах.</p>
+          <h3>Черліденг</h3>
+          <p>Тренери вікових груп Minis, Kids, Juniors, Adults.</p>
         </article>
       </div>
       <div class="actions home-section-action">
-        <a class="button" href={withBase('/trenerskyi-sklad/')}>Перейти до тренерського складу</a>
+        <a class="button button-primary" href={withBase('/trenerskyi-sklad/')}>Перейти до тренерського складу</a>
       </div>
     </div>
   </section>
@@ -199,9 +315,30 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
   <section class="section section--paper news-section" aria-labelledby="news-title">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Офіційний Telegram-канал</p>
-        <h2 id="news-title">Новини закладу</h2>
-        <p>Розділ дублює перевірені публікації офіційного Telegram-каналу МДЮСШ і зберігає їх на сайті як доступний архів.</p>
+        <h2 id="news-title">Медіа та новини</h2>
+        <p>Публікації про матчі та події закладу: фото, відео, огляди, аналітика й анонси.</p>
+      </div>
+      <div class="home-media-grid" aria-label="Формати медіа">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Фото</h3>
+          <p>Фоторепортажі з матчів, тренувань та спортивних подій.</p>
+        </article>
+        <article class="information-card information-card--tennis">
+          <span class="card-number">02</span>
+          <h3>Відео</h3>
+          <p>Хайлайти, огляди ключових моментів і голів матчів.</p>
+        </article>
+        <article class="information-card information-card--cheerleading">
+          <span class="card-number">03</span>
+          <h3>Аналітика матчів</h3>
+          <p>Огляди ігрових подій та підтверджені підсумки змагань.</p>
+        </article>
+        <article class="information-card">
+          <span class="card-number">04</span>
+          <h3>Анонси матчів</h3>
+          <p>Підтверджені дати, місце проведення, суперник і статус трансляції.</p>
+        </article>
       </div>
       <div class="news-grid">
         {latestNews.map((entry) => (
@@ -218,9 +355,9 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
           </article>
         ))}
       </div>
-      <p class="section-note">Першоджерело оперативних публікацій — офіційний Telegram-канал закладу.</p>
+      <p class="section-note">До публікації потрапляють тільки перевірені матеріали, які відповідають правилам захисту персональних даних вихованців.</p>
       <div class="actions home-section-action">
-        <a class="button" href={withBase('/novyny/')}>Усі новини</a>
+        <a class="button button-outline" href={withBase('/novyny/')}>Усі матеріали</a>
       </div>
     </div>
   </section>
@@ -251,7 +388,54 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <p class="section-note">Принципи перевірки та межі відкритої інформації описані у розділі <a class="contact-link" href={withBase('/prozorist/')}>«Прозорість»</a>.</p>
       <div class="actions home-section-action">
-        <a class="button" href={withBase('/dokumenty/')}>Відкрити документи</a>
+        <a class="button button-outline" href={withBase('/dokumenty/')}>Відкрити документи</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок 7: Офіційна інформація, Документи та Контакти -->
+  <section id="official-info" class="section section--tint home-official-info-section" aria-labelledby="official-info-title">
+    <div class="container">
+      <div class="section-heading home-section-heading">
+        <p class="eyebrow">Офіційний статус та реквізити</p>
+        <h2 id="official-info-title">Офіційна інформація, Документи та Контакти</h2>
+        <p>Міська дитячо-юнацька спортивна школа з ігрових видів спорту — це <strong>комунальний заклад</strong> позашкільної освіти Дніпровської міської ради.</p>
+      </div>
+
+      <div class="official-info-grid">
+        <article class="information-card">
+          <span class="card-number">01</span>
+          <h3>Засновник та реквізити</h3>
+          <p><strong>Засновник:</strong> Дніпровська міська рада.</p>
+          <p><strong>Статус:</strong> Комунальний позашкільний навчальний заклад.</p>
+        </article>
+
+        <article class="information-card information-card--cheerleading">
+          <span class="card-number">02</span>
+          <h3>Навчально-тренувальні бази</h3>
+          <p><strong>Стадіон «Молодіжний парк» (КП МТО):</strong> вул. Набережна Заводська, 53</p>
+          <p><strong>Стадіон «Олімпійські резерви»:</strong> пр. Богдана Хмельницького, 29а</p>
+          <p class="section-note">Загалом підготовка здійснюється на 24 підтверджених базах м. Дніпро.</p>
+        </article>
+
+        <article class="information-card information-card--tennis">
+          <span class="card-number">03</span>
+          <h3>Документи та прозорість</h3>
+          <p>Офіційні програми, статутні документи та публічна звітність відкриті відповідно до вимог прозорості.</p>
+          <ul class="official-links-list">
+            <li><a class="contact-link" href={withBase('/dokumenty/')}>Установчі та відкриті документи →</a></li>
+            <li><a class="contact-link" href={withBase('/prozorist/')}>Принципи відкритості та прозорості →</a></li>
+            <li><a class="contact-link" href={withBase('/polityka-pryvatnosti/')}>Політика приватності →</a></li>
+          </ul>
+        </article>
+
+        <article class="information-card">
+          <span class="card-number">04</span>
+          <h3>Офіційні контакти</h3>
+          <p><strong>Телефон:</strong> <a class="contact-link" href="tel:+380931131139">+380 93 113 1139</a></p>
+          <p><strong>E-mail:</strong> <a class="contact-link" href="mailto:mdussdnepr@gmail.com">mdussdnepr@gmail.com</a></p>
+          <p><strong>Адреса:</strong> вул. Набережна Перемоги, 13, м. Дніпро, 49000</p>
+        </article>
       </div>
     </div>
   </section>
@@ -286,7 +470,7 @@ const latestNews = (await getCollection('news', ({ data }) => data.status === 'p
       </div>
       <p class="section-note">Перелік 24 навчально-тренувальних баз із перевіреними адресами опубліковано в розділі <a class="contact-link" href={withBase('/sportyvni-napriamy/')}>«Спортивні відділення»</a>. Розклад занять на сайті не публікується.</p>
       <div class="actions home-section-action">
-        <a class="button" href={withBase('/kontakty/')}>Усі контакти</a>
+        <a class="button button-outline" href={withBase('/kontakty/')}>Усі контакти</a>
       </div>
     </div>
   </section>

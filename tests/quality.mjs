@@ -28,7 +28,7 @@ if (htmlFiles.length !== expectedHtmlPages) {
 }
 
 if (javascriptFiles.length > 0) {
-  throw new Error(`Знайдено клієнтські JavaScript-файли: ${javascriptFiles.join(', ')}`);
+  throw new Error(`Знайдено непередбачені клієнтські JavaScript-файли: ${javascriptFiles.join(', ')}`);
 }
 
 const publicRoutes = new Set(
@@ -134,7 +134,7 @@ for (const [foreground, background, minimum, label] of contrastPairs) {
   }
 }
 
-console.log(`Перевірено якість ${htmlFiles.length} сторінок: метадані, заголовки, зображення, посилання, robots, контраст і відсутність клієнтського JavaScript`);
+console.log(`Перевірено якість ${htmlFiles.length} сторінок: метадані, заголовки, зображення, посилання, robots, контраст і відсутність непередбачених JavaScript-файлів`);
 
 function contrast(first, second) {
   const [lighter, darker] = [luminance(first), luminance(second)].sort((a, b) => b - a);
