@@ -18,33 +18,185 @@ interface Props {
 }
 
 const { player } = Astro.props;
+
+const sportLabel = player.direction === 'football'
+  ? 'Футбол'
+  : player.direction === 'table-tennis'
+  ? 'Настільний теніс'
+  : 'Черліденг';
+
+const hasStats = Boolean(
+  player.stats &&
+  (player.stats.appearances !== undefined ||
+   player.stats.starts !== undefined ||
+   player.stats.minutes !== undefined ||
+   player.stats.goals !== undefined ||
+   player.stats.assists !== undefined ||
+   player.stats.cleanSheets !== undefined)
+);
+
+const hasAchievements = Boolean(player.achievements && player.achievements.length > 0);
+const hasMedia = Boolean(player.media && player.media.length > 0);
 ---
 
 {player && player.publicProfile && (
   <BaseLayout
-    title={`${player.publicName} — Вихованець МДЮСШ Дніпро`}
-    description={`Профіль вихованця МДЮСШ Дніпро: ${player.publicName}, ${player.groupId}.`}
+    title={`${player.publicName} — Профіль вихованця | МДЮСШ Дніпро`}
+    description={`Офіційний спортивний профіль вихованця МДЮСШ Дніпро: ${player.publicName}, ${player.groupId} (${sportLabel}).`}
   >
-    <section class="section section--paper player-profile-section">
-      <div class="container">
-        <header class="player-profile-header">
-          <div class="player-profile-avatar">
+    <article class="player-profile-page">
+      <!-- Навігаційне посилання назад -->
+      <nav class="container player-profile-nav" aria-label="Навігація повернення">
+        <a class="player-back-link" href={withBase('/sportyvni-napriamy/')}>
+          ← До спортивних напрямів
+        </a>
+      </nav>
+
+      <!-- Основна інформація про вихованця (Hero) -->
+      <header class="section section--paper player-profile-hero">
+        <div class="container player-hero-layout">
+          <div class="player-hero-media">
             {player.photoApprovedForPublicUse && player.photo ? (
-              <img src={withBase(player.photo)} alt={player.publicName} width="240" height="300" />
+              <img
+                class="player-hero-photo"
+                src={withBase(player.photo)}
+                alt={player.publicName}
+                width="400"
+                height="500"
+                loading="lazy"
+                decoding="async"
+              />
             ) : (
-              <div class="player-placeholder-avatar">
+              <div class="player-hero-placeholder" aria-label="Фото готується">
                 <span>Фото готується</span>
               </div>
             )}
           </div>
-          <div class="player-profile-meta">
+
+          <div class="player-hero-details">
             <h1>{player.publicName}</h1>
-            <p class="player-profile-group">{player.groupId} {player.birthYear ? `· ${player.birthYear} р.н.` : ''}</p>
-            {player.position && <p class="player-profile-position">{player.position}</p>}
-            <p class="player-profile-sport">{player.sport === 'football' ? 'Футбол' : player.sport}</p>
+
+            <div class="player-hero-badges">
+              <span class="player-badge player-badge--accent">{player.groupId}</span>
+              {player.birthYear && <span class="player-badge">{player.birthYear} р.н.</span>}
+              {player.position && <span class="player-badge">{player.position}</span>}
+              {player.shirtNumber && <span class="player-badge">№ {player.shirtNumber}</span>}
+            </div>
+
+            <dl class="player-hero-meta">
+              <div>
+                <dt>Спортивний напрям</dt>
+                <dd>{sportLabel}</dd>
+              </div>
+              <div>
+                <dt>Команда / Заклад</dt>
+                <dd>{player.teamLabel || 'МДЮСШ Дніпро'}</dd>
+              </div>
+              {player.season && (
+                <div>
+                  <dt>Сезон</dt>
+                  <dd>{player.season}</dd>
+                </div>
+              )}
+            </dl>
           </div>
-        </header>
-      </div>
-    </section>
+        </div>
+      </header>
+
+      <!-- Офіційна спортивна статистика (тільки за наявності даних) -->
+      {hasStats && player.stats && (
+        <section class="section section--tint player-stats-section" aria-labelledby="player-stats-title">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="player-stats-title">Офіційна спортивна статистика</h2>
+            </div>
+            <div class="player-stats-grid">
+              {player.stats.appearances !== undefined && (
+                <div class="player-stat-card">
+                  <span class="player-stat-value">{player.stats.appearances}</span>
+                  <span class="player-stat-label">Матчі</span>
+                </div>
+              )}
+              {player.stats.starts !== undefined && (
+                <div class="player-stat-card">
+                  <span class="player-stat-value">{player.stats.starts}</span>
+                  <span class="player-stat-label">Старти</span>
+                </div>
+              )}
+              {player.stats.minutes !== undefined && (
+                <div class="player-stat-card">
+                  <span class="player-stat-value">{player.stats.minutes}</span>
+                  <span class="player-stat-label">Хвилини</span>
+                </div>
+              )}
+              {player.stats.goals !== undefined && (
+                <div class="player-stat-card">
+                  <span class="player-stat-value">{player.stats.goals}</span>
+                  <span class="player-stat-label">Голи</span>
+                </div>
+              )}
+              {player.stats.assists !== undefined && (
+                <div class="player-stat-card">
+                  <span class="player-stat-value">{player.stats.assists}</span>
+                  <span class="player-stat-label">Асисти</span>
+                </div>
+              )}
+              {player.stats.cleanSheets !== undefined && (
+                <div class="player-stat-card">
+                  <span class="player-stat-value">{player.stats.cleanSheets}</span>
+                  <span class="player-stat-label">Сухі матчі</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Спортивні досягнення (тільки за наявності даних) -->
+      {hasAchievements && player.achievements && (
+        <section class="section section--paper player-achievements-section" aria-labelledby="player-achievements-title">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="player-achievements-title">Спортивні досягнення</h2>
+            </div>
+            <ul class="player-achievements-list">
+              {player.achievements.map((item) => (
+                <li class="player-achievement-item">{item}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <!-- Медіа (тільки за наявності підтверджених матеріалів) -->
+      {hasMedia && player.media && (
+        <section class="section section--tint player-media-section" aria-labelledby="player-media-title">
+          <div class="container">
+            <div class="section-heading">
+              <h2 id="player-media-title">Медіаматеріали</h2>
+            </div>
+            <div class="player-media-grid">
+              {player.media.map((item) => (
+                <article class="player-media-card">
+                  {item.image && (
+                    <div class="player-media-cover">
+                      <img src={withBase(item.image)} alt={item.title || player.publicName} loading="lazy" decoding="async" />
+                    </div>
+                  )}
+                  <div class="player-media-content">
+                    {item.title && <h3>{item.title}</h3>}
+                    {item.href && (
+                      <a class="player-media-link" href={item.href} target="_blank" rel="noopener noreferrer">
+                        Переглянути матеріал →
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </article>
   </BaseLayout>
 )}
