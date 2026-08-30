@@ -1,125 +1,249 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../lib/urls';
+import { getPublicCoaches, type Coach } from '../data/coaches';
+import { getPublicPlayers } from '../data/players';
+import PlayerCard from '../components/players/PlayerCard.astro';
+
+interface AgeGroupItem {
+  id: string;
+  title: string;
+  birthYear: string;
+  coaches: Coach[];
+}
+
+const footballStages = [
+  {
+    stageTitle: 'Базова підготовка',
+    stageAge: 'U9–U13',
+    groups: [
+      { id: 'u9', title: 'U9', birthYear: '2018 р.н.', coaches: getPublicCoaches('football', 'U9') },
+      { id: 'u10', title: 'U10', birthYear: '2017 р.н.', coaches: getPublicCoaches('football', 'U10') },
+      { id: 'u11', title: 'U11', birthYear: '2016 р.н.', coaches: getPublicCoaches('football', 'U11') },
+      { id: 'u12', title: 'U12', birthYear: '2015 р.н.', coaches: getPublicCoaches('football', 'U12') },
+      { id: 'u13', title: 'U13', birthYear: '2014 р.н.', coaches: getPublicCoaches('football', 'U13') },
+    ] as AgeGroupItem[],
+  },
+  {
+    stageTitle: 'Спеціалізована підготовка',
+    stageAge: 'U14–U17',
+    groups: [
+      { id: 'u14', title: 'U14', birthYear: '2013 р.н.', coaches: getPublicCoaches('football', 'U14') },
+      { id: 'u15', title: 'U15', birthYear: '2012 р.н.', coaches: getPublicCoaches('football', 'U15') },
+      { id: 'u16', title: 'U16', birthYear: '2011 р.н.', coaches: getPublicCoaches('football', 'U16') },
+      { id: 'u17', title: 'U17', birthYear: '2010 р.н.', coaches: getPublicCoaches('football', 'U17') },
+    ] as AgeGroupItem[],
+  },
+  {
+    stageTitle: 'Завершальний етап',
+    stageAge: 'ЗБІРНА U19',
+    groups: [
+      { id: 'u19', title: 'ЗБІРНА U19', birthYear: '2008–2009 р.н.', coaches: getPublicCoaches('football', 'ЗБІРНА U19') },
+    ] as AgeGroupItem[],
+  },
+];
+
+const girlsGroups: AgeGroupItem[] = [
+  { id: 'girls-u15', title: 'U15', birthYear: '2012 р.н.', coaches: [] },
+  { id: 'girls-u13', title: 'U13', birthYear: '2014 р.н.', coaches: [] },
+  { id: 'girls-u12', title: 'U12', birthYear: '2015 р.н.', coaches: [] },
+  { id: 'girls-u10', title: 'U10', birthYear: '2017 р.н.', coaches: [] },
+];
 ---
 
 <BaseLayout
-  title="Напрямки спортивного виховання — МДЮСШ Дніпро"
+  title="Напрями спортивного виховання — МДЮСШ Дніпро"
   description="Спортивні напрями МДЮСШ Дніпро: футбол, настільний теніс, черліденг і підтверджені навчально-тренувальні бази."
+  fullWidth={true}
 >
   <header class="page-intro sports-page-hero">
-    <p class="eyebrow">Спортивне виховання</p>
-    <h1>Напрямки спортивного виховання</h1>
-    <p>МДЮСШ Дніпро здійснює спортивну підготовку дітей та молоді за трьома напрямами: футболом, настільним тенісом і черліденгом.</p>
-    <nav class="sports-anchor-nav" aria-label="Перейти до спортивного напряму">
-      <a href="#football">Футбол</a>
-      <a href="#table-tennis">Настільний теніс</a>
-      <a href="#cheerleading">Черліденг</a>
-    </nav>
+    <div class="container sports-container">
+      <h1>Напрями спортивного виховання</h1>
+      <div class="sports-tablist" role="tablist" aria-label="Спортивні напрями">
+        <button type="button" role="tab" id="tab-football" aria-controls="panel-football" aria-selected="true" class="sports-tab active">Футбол</button>
+        <button type="button" role="tab" id="tab-table-tennis" aria-controls="panel-table-tennis" aria-selected="false" class="sports-tab" tabindex="-1">Настільний теніс</button>
+        <button type="button" role="tab" id="tab-cheerleading" aria-controls="panel-cheerleading" aria-selected="false" class="sports-tab" tabindex="-1">Черліденг</button>
+      </div>
+    </div>
   </header>
 
-  <section id="football" class="section section--paper sports-football-section" aria-labelledby="football-title">
-    <div class="container">
-      <div class="sports-football-layout">
-        <div class="sports-football-heading">
-          <h2 id="football-title">Футбол</h2>
-          <p>Спортивний напрям МДЮСШ Дніпро, що охоплює послідовну підготовку юнацьких команд та розвиток жіночого футболу. Початковий етап підготовки вихованців 6–9 років буде представлений у розділі філій МДЮСШ.</p>
-          <a class="button button-outline" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад</a>
-        </div>
-        <img class="sports-football-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
-        <div class="sports-football-paths">
-          <article class="sports-football-path">
-            <p class="direction-role">2014–2018 р.н.</p>
-            <h3>Базова підготовка</h3>
-            <dl class="sports-football-stage-facts">
-              <div><dt>Статус</dt><dd>U9–U13 — навчальні групи</dd></div>
-              <div><dt>Групи</dt><dd>U9 (2018 р.н.), U10 (2017 р.н.), U11 (2016 р.н.), U12 (2015 р.н.), U13 (2014 р.н.)</dd></div>
-            </dl>
-            <p>На етапі базової підготовки продовжується системне навчання футболістів, поступово збільшуються тренувальні й змагальні навантаження, розвиваються технічні навички, ігрове мислення та командна взаємодія.</p>
-          </article>
-          <article class="sports-football-path">
-            <p class="direction-role">2010–2013 р.н.</p>
-            <h3>Спеціалізована підготовка</h3>
-            <dl class="sports-football-stage-facts">
-              <div><dt>Статус</dt><dd>U14–U17 — футбольні команди / навчальні групи</dd></div>
-              <div><dt>Групи</dt><dd>U14 (2013 р.н.), U15 (2012 р.н.), U16 (2011 р.н.), U17 (2010 р.н.)</dd></div>
-            </dl>
-            <p>Продовжується навчально-тренувальний процес вихованців, які пройшли підготовку в групах базової підготовки. Також здійснюється додатковий набір відповідно до встановлених контрольних нормативів. Збільшується обсяг тренувальних і змагальних навантажень, удосконалюються індивідуальні технічні й тактичні дії футболістів. Команди беруть участь у місцевих, регіональних та всеукраїнських змаганнях.</p>
-          </article>
-          <article class="sports-football-path sports-football-path--u19">
-            <p class="direction-role">2008–2009 р.н.</p>
-            <h3>ЗБІРНА U19</h3>
-            <div class="sports-football-senior-stages">
-              <section class="sports-football-senior-stage sports-football-senior-stage--u19">
-                <h4>2008–2009 р. н.</h4>
-                <p>Завершальний етап юнацької підготовки в системі МДЮСШ. Удосконалення індивідуальної та командної майстерності, змагальна практика та підготовка до переходу в дорослий футбол.</p>
-                <div class="sports-football-routes">
-                  <div>
-                    <strong>A. Дорослий футбол</strong>
-                    <ul>
-                      <li>Професійні команди.</li>
-                      <li>Напівпрофесійні команди.</li>
-                      <li>Аматорські команди.</li>
-                      <li>Інші футбольні структури.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <strong>B. Професії навколо футболу</strong>
-                    <ul>
-                      <li>Тренерство.</li>
-                      <li>Футбольне суддівство.</li>
-                      <li>Спортивні медіа.</li>
-                      <li>Спортивна медицина.</li>
-                    </ul>
-                  </div>
+  <section class="section section--paper sports-main-section" aria-label="Спортивні напрями закладу">
+    <div class="container sports-container">
+      <!-- Панель: Футбол -->
+      <div id="panel-football" role="tabpanel" aria-labelledby="tab-football" class="sports-panel active">
+        <div class="sports-football-panel-wrapper">
+          <div class="sports-football-panel-header">
+            <h2 id="football-title">Футбол</h2>
+            <img class="sports-football-art" src={withBase('/media/identity/athlete-football.png')} alt="" width="1511" height="1660" loading="lazy" />
+          </div>
+
+          <div class="sports-football-stages">
+            {footballStages.map((stage) => (
+              <section class="sports-football-stage" aria-label={`${stage.stageTitle} (${stage.stageAge})`}>
+                <div class="sports-stage-header">
+                  <h3>{stage.stageTitle}</h3>
+                  <span class="sports-stage-badge">{stage.stageAge}</span>
+                </div>
+                <div class="sports-age-cards-grid">
+                  {stage.groups.map((group) => (
+                    <article class="sports-age-card">
+                      <header class="sports-age-card-header">
+                        <h4 class="sports-age-card-title">{group.title}</h4>
+                        <span class="sports-age-card-year">{group.birthYear}</span>
+                      </header>
+                      <div class="sports-age-card-body">
+                        <h5 class="sports-coaches-label">Тренерський склад</h5>
+                        <ul class="sports-coaches-list">
+                          {group.coaches.map((coach) => (
+                            <li class="sports-coach-row">
+                              <div class="sports-coach-avatar">
+                                {coach.photo ? (
+                                  <img src={withBase(coach.photo)} alt={coach.name} width="48" height="60" loading="lazy" />
+                                ) : (
+                                  <div class="sports-coach-placeholder" aria-label="Фото готується">
+                                    <span>Фото готується</span>
+                                  </div>
+                                )}
+                              </div>
+                              <div class="sports-coach-details">
+                                <span class="sports-coach-name">{coach.name}</span>
+                                <span class={`sports-coach-role ${coach.role === 'Тренер воротарів' ? 'sports-coach-role--gk' : ''}`}>{coach.role}</span>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+
+                        <div class="sports-roster-section">
+                          <h5 class="sports-roster-label">Склад вихованців</h5>
+                          {getPublicPlayers(group.title).length > 0 ? (
+                            <div class="sports-players-grid">
+                              {getPublicPlayers(group.title).map((player) => (
+                                <PlayerCard player={player} />
+                              ))}
+                            </div>
+                          ) : (
+                            <p class="sports-roster-empty">Склад вихованців готується до публікації.</p>
+                          )}
+                        </div>
+                      </div>
+                    </article>
+                  ))}
                 </div>
               </section>
-            </div>
-          </article>
+            ))}
+
+            <!-- Дівочі групи підготовки -->
+            <section class="sports-football-stage sports-football-stage--girls" aria-label="Дівочі групи підготовки">
+              <div class="sports-stage-header">
+                <h3>Дівочі групи підготовки</h3>
+              </div>
+              <div class="sports-age-cards-grid">
+                {girlsGroups.map((group) => (
+                  <article class="sports-age-card">
+                    <header class="sports-age-card-header">
+                      <h4 class="sports-age-card-title">{group.title}</h4>
+                      <span class="sports-age-card-year">{group.birthYear}</span>
+                    </header>
+                    <div class="sports-age-card-body">
+                      <h5 class="sports-coaches-label">Тренерський склад</h5>
+                      {group.coaches.length > 0 ? (
+                        <ul class="sports-coaches-list">
+                          {group.coaches.map((coach) => (
+                            <li class="sports-coach-row">
+                              <div class="sports-coach-avatar">
+                                {coach.photo ? (
+                                  <img src={withBase(coach.photo)} alt={coach.name} width="48" height="60" loading="lazy" />
+                                ) : (
+                                  <div class="sports-coach-placeholder" aria-label="Фото готується">
+                                    <span>Фото готується</span>
+                                  </div>
+                                )}
+                              </div>
+                              <div class="sports-coach-details">
+                                <span class="sports-coach-name">{coach.name}</span>
+                                <span class={`sports-coach-role ${coach.role === 'Тренер воротарів' ? 'sports-coach-role--gk' : ''}`}>{coach.role}</span>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p class="sports-coaches-pending">Тренерський склад групи уточнюється.</p>
+                      )}
+
+                      <div class="sports-roster-section">
+                        <h5 class="sports-roster-label">Склад вихованців</h5>
+                        {getPublicPlayers(group.title).length > 0 ? (
+                          <div class="sports-players-grid">
+                            {getPublicPlayers(group.title).map((player) => (
+                              <PlayerCard player={player} />
+                            ))}
+                          </div>
+                        ) : (
+                          <p class="sports-roster-empty">Склад вихованців готується до публікації.</p>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
-        <article class="sports-football-path sports-football-path--women">
-          <p class="direction-role">Частина футбольного напряму</p>
-          <h3>Дівочий футбол</h3>
-          <p>МДЮСШ розвиває окремий напрям футбольної підготовки дівчат із навчально-тренувальними групами та власною змагальною практикою.</p>
-          <div class="sports-womens-groups">
-            <article class="sports-womens-group">
-              <h4>Дівочі групи U15/U13</h4>
-              <p>Навчально-тренувальні групи дівочого футболу старшого та середнього віку.</p>
-              <a class="text-link" href={withBase('/trenerskyi-sklad/#football')}>Переглянути тренерський склад →</a>
-            </article>
-            <article class="sports-womens-group">
-              <h4>Дівочі групи U10/U12</h4>
-              <p>Навчально-тренувальні групи дівочого футболу молодшого та базового віку.</p>
-              <a class="text-link" href={withBase('/trenerskyi-sklad/#football')}>Переглянути тренерський склад →</a>
+      </div>
+
+      <!-- Панель: Настільний теніс -->
+      <div id="panel-table-tennis" role="tabpanel" aria-labelledby="tab-table-tennis" class="sports-panel" hidden>
+        <div class="sports-panel-layout sports-panel-layout--tennis">
+          <div class="sports-panel-heading">
+            <h2 id="table-tennis-title">Настільний теніс</h2>
+            <p>Спортивна підготовка, розвиток індивідуальної техніки, реакції, координації та змагальна практика вихованців.</p>
+            <a class="button button-outline" href={withBase('/trenerskyi-sklad/#table-tennis')}>Переглянути тренерський склад</a>
+          </div>
+          <img class="sports-panel-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
+          <div class="sports-panel-content">
+            <article class="sports-panel-card">
+              <h3>Навчально-тренувальні бази</h3>
+              <ul class="sports-panel-facilities-list">
+                <li><strong>СК «Старт»</strong><span>пр. Олександра Поля, 50д</span></li>
+                <li><strong>Спортивний зал «Велика гра»</strong><span>вул. Сімферопольська, 17</span></li>
+                <li><strong>КЗО «СЗШ № 80» ДМР</strong><span>вул. Комбрига Петрова, 31</span></li>
+                <li><strong>КЗО НВО № 28</strong><span>вул. Володі Дубініна, 12</span></li>
+                <li><strong>КЗО «СЗШ № 45» ДМР</strong><span>вул. С. Ковалевської, 88а</span></li>
+                <li><strong>КЗО «СЗШ № 19» ДМР</strong><span>вул. Володимира Великого, 13а</span></li>
+              </ul>
             </article>
           </div>
-          <div class="actions" style="margin-top: 1.25rem;">
-            <a class="button button-outline" href={withBase('/trenerskyi-sklad/#football')}>Переглянути тренерський склад</a>
+        </div>
+      </div>
+
+      <!-- Панель: Черліденг -->
+      <div id="panel-cheerleading" role="tabpanel" aria-labelledby="tab-cheerleading" class="sports-panel" hidden>
+        <div class="sports-panel-layout sports-panel-layout--cheerleading">
+          <div class="sports-panel-heading">
+            <h2 id="cheerleading-title">Черліденг</h2>
+            <p>Самостійний спортивний напрям МДЮСШ, розвиток фізичної підготовки, пластики, акробатичних навичок та виступи.</p>
+            <a class="button button-outline" href={withBase('/trenerskyi-sklad/#cheerleading')}>Переглянути тренерський склад</a>
           </div>
-        </article>
+          <img class="sports-panel-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
+          <div class="sports-panel-content">
+            <article class="sports-panel-card">
+              <h3>Навчально-тренувальні бази</h3>
+              <ul class="sports-panel-facilities-list">
+                <li><strong>КЗО «ССЗШ № 126» ДМР</strong><span>вул. Козакевича, 7</span></li>
+                <li><strong>КЗО «СЗШ № 31» ДМР</strong><span>вул. Фабрично-заводська, 22</span></li>
+                <li><strong>КЗО «СЗШ № 74» ДМР</strong><span>вул. Караваєва, 60</span></li>
+              </ul>
+            </article>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--tint sports-secondary-section" aria-label="Спортивні напрями">
-    <div class="container sports-secondary-grid">
-      <article id="table-tennis" class="sports-secondary-card sports-secondary-card--dark" aria-labelledby="table-tennis-title">
-        <img class="sports-secondary-art" src={withBase('/media/identity/athlete-tennis.png')} alt="" width="1693" height="1693" loading="lazy" />
-        <h2 id="table-tennis-title">Настільний теніс</h2>
-        <p>Спортивна підготовка, розвиток техніки, координації та змагальної практики вихованців.</p>
-      </article>
-      <article id="cheerleading" class="sports-secondary-card sports-secondary-card--warm" aria-labelledby="cheerleading-title">
-        <img class="sports-secondary-art" src={withBase('/media/identity/athlete-cheerleading.png')} alt="" width="1434" height="1434" loading="lazy" />
-        <h2 id="cheerleading-title">Черліденг</h2>
-        <p>Самостійний спортивний напрям МДЮСШ та організована підтримка футбольних команд під час домашніх змагань.</p>
-      </article>
-    </div>
-  </section>
-
+  <!-- Спільна секція: Навчально-тренувальний процес -->
   <section class="section section--paper sports-preparation-section" aria-labelledby="preparation-title">
-    <div class="container">
+    <div class="container sports-container">
       <div class="section-heading">
-        <p class="eyebrow">Навчально-тренувальний процес</p>
         <h2 id="preparation-title">Як побудована спортивна підготовка</h2>
       </div>
       <ol class="sports-preparation-steps">
@@ -131,78 +255,21 @@ import { withBase } from '../lib/urls';
     </div>
   </section>
 
-  <section class="section section--tint sports-facilities-section" aria-labelledby="facilities-title">
-    <div class="container">
-      <div class="section-heading facilities-heading">
-        <p class="eyebrow">Спортивна інфраструктура</p>
-        <h2 id="facilities-title">Тренувальні бази</h2>
-        <p>МДЮСШ використовує спортивні об’єкти та навчальні заклади міста для організації тренувального процесу.</p>
-      </div>
-      <div class="sports-facilities-grid">
-        <article class="sports-facility-card">
-          <h3>Футбол</h3>
-          <ul class="facility-list">
-            <li><strong>Стадіон КП МТО</strong><span>вул. Набережна Заводська, 53</span></li>
-            <li><strong>Стадіон «Олімпійські резерви»</strong><span>пр. Богдана Хмельницького, 29а</span></li>
-            <li><strong>КЗО «СЗШ № 93» ДМР</strong><span>вул. Данила Галицького, 53</span></li>
-            <li><strong>КЗО «СЗШ № 123» ДМР</strong><span>вул. Академіка Кисловського, 1</span></li>
-            <li><strong>КЗО «ССЗШ № 53» ДМР</strong><span>вул. Тополина, 35</span></li>
-            <li><strong>КЗЗСО «Ліцей № 142» ДМР</strong><span>вул. Замполіта Бєляєва, 2</span></li>
-            <li><strong>КЗО «СЗШ № 80» ДМР</strong><span>вул. Комбрига Петрова, 31</span></li>
-            <li><strong>КЗО НВО № 28</strong><span>вул. Володі Дубініна, 12</span></li>
-            <li><strong>КЗО «СЗШ № 45» ДМР</strong><span>вул. С. Ковалевської, 88а</span></li>
-            <li><strong>КЗО «СЗШ № 25» ДМР</strong><span>вул. Бориса Кротова, 19</span></li>
-            <li><strong>КЗО «СЗШ № 128» ДМР</strong><span>вул. Гавриленка, 4</span></li>
-            <li><strong>КЗО «СЗШ № 78» ДМР</strong><span>вул. Тополина, 37</span></li>
-            <li><strong>КЗО «СЗШ № 40» ДМР</strong><span>вул. Альвінського, 3</span></li>
-            <li><strong>КЗО «Дніпровська гімназія» ДМР</strong><span>пр. Богдана Хмельницького, 8г</span></li>
-            <li><strong>КЗО НВК № 106 ДМР</strong><span>вул. Метробудівська, 7</span></li>
-          </ul>
-        </article>
-        <article class="sports-facility-card sports-facility-card--dark">
-          <h3>Настільний теніс</h3>
-          <ul class="facility-list">
-            <li><strong>СК «Старт»</strong><span>пр. Олександра Поля, 50д</span></li>
-            <li><strong>Спортивний зал «Велика гра»</strong><span>вул. Сімферопольська, 17</span></li>
-            <li><strong>КЗО «СЗШ № 80» ДМР</strong><span>вул. Комбрига Петрова, 31</span></li>
-            <li><strong>КЗО НВО № 28</strong><span>вул. Володі Дубініна, 12</span></li>
-            <li><strong>КЗО «СЗШ № 45» ДМР</strong><span>вул. С. Ковалевської, 88а</span></li>
-            <li><strong>КЗО «СЗШ № 19» ДМР</strong><span>вул. Володимира Великого, 13а</span></li>
-          </ul>
-        </article>
-        <article class="sports-facility-card">
-          <h3>Черліденг</h3>
-          <ul class="facility-list">
-            <li><strong>КЗО «ССЗШ № 126» ДМР</strong><span>вул. Козакевича, 7</span></li>
-            <li><strong>КЗО «СЗШ № 31» ДМР</strong><span>вул. Фабрично-заводська, 22</span></li>
-            <li><strong>КЗО «СЗШ № 74» ДМР</strong><span>вул. Караваєва, 60</span></li>
-          </ul>
-        </article>
-      </div>
-      <p class="section-note">Перелік показує лише підтверджені навчально-тренувальні бази. Розклад занять і прив’язка груп до конкретних локацій на сайті не публікуються.</p>
-      <div class="actions sports-section-action">
-        <a class="button button-outline" href={withBase('/kontakty/')}>Контакти</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--paper sports-coaches-section" aria-labelledby="coaches-title">
-    <div class="container sports-coaches-card">
+  <!-- Спільна секція: Тренерський склад -->
+  <section class="section section--tint sports-coaches-section" aria-labelledby="coaches-title">
+    <div class="container sports-container sports-coaches-card">
       <div>
-        <p class="eyebrow">Команда фахівців</p>
         <h2 id="coaches-title">Тренерський склад</h2>
-        <p>Підготовку за спортивними напрямами забезпечують тренери-викладачі та профільні фахівці МДЮСШ.</p>
       </div>
       <a class="button" href={withBase('/trenerskyi-sklad/')}>Переглянути тренерський склад</a>
     </div>
   </section>
 
-  <section class="section section--tint sports-admission-cta-section" aria-labelledby="sports-admission-title">
-    <div class="container sports-admission-cta">
+  <!-- Спільна секція: Фінальний CTA -->
+  <section class="section section--paper sports-admission-cta-section" aria-labelledby="sports-admission-title">
+    <div class="container sports-container sports-admission-cta">
       <div>
-        <p class="eyebrow">Вступ</p>
         <h2 id="sports-admission-title">Оберіть спортивний напрям</h2>
-        <p>Ознайомтеся з умовами вступу та зверніться до адміністрації МДЮСШ для уточнення актуального набору до груп.</p>
       </div>
       <div class="actions sports-admission-actions">
         <a class="button" href={withBase('/yak-vstupyty/')}>Умови вступу</a>
@@ -210,4 +277,69 @@ import { withBase } from '../lib/urls';
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    (function () {
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+      function activateTab(tab, setFocus) {
+        if (!tab) return;
+        const targetId = tab.getAttribute('aria-controls');
+
+        tabs.forEach((t) => {
+          const isSelected = t === tab;
+          t.setAttribute('aria-selected', String(isSelected));
+          t.setAttribute('tabindex', isSelected ? '0' : '-1');
+          t.classList.toggle('active', isSelected);
+        });
+
+        panels.forEach((p) => {
+          const isTarget = p.id === targetId;
+          p.hidden = !isTarget;
+          p.classList.toggle('active', isTarget);
+        });
+
+        if (setFocus) {
+          tab.focus();
+        }
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          activateTab(tab, false);
+        });
+
+        tab.addEventListener('keydown', (e) => {
+          let newIndex = index;
+          if (e.key === 'ArrowRight') {
+            newIndex = (index + 1) % tabs.length;
+          } else if (e.key === 'ArrowLeft') {
+            newIndex = (index - 1 + tabs.length) % tabs.length;
+          } else if (e.key === 'Home') {
+            newIndex = 0;
+          } else if (e.key === 'End') {
+            newIndex = tabs.length - 1;
+          } else {
+            return;
+          }
+          e.preventDefault();
+          activateTab(tabs[newIndex], true);
+        });
+      });
+
+      function syncWithHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+          const matchingTab = tabs.find((t) => t.getAttribute('aria-controls') === `panel-${hash}` || t.id === `tab-${hash}`);
+          if (matchingTab) {
+            activateTab(matchingTab, false);
+          }
+        }
+      }
+
+      window.addEventListener('hashchange', syncWithHash);
+      syncWithHash();
+    })();
+  </script>
 </BaseLayout>
