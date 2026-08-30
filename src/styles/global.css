@@ -2450,6 +2450,20 @@ main {
   font-size: clamp(1.05rem, 0.45vw + 0.95rem, 1.3rem);
 }
 
+.page-lead,
+.section-intro {
+  font-style: italic;
+}
+
+.page-intro.admission-page-hero {
+  padding-block: clamp(2.25rem, 4.5vw, 4.25rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.admission-container {
+  width: min(100% - (var(--container-gutter) * 2), 92rem);
+  margin-inline: auto;
+}
+
 .page-intro + .section {
   padding-top: clamp(1.5rem, 3vw, 3rem);
 }
@@ -2540,24 +2554,32 @@ main {
 }
 
 .admission-section,
-.admission-safety-section {
-  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+.admission-age-section,
+.admission-safety-section,
+.admission-cta-section {
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 
 .admission-steps-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
 }
 
 .admission-step-card {
   display: flex;
-  min-height: 18rem;
+  min-height: 6.5rem;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  padding: clamp(1.35rem, 2.5vw, 2rem);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
   border: 1px solid var(--line);
   background: var(--paper);
+  border-radius: var(--radius-sm, 0.75rem);
+}
+
+.admission-step-card:has(.text-link) {
+  justify-content: space-between;
 }
 
 .admission-step-card .card-number {
@@ -2567,16 +2589,98 @@ main {
 .admission-step-card h3 {
   margin: 0;
   color: var(--green-950);
-  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
 }
 
 .admission-step-card p {
-  margin: 1rem 0 0;
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.98rem;
 }
 
 .admission-step-card .text-link {
-  margin-top: auto;
-  padding-top: 1.5rem;
+  margin-top: 0.85rem;
+  padding-top: 0;
+}
+
+.admission-age-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.admission-age-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm, 0.75rem);
+}
+
+.admission-age-column h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--green-950);
+}
+
+.admission-age-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admission-age-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  background: var(--tint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs, 0.5rem);
+  font-size: 0.92rem;
+  color: var(--green-950);
+}
+
+.admission-age-chip strong {
+  font-weight: 800;
+  color: var(--green-900);
+}
+
+.admission-age-chip span {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.admission-column-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.admission-girls-block {
+  margin-top: 1.75rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm, 0.75rem);
+}
+
+.admission-girls-block h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--green-950);
+}
+
+.admission-girls-block p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
 }
 
 .admission-safety-card {
@@ -2586,6 +2690,7 @@ main {
   padding: clamp(1.5rem, 3vw, 2.5rem);
   border: 1px solid var(--line);
   background: var(--paper);
+  border-radius: var(--radius-sm, 0.75rem);
 }
 
 .admission-safety-card h2 {
@@ -2594,6 +2699,36 @@ main {
 
 .admission-safety-card p:last-child {
   margin-bottom: 0;
+}
+
+.admission-cta-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: var(--radius-sm, 0.75rem);
+}
+
+.admission-cta-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  color: var(--green-950);
+}
+
+.admission-cta-card p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+.admission-cta-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .information-section {
@@ -3565,6 +3700,7 @@ main {
   .transparency-grid,
   .transparency-control-grid,
   .admission-steps-grid,
+  .admission-age-guide-grid,
   .legal-page-grid,
   .information-grid,
   .facilities-grid,
