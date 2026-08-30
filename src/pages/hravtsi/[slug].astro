@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublicPlayers, type Player } from '../../data/players';
+import { withBase } from '../../lib/urls';
+
+export function getStaticPaths() {
+  const players = getPublicPlayers();
+  return players
+    .filter((player) => player.publicProfile && Boolean(player.slug))
+    .map((player) => ({
+      params: { slug: player.slug },
+      props: { player },
+    }));
+}
+
+interface Props {
+  player: Player;
+}
+
+const { player } = Astro.props;
+---
+
+{player && player.publicProfile && (
+  <BaseLayout
+    title={`${player.publicName} — Вихованець МДЮСШ Дніпро`}
+    description={`Профіль вихованця МДЮСШ Дніпро: ${player.publicName}, ${player.groupId}.`}
+  >
+    <section class="section section--paper player-profile-section">
+      <div class="container">
+        <header class="player-profile-header">
+          <div class="player-profile-avatar">
+            {player.photoApprovedForPublicUse && player.photo ? (
+              <img src={withBase(player.photo)} alt={player.publicName} width="240" height="300" />
+            ) : (
+              <div class="player-placeholder-avatar">
+                <span>Фото готується</span>
+              </div>
+            )}
+          </div>
+          <div class="player-profile-meta">
+            <h1>{player.publicName}</h1>
+            <p class="player-profile-group">{player.groupId} {player.birthYear ? `· ${player.birthYear} р.н.` : ''}</p>
+            {player.position && <p class="player-profile-position">{player.position}</p>}
+            <p class="player-profile-sport">{player.sport === 'football' ? 'Футбол' : player.sport}</p>
+          </div>
+        </header>
+      </div>
+    </section>
+  </BaseLayout>
+)}

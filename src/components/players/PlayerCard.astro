@@ -1,0 +1,41 @@
+---
+import type { Player } from '../../data/players';
+import { withBase } from '../../lib/urls';
+
+interface Props {
+  player: Player;
+}
+
+const { player } = Astro.props;
+---
+
+<article class="player-card">
+  <div class="player-card-media">
+    {player.photoApprovedForPublicUse && player.photo ? (
+      <img
+        class="player-card-photo"
+        src={withBase(player.photo)}
+        alt={player.publicName}
+        width="160"
+        height="200"
+        loading="lazy"
+      />
+    ) : (
+      <div class="player-card-placeholder" aria-label="Фото готується">
+        <span class="placeholder-tag">Фото готується</span>
+      </div>
+    )}
+  </div>
+  <div class="player-card-content">
+    <h6 class="player-card-name">{player.publicName}</h6>
+    <p class="player-card-info">
+      <span>{player.groupId}</span>
+      {player.birthYear && <span>{player.birthYear} р.н.</span>}
+    </p>
+    {player.publicProfile && player.slug && (
+      <a class="player-card-link" href={withBase(`/hravtsi/${player.slug}/`)}>
+        Переглянути профіль →
+      </a>
+    )}
+  </div>
+</article>
