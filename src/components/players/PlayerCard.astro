@@ -16,9 +16,10 @@ const { player } = Astro.props;
         class="player-card-photo"
         src={withBase(player.photo)}
         alt={player.publicName}
-        width="160"
-        height="200"
+        width="240"
+        height="300"
         loading="lazy"
+        decoding="async"
       />
     ) : (
       <div class="player-card-placeholder" aria-label="Фото готується">
@@ -30,11 +31,17 @@ const { player } = Astro.props;
     <h6 class="player-card-name">{player.publicName}</h6>
     <p class="player-card-info">
       <span>{player.groupId}</span>
-      {player.birthYear && <span>{player.birthYear} р.н.</span>}
+      {player.birthYear && <span>· {player.birthYear} р.н.</span>}
     </p>
+    {(player.position || player.shirtNumber) && (
+      <p class="player-card-role">
+        {player.position && <span>{player.position}</span>}
+        {player.shirtNumber && <span>{player.position ? ' · ' : ''}№ {player.shirtNumber}</span>}
+      </p>
+    )}
     {player.publicProfile && player.slug && (
       <a class="player-card-link" href={withBase(`/hravtsi/${player.slug}/`)}>
-        Переглянути профіль →
+        Профіль гравця →
       </a>
     )}
   </div>

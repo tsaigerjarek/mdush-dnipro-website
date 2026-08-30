@@ -1,21 +1,50 @@
-import type { SportDirection } from './coaches';
+export type SportDirection = 'football' | 'table-tennis' | 'cheerleading';
+
+export interface PlayerStats {
+  appearances?: number;
+  starts?: number;
+  minutes?: number;
+  goals?: number;
+  assists?: number;
+  cleanSheets?: number;
+}
+
+export interface PlayerMedia {
+  image?: string;
+  title?: string;
+  href?: string;
+}
 
 export interface Player {
   id: string;
   slug: string;
+
   publicName: string;
-  legalFullName?: string; // Внутрішнє поле; заборонено до автоматичного оприлюднення без згоди
-  groupId: string; // Наприклад: 'U9', 'U10', 'U11', 'U12', 'U13', 'U14', 'U15', 'U16', 'U17', 'ЗБІРНА U19'
-  sport: SportDirection;
+  legalFullName?: string; // Внутрішнє поле; суворо заборонено до публікації
+
+  direction: SportDirection;
+
+  groupId: string; // Наприклад: 'U15', 'ЗБІРНА U19'
+  teamLabel?: string;
+
   birthYear?: number; // Тільки рік (наприклад, 2012), повна дата народження заборонена
   position?: string;
+  shirtNumber?: number;
+
   photo?: string;
-  photoApprovedForPublicUse: boolean;
+
   publicProfile: boolean;
+  photoApprovedForPublicUse: boolean;
+
+  season?: string;
+
+  stats?: PlayerStats;
+  achievements?: string[];
+  media?: PlayerMedia[];
 }
 
 // Підтверджений публічний реєстр вихованців МДЮСШ Дніпро
-// За замовчуванням порожній до офіційного надання підтверджених даних та згод
+// За замовчуванням порожній (0 записів) до офіційного надання підтверджених даних та згод
 export const players: Player[] = [];
 
 export function getPublicPlayers(groupId?: string): Player[] {
