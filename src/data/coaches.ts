@@ -49,6 +49,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'ЗБІРНА U19',
     birthYearGroup: '2008–2009 р.н.',
+    photo: '/media/coaches/volivach-oleh.jpg',
     publicProfile: true,
   },
   {
@@ -58,6 +59,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'ЗБІРНА U19',
     birthYearGroup: '2008–2009 р.н.',
+    photo: '/media/coaches/kravchenko-oleksandr.jpg',
     publicProfile: true,
   },
   {
@@ -78,6 +80,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U17',
     birthYearGroup: '2010 р.н.',
+    photo: '/media/coaches/fedotov-vitalii.jpg',
     publicProfile: true,
   },
   {
@@ -87,6 +90,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U17',
     birthYearGroup: '2010 р.н.',
+    photo: '/media/coaches/ivaniushchenko-vladyslav.jpg',
     publicProfile: true,
   },
   {
@@ -107,6 +111,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U16',
     birthYearGroup: '2011 р.н.',
+    photo: '/media/coaches/darenko-maksym.jpg',
     publicProfile: true,
   },
   {
@@ -116,6 +121,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U16',
     birthYearGroup: '2011 р.н.',
+    photo: '/media/coaches/shevchenko-pavlo.jpg',
     publicProfile: true,
   },
   {
@@ -125,6 +131,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U16',
     birthYearGroup: '2011 р.н.',
+    photo: '/media/coaches/bobrovskyi-andrii.jpg',
     publicProfile: true,
   },
 
@@ -136,6 +143,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U15',
     birthYearGroup: '2012 р.н.',
+    photo: '/media/coaches/fetisov-yevhenii.jpg',
     publicProfile: true,
   },
   {
@@ -145,6 +153,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U15',
     birthYearGroup: '2012 р.н.',
+    photo: '/media/coaches/sosna-ivan.jpg',
     publicProfile: true,
   },
   {
@@ -154,6 +163,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U15',
     birthYearGroup: '2012 р.н.',
+    photo: '/media/coaches/bobrovskyi-andrii.jpg',
     publicProfile: true,
   },
 
@@ -165,6 +175,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U14',
     birthYearGroup: '2013 р.н.',
+    photo: '/media/coaches/shevchenko-kostiantyn.jpg',
     publicProfile: true,
   },
   {
@@ -174,6 +185,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U14',
     birthYearGroup: '2013 р.н.',
+    photo: '/media/coaches/dymarchuk-oleksandr.jpg',
     publicProfile: true,
   },
   {
@@ -194,6 +206,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U13',
     birthYearGroup: '2014 р.н.',
+    photo: '/media/coaches/lus-serhii.jpg',
     publicProfile: true,
   },
   {
@@ -203,6 +216,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U13',
     birthYearGroup: '2014 р.н.',
+    photo: '/media/coaches/volivach-oleh.jpg',
     publicProfile: true,
   },
   {
@@ -223,6 +237,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U12',
     birthYearGroup: '2015 р.н.',
+    photo: '/media/coaches/nikitenkov-yurii.jpg',
     publicProfile: true,
   },
   {
@@ -252,6 +267,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U11',
     birthYearGroup: '2016 р.н.',
+    photo: '/media/coaches/ivaniushchenko-vladyslav.jpg',
     publicProfile: true,
   },
   {
@@ -261,6 +277,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U11',
     birthYearGroup: '2016 р.н.',
+    photo: '/media/coaches/sharko-anton.jpg',
     publicProfile: true,
   },
   {
@@ -281,6 +298,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U10',
     birthYearGroup: '2017 р.н.',
+    photo: '/media/coaches/darenko-maksym.jpg',
     publicProfile: true,
   },
   {
@@ -290,6 +308,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U10',
     birthYearGroup: '2017 р.н.',
+    photo: '/media/coaches/shevchenko-pavlo.jpg',
     publicProfile: true,
   },
   {
@@ -319,6 +338,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U9',
     birthYearGroup: '2018 р.н.',
+    photo: '/media/coaches/fetisov-yevhenii.jpg',
     publicProfile: true,
   },
   {
@@ -328,6 +348,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U9',
     birthYearGroup: '2018 р.н.',
+    photo: '/media/coaches/sosna-ivan.jpg',
     publicProfile: true,
   },
   {
@@ -337,6 +358,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U9',
     birthYearGroup: '2018 р.н.',
+    photo: '/media/coaches/kravchenko-oleksandr.jpg',
     publicProfile: true,
   },
   {
@@ -346,6 +368,7 @@ export const coaches: Coach[] = [
     sport: 'football',
     team: 'U9',
     birthYearGroup: '2018 р.н.',
+    photo: '/media/coaches/bobrovskyi-andrii.jpg',
     publicProfile: true,
   },
 
