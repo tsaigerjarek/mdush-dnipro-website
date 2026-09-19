@@ -4,27 +4,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Змагання — МДЮСШ Дніпро"
-  description="Календар, результати та офіційна участь команд і вихованців МДЮСШ Дніпро у змаганнях."
+  description="Календар, результати та офіційна участь команд і вихованців МДЮСШ Дніпро у змаганнях сезону 2026/2027."
 >
   <header class="page-intro">
-    <p class="eyebrow">Спортивний календар</p>
+    <p class="eyebrow">Сезон 2026/2027</p>
     <h1>Змагання</h1>
-    <p>Єдиний розділ для футбольних матчів, турнірів з настільного тенісу, виступів з черлідингу та інших підтверджених спортивних подій закладу.</p>
+    <p>Календар і результати МДЮСШ Дніпро публікуються після перевірки дати, часу, місця проведення, суперника або назви турніру.</p>
   </header>
 
-  <section class="section section--paper" aria-labelledby="competitions-format-title">
+  <section class="section section--paper" aria-labelledby="competitions-current-title">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Формат публікації</p>
-        <h2 id="competitions-format-title">Один календар для трьох напрямів</h2>
-        <p>Публікуються тільки підтверджені дати, час, місце проведення, суперник або назва турніру та статус трансляції.</p>
+        <p class="eyebrow">Актуальний сезон</p>
+        <h2 id="competitions-current-title">Календар та результати</h2>
+        <p>Розділ підготовлено для структурованого календаря сезону 2026/2027. Конкретні матчі та результати додаються тільки з підтверджених джерел.</p>
       </div>
       <div class="information-grid">
-        <article class="information-card"><h3>Футбол</h3><p>Матчі команд МДЮСШ, результати, турніри та посилання на офіційні трансляції після підтвердження.</p></article>
-        <article class="information-card"><h3>Настільний теніс</h3><p>Турніри, календар виступів і підтверджені результати вихованців.</p></article>
-        <article class="information-card"><h3>Черлідинг</h3><p>Участь у профільних змаганнях і підтримка футбольних команд під час домашніх матчів.</p></article>
+        <article class="information-card">
+          <h3>Найближчі події</h3>
+          <p>Дата, час, команда, суперник або турнір, місце проведення та статус трансляції після підтвердження.</p>
+        </article>
+        <article class="information-card">
+          <h3>Результати</h3>
+          <p>Підтверджені результати завершених матчів і виступів без неперевірених статистичних даних.</p>
+        </article>
+        <article class="information-card">
+          <h3>Архів сезону</h3>
+          <p>Послідовна історія турів, матчів та інших офіційних змагань МДЮСШ Дніпро.</p>
+        </article>
       </div>
-      <p class="section-note">Календар наповнюється лише з погодженого джерела даних і після перевірки відповідальною особою.</p>
+    </div>
+  </section>
+
+  <section class="section section--tint" aria-labelledby="competitions-directions-title">
+    <div class="container">
+      <div class="section-heading">
+        <h2 id="competitions-directions-title">Спортивні напрями</h2>
+      </div>
+      <div class="information-grid">
+        <article class="information-card"><h3>Футбол</h3><p>Юнацькі та дівочі команди МДЮСШ: календарні матчі, результати й офіційні трансляції.</p></article>
+        <article class="information-card"><h3>Настільний теніс</h3><p>Турніри, календар виступів і підтверджені результати вихованців.</p></article>
+        <article class="information-card"><h3>Черлідинг</h3><p>Участь команд закладу у профільних змаганнях та спортивних заходах.</p></article>
+      </div>
+      <p class="section-note">Дані не заповнюються припущеннями. Якщо подія ще не підтверджена відповідальною особою, вона не відображається як офіційна.</p>
     </div>
   </section>
 </BaseLayout>
