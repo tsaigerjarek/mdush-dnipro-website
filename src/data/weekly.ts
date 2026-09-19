@@ -14,96 +14,82 @@ export interface WeeklyItem {
   detailsUrl?: string;
   teamId?: string;
   branchId?: string;
-  primaryAction?: {
-    label: string;
-    href: string;
-  };
-  secondaryAction?: {
-    label: string;
-    href: string;
-  };
+  primaryAction?: { label: string; href: string };
+  secondaryAction?: { label: string; href: string };
   resultScore?: string;
 }
 
 export const weeklyItems: WeeklyItem[] = [
   {
-    id: 'hero-weekly-event',
+    id: 'hero-season-2026-27',
     type: 'announcement',
-    status: 'upcoming',
+    status: 'info',
     featured: true,
-    title: 'Підготовка та тренувальний процес команд МДЮСШ до нового змагального сезону',
+    title: 'Сезон 2026/2027 триває',
     summary:
-      'Офіційні графіки занять, навчально-тренувальні збори юнацьких та дівочих збірних складів закладу, правила зарахування вихованців на сезон 2026/2027.',
-    location: 'Спортивна база та локації МДЮСШ, м. Дніпро',
+      'Команди МДЮСШ Дніпро беруть участь у змаганнях сезону 2026/2027. На сайті публікуються підтверджені анонси, результати, новини та матеріали про юнацькі й дівочі команди закладу.',
+    location: 'МДЮСШ Дніпро',
     image: '/media/hero/hero-mdush-desktop.png',
-    imageAlt: 'Тренувальний процес вихованців МДЮСШ Дніпро',
+    imageAlt: 'Сезон 2026/2027 МДЮСШ Дніпро',
     detailsUrl: '/zmahannia/',
-    primaryAction: {
-      label: 'Змагання та календар',
-      href: '/zmahannia/',
-    },
-    secondaryAction: {
-      label: 'Умови зарахування до закладу',
-      href: '/yak-vstupyty/',
-    },
+    primaryAction: { label: 'Змагання та календар', href: '/zmahannia/' },
+    secondaryAction: { label: 'Новини МДЮСШ', href: '/novyny/' },
   },
   {
-    id: 'highlight-1',
+    id: 'highlight-u19',
     type: 'announcement',
     status: 'info',
     featured: false,
-    title: 'ЗБІРНА КОМАНДИ U19 (2008–2009 Р.Н.)',
-    summary: 'Тренувальні сесії та тактична підготовка старшого вікового складу до виступів у календарних турнірах.',
+    title: 'ЗБІРНА U19',
+    summary: 'Старша юнацька команда МДЮСШ Дніпро у сезоні 2026/2027.',
     image: '/media/hero/hero-mdush-fallback.jpg',
-    imageAlt: 'Підготовка збірної U19 2008–2009 р.н.',
+    imageAlt: 'Збірна U19 МДЮСШ Дніпро',
     detailsUrl: '/sportyvni-napriamy/#football',
     teamId: 'team-2008-2009',
   },
   {
-    id: 'highlight-2',
+    id: 'highlight-u17',
     type: 'announcement',
     status: 'info',
     featured: false,
-    title: 'Команда U17 (2010 р.н.)',
-    summary: 'Формування основного складу та відпрацювання ігрових моделей команди U17 (2010 р.н.) закладу.',
+    title: 'Команда U17 · 2010 р.н.',
+    summary: 'Команда U17 МДЮСШ Дніпро у змагальному сезоні 2026/2027.',
     image: '/media/hero/hero-mdush-desktop.png',
-    imageAlt: 'Команда U17 МДЮСШ 2010 р.н.',
+    imageAlt: 'Команда U17 МДЮСШ Дніпро 2010 р.н.',
     detailsUrl: '/sportyvni-napriamy/#football',
     teamId: 'team-2010',
   },
   {
-    id: 'highlight-girls-u15',
+    id: 'highlight-girls-u15-u13',
     type: 'announcement',
     status: 'info',
     featured: false,
-    date: '2012 р.н.',
-    title: 'ДІВОЧА КОМАНДА U15',
-    summary: 'Підготовка дівочої команди U15 закладу, тренувальний процес та участь у профільних змаганнях.',
+    title: 'Дівочий футбол · U15/U13',
+    summary: 'Дівочі команди МДЮСШ Дніпро: тренувальний процес та участь у змаганнях сезону 2026/2027.',
     image: '/media/hero/hero-mdush-fallback.jpg',
-    imageAlt: 'Дівоча команда U15 МДЮСШ Дніпро',
+    imageAlt: 'Дівочий футбол МДЮСШ Дніпро U15 та U13',
     detailsUrl: '/sportyvni-napriamy/#football',
-    teamId: 'team-girls-2012',
+    teamId: 'team-girls-u15-u13',
   },
   {
-    id: 'highlight-girls-u12',
+    id: 'highlight-girls-u10-u12',
     type: 'announcement',
     status: 'info',
     featured: false,
-    date: '2014 р.н.',
-    title: 'ДІВОЧА КОМАНДА U12',
-    summary: 'Підготовка дівочої команди U12 закладу, розвиток техніки, ігрового мислення та участь у профільних змаганнях.',
+    title: 'Дівочий футбол · U10/U12',
+    summary: 'Молодші дівочі групи футбольного відділення МДЮСШ Дніпро.',
     image: '/media/hero/hero-mdush-fallback.jpg',
-    imageAlt: 'Дівоча команда U12 МДЮСШ Дніпро',
+    imageAlt: 'Дівочі футбольні групи МДЮСШ Дніпро U10 та U12',
     detailsUrl: '/sportyvni-napriamy/#football',
-    teamId: 'team-girls-2014',
+    teamId: 'team-girls-u10-u12',
   },
   {
-    id: 'highlight-4',
+    id: 'highlight-branches',
     type: 'gallery',
     status: 'info',
     featured: false,
-    title: 'ФІЛІЇ ЗАКЛАДУ',
-    summary: 'Комплексний фізичний розвиток та базова футбольна підготовка молодших вихованців на майданчиках міста.',
+    title: 'Філії закладу',
+    summary: 'Базова футбольна підготовка молодших вихованців на спортивних майданчиках міста.',
     image: '/media/hero/hero-mdush-fallback.jpg',
     imageAlt: 'Тренування у філіях МДЮСШ Дніпро',
     detailsUrl: '/sportyvni-napriamy/#football',
